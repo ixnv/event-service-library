@@ -6,15 +6,15 @@
  * Time: 13:42
  */
 
-namespace EventServiceLib\AMQP;
+namespace EventServiceLib;
 
 
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
-use \EventServiceLib\QueueManagerInterface;
 
-class QueueManager implements QueueManagerInterface
+
+class AMQPQueueManager implements QueueManagerInterface
 {
     /** @var AMQPStreamConnection */
     private $connection;
@@ -45,7 +45,7 @@ class QueueManager implements QueueManagerInterface
     public function openConnection()
     {
         $this->channel = $this->connection->channel();
-        $this->queue = $this->channel->queue_declare(EventSystemValues::QUEUE_NAME, false, false, false, false);
+        $this->queue = $this->channel->queue_declare(EventServiceValues::QUEUE_NAME, false, false, false, false);
         $this->queueSize = $this->queue[1];
 
     }
@@ -61,7 +61,7 @@ class QueueManager implements QueueManagerInterface
 
         };
         $this->channel->basic_qos(null, 1, null);
-        $this->channel->basic_consume(EventSystemValues::QUEUE_NAME, '', false, false, false, false, $callback);
+        $this->channel->basic_consume(EventServiceValues::QUEUE_NAME, '', false, false, false, false, $callback);
 
 
         while ($this->queueSize > 0 && !isset($this->currentAMQPMessage->body)) {
@@ -94,7 +94,7 @@ class QueueManager implements QueueManagerInterface
             ['delivery_mode' => 2]
         );
         //$this->queueSize++;
-        $this->channel->basic_publish($message, '', EventSystemValues::QUEUE_NAME);
+        $this->channel->basic_publish($message, '', EventServiceValues::QUEUE_NAME);
     }
 
 
