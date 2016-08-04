@@ -6,9 +6,18 @@
     "require": {
         "php-amqplib/php-amqplib": "*"
     },
+    "require-dev": {
+        "phake/phake": "*",
+        "phpunit/phpunit": "3.7.*"
+    },
     "autoload": {
         "psr-4": {
             "EventServiceLib\\": "EventServiceLib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     }
 }
