@@ -16,19 +16,12 @@ class EventDispatcher
     /** @var  QueueManagerInterface */
     private $queueManager;
 
-    public function __construct()
+    public function __construct(AMQPStreamConnection $connection)
     {
-        $connection = new AMQPStreamConnection(
-            EventServiceValues::RABBITMQ_NETWORK,
-            EventServiceValues::RABBITMQ_PORT,
-            EventServiceValues::RABBITMQ_USER,
-            EventServiceValues::RABBITMQ_PASSWORD,
-            EventServiceValues::RABBITMQ_VHOST
-        );
         $this->queueManager = new AMQPQueueManager($connection);
     }
 
-    public function dispatch(EventTypes $type, User $user)
+    public function dispatch($type, User $user)
     {
         $this->queueManager->openConnection();
         $message = [
