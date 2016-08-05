@@ -1,24 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: elama
- * Date: 04.08.16
- * Time: 14:51
- */
+
 
 namespace EventServiceLib;
 
-
-use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 class EventDispatcher
 {
     /** @var  QueueManagerInterface */
     private $queueManager;
 
-    public function __construct(AMQPStreamConnection $connection)
+    public function __construct(QueueManagerInterface $queueManager)
     {
-        $this->queueManager = new AMQPQueueManager($connection);
+        $this->queueManager = $queueManager;
     }
 
     public function dispatch($type, User $user)
