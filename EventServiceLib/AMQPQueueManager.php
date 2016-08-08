@@ -34,7 +34,6 @@ class AMQPQueueManager implements QueueManagerInterface
     public function closeConnection()
     {
         $this->channel->close();
-        $this->connection->close();
     }
 
     public function openConnection()
