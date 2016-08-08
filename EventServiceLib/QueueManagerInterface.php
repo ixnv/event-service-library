@@ -11,10 +11,7 @@ interface QueueManagerInterface
 
     public function openConnection();
 
-    public function fetchMessage();
-
     public function putMessage($message);
 
-    public function deleteMessage();
 
 }

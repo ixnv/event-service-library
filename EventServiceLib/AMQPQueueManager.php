@@ -44,40 +44,6 @@ class AMQPQueueManager implements QueueManagerInterface
     }
 
     /**
-     * @return null|string
-     */
-    public function fetchMessage()
-    {
-
-        $callback = function (AMQPMessage $msg) {
-            $this->currentAMQPMessage = $msg;
-
-        };
-        $this->channel->basic_qos(null, 1, null);
-        $this->channel->basic_consume(EventServiceValues::QUEUE_NAME, '', false, false, false, false, $callback);
-
-
-        while ($this->queueSize > 0 && !isset($this->currentAMQPMessage->body)) {
-            $this->channel->wait();
-        }
-
-        if (isset($this->currentAMQPMessage->body)) {
-            $msg = $this->currentAMQPMessage->body;
-            return $msg;
-        }
-
-        return null;
-    }
-
-    public function deleteMessage()
-    {
-        $deliveryTag = $this->currentAMQPMessage->delivery_info['delivery_tag'];
-        $this->channel->basic_ack($deliveryTag);
-        $this->queueSize--;
-        $this->currentAMQPMessage->body = null;
-    }
-
-    /**
      * @param $text
      */
     public function putMessage($text)

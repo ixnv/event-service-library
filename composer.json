@@ -4,6 +4,7 @@
     "type": "library",
     "authors": [],
     "require": {
+        "php": ">=5.6",
         "php-amqplib/php-amqplib": "*"
     },
     "require-dev": {
