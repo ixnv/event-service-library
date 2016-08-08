@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: elama
- * Date: 04.08.16
- * Time: 13:42
- */
+
 
 namespace EventServiceLib;
 

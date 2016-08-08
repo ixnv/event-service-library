@@ -17,10 +17,6 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class AMQPQueueManagerTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
-    {
-        fwrite(STDOUT, "\n" . $this->getName() . "\n----------------------------------------\n");
-    }
 
     public function testQueueManagerPutsMessagesInQueue()
     {
