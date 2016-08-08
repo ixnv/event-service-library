@@ -15,9 +15,4 @@ class EventServiceValues
     const ELAMA_WEBINAR_ID = 'K';
     const ELAMA_TRIAL_ID = 'p';
     const ELAMA_ID = '3';
-    const RABBITMQ_NETWORK = 'rabbit-es';
-    const RABBITMQ_PORT = 5672;
-    const RABBITMQ_USER = 'admin';
-    const RABBITMQ_PASSWORD = 'admin';
-    const RABBITMQ_VHOST = 'elama-es';
 }
