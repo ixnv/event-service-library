@@ -1,20 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: elama
- * Date: 28.07.16
- * Time: 13:36
- */
+
 
 namespace EventServiceLib;
 
 
 class User
 {
-    private $email;
     private $name;
+    private $email;
     private $purchase_date;
     private $registration_date;
+
+    public function __construct($name, $email)
+    {
+        $this->name = $name;
+        $this->email = $email;
+    }
 
     /**
      * @return mixed
@@ -23,7 +24,6 @@ class User
     {
         return $this->email;
     }
-
 
     /**
      * @return mixed
@@ -67,14 +67,15 @@ class User
 
     public function toArray()
     {
-        return get_object_vars($this);
-    }
+        $vars = get_object_vars($this);
 
+        foreach ($vars as $name => $value) {
+            if ($value === null) {
+                unset($vars[$name]);
+            }
+        }
 
-    public function __construct($name, $email)
-    {
-        $this->name = $name;
-        $this->email = $email;
+        return $vars;
     }
 
 
