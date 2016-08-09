@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7538d7242fd2a0f14b87e311b73850e3",
-    "content-hash": "d73f9d44785ee8cfc0f1833a89fb1e14",
+    "hash": "a62ee39136d6accfa48dd2e054a1fea0",
+    "content-hash": "0b5450dfc2f51fb3c08c3c333b9df736",
     "packages": [
         {
-            "name": "php-amqplib/php-amqplib",
-            "version": "v2.6.3",
+            "name": "videlalvaro/php-amqplib",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "fa2f0d4410a11008cb36b379177291be7ee9e4f6"
+                "reference": "eb8f94d97c8e79900accf77343dbd7eca7f58506"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/fa2f0d4410a11008cb36b379177291be7ee9e4f6",
-                "reference": "fa2f0d4410a11008cb36b379177291be7ee9e4f6",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/eb8f94d97c8e79900accf77343dbd7eca7f58506",
+                "reference": "eb8f94d97c8e79900accf77343dbd7eca7f58506",
                 "shasum": ""
             },
             "require": {
@@ -26,13 +26,8 @@
                 "ext-mbstring": "*",
                 "php": ">=5.3.0"
             },
-            "replace": {
-                "videlalvaro/php-amqplib": "self.version"
-            },
             "require-dev": {
-                "phpunit/phpunit": "^4.8",
-                "scrutinizer/ocular": "^1.1",
-                "squizlabs/php_codesniffer": "^2.5"
+                "phpunit/phpunit": "3.7.*"
             },
             "suggest": {
                 "ext-sockets": "Use AMQPSocketConnection"
@@ -40,7 +35,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -54,28 +49,18 @@
             ],
             "authors": [
                 {
-                    "name": "Alvaro Videla",
-                    "role": "Original Maintainer"
-                },
-                {
-                    "name": "John Kelly",
-                    "email": "johnmkelly86@gmail.com",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Raúl Araya",
-                    "email": "nubeiro@gmail.com",
-                    "role": "Maintainer"
+                    "name": "Alvaro Videla"
                 }
             ],
-            "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
-            "homepage": "https://github.com/php-amqplib/php-amqplib/",
+            "description": "This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
+            "homepage": "https://github.com/videlalvaro/php-amqplib/",
             "keywords": [
                 "message",
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2016-04-11 14:30:01"
+            "abandoned": "php-amqplib/php-amqplib",
+            "time": "2015-08-11 12:30:09"
         }
     ],
     "packages-dev": [
@@ -793,6 +778,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.5"
+    },
     "platform-dev": []
 }
