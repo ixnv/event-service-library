@@ -26,7 +26,7 @@ class AMQPQueueManager implements QueueManagerInterface
      * AMQPQueueManager constructor.
      * @param AMQPStreamConnection $connection
      */
-    public function __construct(AMQPStreamConnection $connection)
+    public function __construct($connection)
     {
         $this->connection = $connection;
     }

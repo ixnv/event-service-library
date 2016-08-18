@@ -6,6 +6,7 @@ namespace EventServiceLib;
 
 interface QueueManagerInterface
 {
+    public function __construct($connection);
 
     public function closeConnection();
 
