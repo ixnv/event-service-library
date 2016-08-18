@@ -39,7 +39,7 @@ class AMQPQueueManager implements QueueManagerInterface
     public function openConnection()
     {
         $this->channel = $this->connection->channel();
-        $this->queue = $this->channel->queue_declare(EventServiceValues::QUEUE_NAME, false, false, false, false);
+        $this->queue = $this->channel->queue_declare(EventServiceValues::QUEUE_NAME, false, true, false, false);
         $this->queueSize = $this->queue[1];
     }
 
