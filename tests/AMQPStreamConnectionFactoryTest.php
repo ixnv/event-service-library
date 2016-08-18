@@ -4,13 +4,13 @@
 namespace Test;
 
 
-use EventServiceLib\AMQPStreamConnectionFactory;
+use EventServiceLib\ConnectionFactory;
 use Phake;
 use Psr\Log\LoggerInterface;
 
-class AMQPStreamConnectionFactoryTest extends \PHPUnit_Framework_TestCase
+class ConnectionFactoryTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var  AMQPStreamConnectionFactory */
+    /** @var  ConnectionFactory */
     private $factory;
     /** @var  LoggerInterface */
     private $logger;
@@ -18,12 +18,12 @@ class AMQPStreamConnectionFactoryTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->logger = Phake::mock(LoggerInterface::class);
-        $this->factory = new AMQPStreamConnectionFactory($this->logger);
+        $this->factory = new ConnectionFactory($this->logger);
     }
 
-    public function testCreateInstanceLogsExceptionAndReturnsFalseWhenParametersAreIncorrect()
+    public function testCreateAMQPConnectionLogsExceptionAndReturnsFalseWhenParametersAreIncorrect()
     {
-        $result = $this->factory->createInstance(null, null, null, null, null);
+        $result = $this->factory->createAMQPConnection(null, null, null, null, null);
 
         Phake::verify($this->logger)->critical;
         $this->assertEquals($result, false);

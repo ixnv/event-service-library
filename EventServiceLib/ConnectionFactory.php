@@ -9,7 +9,7 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Exception\AMQPExceptionInterface;
 use Psr\Log\LoggerInterface;
 
-class AMQPStreamConnectionFactory
+class ConnectionFactory
 {
     /** @var  LoggerInterface */
     private $logger;
@@ -28,12 +28,12 @@ class AMQPStreamConnectionFactory
      * @return bool|AMQPStreamConnection
      * @throws Exception
      */
-    public function createInstance($host, $port, $user, $password, $vHost)
+    public function createAMQPConnection($host, $port, $user, $password, $vHost)
     {
         try {
             $connection = new AMQPStreamConnection($host, $port, $user, $password, $vHost);
         } catch (Exception $e) {
-            $this->handleException($e);
+            $this->handleAMQPException($e);
             $connection = false;
         }
 
@@ -44,12 +44,11 @@ class AMQPStreamConnectionFactory
      * @param Exception $e
      * @throws Exception
      */
-    private function handleException(Exception $e)
+    private function handleAMQPException(Exception $e)
     {
         if (!$e instanceof AMQPExceptionInterface) {
             throw $e;
         }
-
         $this->logger->critical("AMQPException caught!", [$e]);
     }
 

@@ -26,4 +26,9 @@ class EventDispatcher
         $this->queueManager->closeConnection();
     }
 
+    public function connectionIsAvailable()
+    {
+        return $this->queueManager->connectionIsAvailable();
+    }
+
 }

@@ -55,5 +55,13 @@ class AMQPQueueManager implements QueueManagerInterface
         $this->channel->basic_publish($message, '', EventServiceValues::QUEUE_NAME);
     }
 
+    public function connectionIsAvailable()
+    {
+        if ($this->connection) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
