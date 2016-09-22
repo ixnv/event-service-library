@@ -15,4 +15,11 @@ class EventServiceValues
     const ELAMA_WEBINAR_ID = 'K';
     const ELAMA_TRIAL_ID = 'p';
     const ELAMA_ID = '3';
+
+    // tender
+    const TENDER_ELAMA_AGENCY_COMPANY = 'g';
+    const TENDER_ELAMA_CLIENT_COMPANY = 'O';
+
+    const CUSTOM_FIELD_VALUE_STATUS = '';
+    const CUSTOM_FIELD_VALUE_STATUS_COMMENT = '';
 }
