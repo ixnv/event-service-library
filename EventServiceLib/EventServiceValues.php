@@ -20,6 +20,6 @@ class EventServiceValues
     const TENDER_ELAMA_AGENCY_COMPANY = 'g';
     const TENDER_ELAMA_CLIENT_COMPANY = 'O';
 
-    const CUSTOM_FIELD_VALUE_STATUS = '';
-    const CUSTOM_FIELD_VALUE_STATUS_COMMENT = '';
+    const CUSTOM_FIELD_VALUE_STATUS = 'C';
+    const CUSTOM_FIELD_VALUE_STATUS_COMMENT = 'R';
 }
