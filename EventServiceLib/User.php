@@ -10,6 +10,8 @@ class User
     private $email;
     private $purchase_date;
     private $registration_date;
+    private $status;
+    private $statusComment;
 
     public function __construct($name, $email)
     {
@@ -63,6 +65,38 @@ class User
     public function setRegistrationDate($registration_date)
     {
         $this->registration_date = $registration_date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatusComment()
+    {
+        return $this->statusComment;
+    }
+
+    /**
+     * @param mixed $statusComment
+     */
+    public function setStatusComment($statusComment)
+    {
+        $this->statusComment = $statusComment;
     }
 
     public function toArray()
