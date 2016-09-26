@@ -12,6 +12,7 @@ class User
     private $registration_date;
     private $status;
     private $statusComment;
+    private $agencyNotificationUrl;
 
     public function __construct($name, $email)
     {
@@ -97,6 +98,22 @@ class User
     public function setStatusComment($statusComment)
     {
         $this->statusComment = $statusComment;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgencyNotificationUrl()
+    {
+        return $this->agencyNotificationUrl;
+    }
+
+    /**
+     * @param mixed $agencyNotificationUrl
+     */
+    public function setAgencyNotificationUrl($agencyNotificationUrl)
+    {
+        $this->agencyNotificationUrl = $agencyNotificationUrl;
     }
 
     public function toArray()
