@@ -12,7 +12,8 @@ class User
     private $registration_date;
     private $status;
     private $statusComment;
-    private $agencyNotificationUrl;
+    private $agencyNotificationClientId;
+    private $agencyNotificationClientHash;
 
     public function __construct($name, $email)
     {
@@ -103,17 +104,33 @@ class User
     /**
      * @return mixed
      */
-    public function getAgencyNotificationUrl()
+    public function getAgencyNotificationClientId()
     {
-        return $this->agencyNotificationUrl;
+        return $this->agencyNotificationClientId;
     }
 
     /**
-     * @param mixed $agencyNotificationUrl
+     * @param mixed $agencyNotificationClientId
      */
-    public function setAgencyNotificationUrl($agencyNotificationUrl)
+    public function setAgencyNotificationClientId($agencyNotificationClientId)
     {
-        $this->agencyNotificationUrl = $agencyNotificationUrl;
+        $this->agencyNotificationClientId = $agencyNotificationClientId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgencyNotificationClientHash()
+    {
+        return $this->agencyNotificationClientHash;
+    }
+
+    /**
+     * @param mixed $agencyNotificationClientHash
+     */
+    public function setAgencyNotificationClientHash($agencyNotificationClientHash)
+    {
+        $this->agencyNotificationClientHash = $agencyNotificationClientHash;
     }
 
     public function toArray()
