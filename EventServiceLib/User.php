@@ -16,7 +16,7 @@ class User
 
     public function __construct($name, $email)
     {
-        $this->name = $name;
+        $this->name = !empty($name) ? $name : $email;
         $this->email = $email;
     }
 
