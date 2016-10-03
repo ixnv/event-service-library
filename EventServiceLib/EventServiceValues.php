@@ -22,5 +22,6 @@ class EventServiceValues
 
     const CUSTOM_FIELD_VALUE_STATUS = 'C';
     const CUSTOM_FIELD_VALUE_STATUS_COMMENT = 'R';
-    const CUSTOM_FIELD_VALUE_CLIENT_URL = 'X';
+    const CUSTOM_FIELD_VALUE_CLIENT_ID = 'Q';
+    const CUSTOM_FIELD_VALUE_CLIENT_HASH = '2';
 }
