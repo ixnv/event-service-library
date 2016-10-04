@@ -6,22 +6,40 @@ namespace EventServiceLib;
 
 class EventServiceValues
 {
-    const CUSTOM_FIELD_VALUE_REGISTRATION_DATE_ID = 'u';
-    const CUSTOM_FIELD_VALUE_LAST_PURCHASE_DATE_ID = 'B';
-    const CUSTOM_FIELD_VALUE_NUMBER_OF_PURCHASES_ID = 'q';
+    #global
     const QUEUE_NAME = 'elama-event-system';
-    const EVENT_TYPE_BILLING = 'billing';
-    const EVENT_TYPE_REGISTRATION = 'registration';
-    const ELAMA_WEBINAR_ID = 'K';
-    const ELAMA_TRIAL_ID = 'p';
-    const ELAMA_ID = '3';
 
-    // tender
+    #compains
+    #elama
+    const ELAMA_WEBINAR_ID = 'H';
+    const ELAMA_TRIAL_ID = 'z';
+    const ELAMA_ID = 'U';
+
+    #elama-test
+//    const ELAMA_WEBINAR_ID = 'K';
+//    const ELAMA_TRIAL_ID = 'p';
+//    const ELAMA_ID = '3';
+
+    #tender
     const TENDER_ELAMA_AGENCY_COMPANY = 'g';
     const TENDER_ELAMA_CLIENT_COMPANY = 'O';
 
-    const CUSTOM_FIELD_VALUE_STATUS = 'C';
-    const CUSTOM_FIELD_VALUE_STATUS_COMMENT = 'R';
-    const CUSTOM_FIELD_VALUE_CLIENT_ID = 'Q';
-    const CUSTOM_FIELD_VALUE_CLIENT_HASH = '2';
+
+    #custom fields
+    const CUSTOM_FIELD_VALUE_REGISTRATION_DATE_ID = 'u'; #used for elama registration event
+    const CUSTOM_FIELD_VALUE_LAST_PURCHASE_DATE_ID = 'B'; #used for elama billing event
+    const CUSTOM_FIELD_VALUE_NUMBER_OF_PURCHASES_ID = 'q'; #used for elama billing event
+
+    const CUSTOM_FIELD_VALUE_STATUS = 'C'; #used for tender change agency status
+    const CUSTOM_FIELD_VALUE_STATUS_COMMENT = 'R'; #used for tender change agency status
+    const CUSTOM_FIELD_VALUE_CLIENT_ID = 'Q'; #used for tender appropriate agency
+    const CUSTOM_FIELD_VALUE_CLIENT_HASH = '2'; #used for tender appropriate agency
+
+    #event types
+    const EVENT_TYPE_BILLING = 'billing';
+    const EVENT_TYPE_REGISTRATION = 'registration';
+
+
+
+
 }
