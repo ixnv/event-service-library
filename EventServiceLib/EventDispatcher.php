@@ -72,7 +72,7 @@ class EventDispatcher
      * @param array $dispatcherMessage
      * @return string
      */
-    public static function decodeDispatcherMessage(array $dispatcherMessage)
+    public static function decodeDispatcherMessage($dispatcherMessage)
     {
         return json_decode($dispatcherMessage, true);
     }
