@@ -47,7 +47,8 @@ class EventDispatcher
         $this->queueManager->openConnection();
         $dispatcherMessage = [
             'version' => EventServiceValues::VERSION,
-            'type' => get_class($message),
+            'messageClass' => get_class($message),
+            'type' => $message->getEventIdentity(),
             'fields' => $message->toArray()
         ];
         $dispatcherMessage = json_encode($dispatcherMessage);

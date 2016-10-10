@@ -17,11 +17,11 @@ abstract class AbstractMessage
 
 
     /**
-     * @param array $messageArray
+     * @param array $messageFields
      */
-    public function fromArray(array $messageArray)
+    public function fromArray(array $messageFields)
     {
-        foreach ($messageArray as $fieldName => $value) {
+        foreach ($messageFields as $fieldName => $value) {
             if (property_exists($this, $fieldName)) {
                 $this->$fieldName = $value;
             } else {
