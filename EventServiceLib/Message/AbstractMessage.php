@@ -50,9 +50,30 @@ abstract class AbstractMessage
     }
 
 
-    function isValid()
+    public function isValid()
     {
         return true;
     }
+
+
+    /**
+     * Return event text identity. E.g. 'billing'
+     *
+     * @return string
+     */
+    abstract function getEventIdentity();
+
+
+    /**
+     * @return array
+     */
+    public function getOrphanFields()
+    {
+        return $this->orphanFields;
+    }
+
+
+
+
 
 }

@@ -9,6 +9,7 @@ namespace EventServiceLib\Message;
 class BillingMessage extends AbstractGetresponseMessage
 {
 
+
     protected $purchase_date;
 
     /**
@@ -34,5 +35,12 @@ class BillingMessage extends AbstractGetresponseMessage
     {
         return parent::isValid() && !empty($this->purchase_date);
     }
+
+
+    public function getEventIdentity()
+    {
+        return 'billing';
+    }
+
 
 }

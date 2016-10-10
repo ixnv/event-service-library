@@ -7,7 +7,7 @@ namespace EventServiceLib\Message;
  * Class AbstractGetresponseMessage
  * @package EventServiceLib\Message
  */
-class AbstractGetresponseMessage extends AbstractMessage
+abstract class AbstractGetresponseMessage extends AbstractMessage
 {
 
     protected $name;
