@@ -9,6 +9,8 @@ class EventServiceValues
     #global
     const QUEUE_NAME = 'elama-event-system';
 
+    const VERSION = '0.1';
+
     #compains
     #elama
     const ELAMA_WEBINAR_ID = 'H';

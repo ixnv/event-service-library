@@ -3,7 +3,11 @@
 
 namespace EventServiceLib;
 
-
+/**
+ * Class User
+ * @deprecated @see Message
+ * @package EventServiceLib
+ */
 class User
 {
     private $name;
