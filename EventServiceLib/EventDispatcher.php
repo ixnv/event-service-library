@@ -45,19 +45,42 @@ class EventDispatcher
         }
 
         $this->queueManager->openConnection();
-        $message = [
+        $dispatcherMessage = [
             'version' => EventServiceValues::VERSION,
             'type' => get_class($message),
             'message' => $message->toArray()
         ];
-        $message = json_encode($message);
-        $this->queueManager->putMessage($message);
+        $dispatcherMessage = json_encode($dispatcherMessage);
+        $this->queueManager->putMessage($dispatcherMessage);
         $this->queueManager->closeConnection();
 
         return true;
     }
 
 
+    /**
+     * @param array $dispatcherMessage
+     * @return string
+     */
+    public static function encodeDispatcherMessage(array $dispatcherMessage)
+    {
+        return json_encode($dispatcherMessage);
+    }
+
+
+    /**
+     * @param array $dispatcherMessage
+     * @return string
+     */
+    public static function decodeDispatcherMessage(array $dispatcherMessage)
+    {
+        return json_decode($dispatcherMessage, true);
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function connectionIsAvailable()
     {
         return $this->queueManager->connectionIsAvailable();

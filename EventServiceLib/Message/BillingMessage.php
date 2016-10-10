@@ -29,4 +29,10 @@ class BillingMessage extends AbstractGetresponseMessage
         return $this;
     }
 
+
+    function isValid()
+    {
+        return parent::isValid() && !empty($this->purchase_date);
+    }
+
 }
