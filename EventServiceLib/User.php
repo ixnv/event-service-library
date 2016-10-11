@@ -26,10 +26,17 @@ class User
     }
 
     /**
+     * @param bool $asArray
      * @return mixed
      */
-    public function getEmail()
+    public function getEmail($asArray = false)
     {
+        if ($asArray && is_array($this->email)) {
+            return $this->email;
+        } elseif (!is_array($this->email)) {
+            return [$this->email];
+        }
+
         return $this->email;
     }
 
