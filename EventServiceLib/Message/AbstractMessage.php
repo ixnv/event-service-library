@@ -1,6 +1,8 @@
 <?php
 
 namespace EventServiceLib\Message;
+use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
+use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
 
 /**
@@ -9,6 +11,9 @@ namespace EventServiceLib\Message;
  */
 abstract class AbstractMessage
 {
+
+    use GetresponseMessageTrait;
+    use AmoCrmMessageTrait;
 
     /**
      * @var array
@@ -52,7 +57,7 @@ abstract class AbstractMessage
 
     public function isValid()
     {
-        return true;
+        return !empty($this->email) && !empty($this->elamaLogin) && !empty($this->name);
     }
 
 

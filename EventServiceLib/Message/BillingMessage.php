@@ -1,6 +1,8 @@
 <?php
 
 namespace EventServiceLib\Message;
+use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
+use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
 /**
  * Class BillingMessage
@@ -8,7 +10,6 @@ namespace EventServiceLib\Message;
  */
 class BillingMessage extends AbstractGetresponseMessage
 {
-
 
     protected $purchase_date;
 

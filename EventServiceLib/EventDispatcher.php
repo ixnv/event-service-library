@@ -41,7 +41,7 @@ class EventDispatcher
     public function dispatchMessage(AbstractMessage $message)
     {
         if (!$message->isValid()) {
-            return false;
+            return false; # TODO: hum!
         }
 
         $this->queueManager->openConnection();
