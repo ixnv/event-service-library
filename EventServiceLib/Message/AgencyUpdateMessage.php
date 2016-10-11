@@ -7,8 +7,8 @@ namespace EventServiceLib\Message;
 class AgencyUpdateMessage extends AbstractMessage
 {
 
-    private $agencyNotificationClientId;
-    private $agencyNotificationClientHash;
+    protected $agencyNotificationClientId;
+    protected $agencyNotificationClientHash;
 
     function getEventIdentity()
     {

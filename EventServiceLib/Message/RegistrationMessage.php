@@ -7,7 +7,7 @@ namespace EventServiceLib\Message;
 class RegistrationMessage extends AbstractMessage
 {
 
-    private $registration_date;
+    protected $registration_date;
 
     function getEventIdentity()
     {

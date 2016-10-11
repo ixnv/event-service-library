@@ -7,8 +7,8 @@ namespace EventServiceLib\Message;
 class AgencyAddMessage extends AbstractMessage
 {
 
-    private $status;
-    private $statusComment;
+    protected $status;
+    protected $statusComment;
 
     function getEventIdentity()
     {

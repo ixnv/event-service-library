@@ -6,8 +6,8 @@ namespace EventServiceLib\Message;
 
 class StatusChangeMessage extends AbstractMessage
 {
-    private $status;
-    private $statusComment;
+    protected $status;
+    protected $statusComment;
 
     function getEventIdentity()
     {
