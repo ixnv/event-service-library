@@ -8,7 +8,7 @@ use EventServiceLib\Message\Traits\GetresponseMessageTrait;
  * Class BillingMessage
  * @package EventServiceLib\Message
  */
-class BillingMessage extends AbstractGetresponseMessage
+class BillingMessage extends AbstractMessage
 {
 
     protected $purchase_date;
