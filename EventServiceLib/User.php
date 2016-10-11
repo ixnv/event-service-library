@@ -37,6 +37,12 @@ class User
             return [$this->email];
         }
 
+        if (!$asArray && is_array($this->email)) {
+            return $this->email[0];
+        } elseif (!is_array($this->email)) {
+            return $this->email;
+        }
+
         return $this->email;
     }
 
