@@ -6,7 +6,6 @@ namespace EventServiceLib\Message\Traits;
 
 trait AmoCrmMessageTrait
 {
-    use ArrayEmailTrait;
 
     protected $elamaLogin;
 

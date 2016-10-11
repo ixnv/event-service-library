@@ -2,6 +2,7 @@
 
 namespace EventServiceLib\Message;
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
+use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
 
@@ -14,6 +15,7 @@ abstract class AbstractMessage
 
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
+    use ArrayEmailTrait;
 
     /**
      * @var array

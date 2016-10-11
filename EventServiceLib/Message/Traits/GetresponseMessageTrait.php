@@ -6,8 +6,6 @@ namespace EventServiceLib\Message\Traits;
 trait GetresponseMessageTrait
 {
 
-    use ArrayEmailTrait;
-
     protected $name;
 
     /**
