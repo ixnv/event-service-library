@@ -52,5 +52,10 @@ class AgencyUpdateMessage extends AbstractMessage
     }
 
 
+    function isValid()
+    {
+        return parent::isValid() && !empty($this->agencyNotificationClientHash) && !empty($this->agencyNotificationClientId);
+    }
+
 
 }

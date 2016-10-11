@@ -33,5 +33,10 @@ class RegistrationMessage extends AbstractMessage
     }
 
 
+    function isValid()
+    {
+        return parent::isValid() && !empty($this->registration_date);
+    }
+
 
 }
