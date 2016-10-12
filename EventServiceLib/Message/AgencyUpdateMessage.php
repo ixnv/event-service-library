@@ -4,8 +4,14 @@
 namespace EventServiceLib\Message;
 
 
+use EventServiceLib\Message\Traits\ArrayEmailTrait;
+use EventServiceLib\Message\Traits\GetresponseMessageTrait;
+
 class AgencyUpdateMessage extends AbstractMessage
 {
+
+    use GetresponseMessageTrait;
+    use ArrayEmailTrait;
 
     protected $agencyNotificationClientId;
     protected $agencyNotificationClientHash;

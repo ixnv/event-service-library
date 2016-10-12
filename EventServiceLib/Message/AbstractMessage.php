@@ -13,10 +13,6 @@ use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 abstract class AbstractMessage
 {
 
-    use GetresponseMessageTrait;
-    use AmoCrmMessageTrait;
-    use ArrayEmailTrait;
-
     /**
      * @var array
      */
@@ -81,8 +77,6 @@ abstract class AbstractMessage
     {
         return $this->orphanFields;
     }
-
-
 
 
 

@@ -1,7 +1,10 @@
 <?php
 
 namespace EventServiceLib\Message;
+
+
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
+use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
 /**
@@ -10,6 +13,10 @@ use EventServiceLib\Message\Traits\GetresponseMessageTrait;
  */
 class BillingMessage extends AbstractMessage
 {
+
+    use GetresponseMessageTrait;
+    use AmoCrmMessageTrait;
+    use ArrayEmailTrait;
 
     protected $purchase_date;
 

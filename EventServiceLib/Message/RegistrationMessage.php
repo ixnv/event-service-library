@@ -4,8 +4,16 @@
 namespace EventServiceLib\Message;
 
 
+use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
+use EventServiceLib\Message\Traits\ArrayEmailTrait;
+use EventServiceLib\Message\Traits\GetresponseMessageTrait;
+
 class RegistrationMessage extends AbstractMessage
 {
+
+    use GetresponseMessageTrait;
+    use AmoCrmMessageTrait;
+    use ArrayEmailTrait;
 
     protected $registration_date; #TODO: use camelCase
     protected $elamaId;
