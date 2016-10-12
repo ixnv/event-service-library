@@ -24,6 +24,9 @@ abstract class AbstractMessage
 
 
     /**
+     * Test method to restore message state.
+     * To setup message use setters.
+     *
      * @param array $messageFields
      */
     public function fromArray(array $messageFields)
@@ -33,7 +36,7 @@ abstract class AbstractMessage
                 $this->$fieldName = $value;
             } else {
                 $this->orphanFields[] = [
-                    $this->$fieldName => $value
+                    $fieldName => $value
                 ];
             }
         }
