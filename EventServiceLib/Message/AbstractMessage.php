@@ -58,7 +58,7 @@ abstract class AbstractMessage
 
     public function isValid()
     {
-        return !empty($this->email) && !empty($this->elamaLogin) && !empty($this->name);
+        return true; #TODO: IMPLEMENT IN MESSAGES
     }
 
 
