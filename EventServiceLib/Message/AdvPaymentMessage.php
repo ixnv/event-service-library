@@ -20,6 +20,8 @@ class AdvPaymentMessage extends AbstractMessage
 
     protected $advPlatform;
 
+    protected $phone;
+
 
     function getEventIdentity()
     {
@@ -98,9 +100,23 @@ class AdvPaymentMessage extends AbstractMessage
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
 
-
-
+    /**
+     * @param mixed $phone
+     * @return AdvPaymentMessage
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
 
 
 }
