@@ -41,7 +41,12 @@ class BillingMessage extends AbstractMessage
 
     function isValid()
     {
-        return parent::isValid() && !empty($this->purchase_date);
+        return !$this->hasEmpty([
+            $this->email,
+            $this->name,
+            $this->elamaLogin,
+            $this->purchase_date
+        ]);
     }
 
 
