@@ -94,7 +94,14 @@ class RegistrationMessage extends AbstractMessage
 
     function isValid()
     {
-        return parent::isValid() && !empty($this->registration_date) && !empty($this->elamaId) && !empty($this->accountType);
+        return !$this->hasEmpty([
+            $this->email,
+            $this->elamaLogin,
+            $this->name,
+            $this->registration_date,
+            $this->elamaId,
+            $this->accountType
+        ]);
     }
 
 
