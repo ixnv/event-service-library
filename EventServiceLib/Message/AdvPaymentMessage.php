@@ -119,4 +119,19 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
 
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty([
+            $this->email,
+            $this->elamaLogin,
+            $this->transferAmount,
+            $this->transferDate,
+            $this->advPlatform
+        ]);
+    }
+
+
 }

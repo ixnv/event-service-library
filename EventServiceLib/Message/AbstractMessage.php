@@ -79,5 +79,21 @@ abstract class AbstractMessage
     }
 
 
+    /**
+     * @param array $values
+     * @return bool
+     */
+    public function hasEmpty(array $values)
+    {
+
+        foreach ($values as $value) {
+            if (empty($value)) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
 
 }
