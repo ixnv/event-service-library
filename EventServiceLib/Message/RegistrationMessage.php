@@ -108,16 +108,15 @@ class RegistrationMessage extends AbstractMessage
             $this->elamaLogin,
             $this->name,
             $this->registration_date,
-            $this->elamaId,
-            $this->accountType
-        ]) && in_array($this->accountType, [
+            $this->elamaId
+        ]) && (!$this->accountType || in_array($this->accountType, [
             self::AMO_ACCOUNT_TYPE_ADVERTISER,
             self::AMO_ACCOUNT_TYPE_AGENCY,
             self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
             self::AMO_ACCOUNT_TYPE_PROXY,
             self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
             self::AMO_ACCOUNT_TYPE_IO
-        ]);
+        ]));
     }
 
 
