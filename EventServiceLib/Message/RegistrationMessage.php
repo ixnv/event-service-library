@@ -11,6 +11,13 @@ use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 class RegistrationMessage extends AbstractMessage
 {
 
+    const AMO_ACCOUNT_TYPE_ADVERTISER = 'advertiser'; // Самостоятельный рекламодатель
+    const AMO_ACCOUNT_TYPE_AGENCY_CLIENT = 'agency_client'; // Клиент агенства
+    const AMO_ACCOUNT_TYPE_AGENCY = 'agency'; // Агенство
+    const AMO_ACCOUNT_TYPE_PROXY = 'proxy'; // Посредник
+    const AMO_ACCOUNT_TYPE_PROXY_CLIENT = 'proxy_client'; // Клиент посредника
+    const AMO_ACCOUNT_TYPE_IO = 'io'; // ИО
+
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
@@ -91,8 +98,10 @@ class RegistrationMessage extends AbstractMessage
         $this->accountType = $accountType;
     }
 
-
-    function isValid()
+    /**
+     * @return bool
+     */
+    public function isValid()
     {
         return !$this->hasEmpty([
             $this->email,
@@ -101,6 +110,13 @@ class RegistrationMessage extends AbstractMessage
             $this->registration_date,
             $this->elamaId,
             $this->accountType
+        ]) && in_array($this->accountType, [
+            self::AMO_ACCOUNT_TYPE_ADVERTISER,
+            self::AMO_ACCOUNT_TYPE_AGENCY,
+            self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+            self::AMO_ACCOUNT_TYPE_PROXY,
+            self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+            self::AMO_ACCOUNT_TYPE_IO
         ]);
     }
 

@@ -38,8 +38,10 @@ class BillingMessage extends AbstractMessage
         return $this;
     }
 
-
-    function isValid()
+    /**
+     * @return bool
+     */
+    public function isValid()
     {
         return !$this->hasEmpty([
             $this->email,
