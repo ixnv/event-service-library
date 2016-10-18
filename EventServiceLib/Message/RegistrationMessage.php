@@ -59,11 +59,13 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $elamaId
+     * @param $elamaId
+     * @return $this
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+        return $this;
     }
 
     /**
@@ -75,11 +77,13 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $phone
+     * @param $phone
+     * @return $this
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
+        return $this;
     }
 
     /**
@@ -91,11 +95,13 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $accountType
+     * @param $accountType
+     * @return $this
      */
     public function setAccountType($accountType)
     {
         $this->accountType = $accountType;
+        return $this;
     }
 
     /**
