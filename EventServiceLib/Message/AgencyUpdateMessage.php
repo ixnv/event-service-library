@@ -58,9 +58,14 @@ class AgencyUpdateMessage extends AbstractMessage
     }
 
 
-    function isValid()
+    public function isValid()
     {
-        return parent::isValid() && !empty($this->agencyNotificationClientHash) && !empty($this->agencyNotificationClientId);
+        return !$this->hasEmpty([
+            $this->name,
+            $this->email,
+            $this->agencyNotificationClientHash,
+            $this->agencyNotificationClientId,
+        ]);
     }
 
 

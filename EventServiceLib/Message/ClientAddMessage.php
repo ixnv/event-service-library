@@ -18,4 +18,16 @@ class ClientAddMessage extends AbstractMessage
         return 'clientAdd';
     }
 
+
+    public function isValid()
+    {
+
+        return !$this->hasEmpty([
+            $this->email,
+            $this->name
+        ]);
+
+    }
+
+
 }

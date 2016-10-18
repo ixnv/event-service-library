@@ -57,9 +57,16 @@ class StatusChangeMessage extends AbstractMessage
         return $this;
     }
 
-    function isValid()
+    /**
+     * @return bool
+     */
+    public function isValid()
     {
-        return parent::isValid() && !empty($this->status);
+        return !$this->hasEmpty([
+            $this->name,
+            $this->email,
+            $this->status
+        ]);
     }
 
 }

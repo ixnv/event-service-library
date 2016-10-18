@@ -58,9 +58,13 @@ class AgencyAddMessage extends AbstractMessage
     }
 
 
-    function isValid()
+    public function isValid()
     {
-        return parent::isValid() && !empty($this->status);
+        return !$this->hasEmpty([
+            $this->name,
+            $this->email,
+            $this->status
+        ]);
     }
 
 
