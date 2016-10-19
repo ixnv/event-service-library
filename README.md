@@ -19,8 +19,8 @@ Cообщения, принимаемый event servic'ом:
  - ClientAddMessage - Добавление клиента
 
 например:
-
-$message = new AdvPaymentMessage();  
+```
+$message = new AdvPaymentMessage();
 $message  
    ->setTransferDate($dt->format('Y-m-d H:i:s'))  
    ->setTransferAmount('500')  
@@ -29,11 +29,10 @@ $message
    ->setElamaLogin('elamaLogin@asd.asd')  
 ;  
 
-$this->connection = (new ConnectionFactory(...))  
-    ->createAMQPConnection(...);
+$this->connection = (new ConnectionFactory(...))->createAMQPConnection(...);  
 $this->queueManager = new AMQPQueueManager($this->connection);  
 $this->eventDispatcher = new EventDispatcher($this->queueManager);  
 $this->eventDispatcher->dispatchMessage($message)
-
-Важно:  
+```
+**Важно:**  
 dispatchMessage - Проверяет сообщение на валидность, если не валидно верен false, если валидно отправит и вернет true
