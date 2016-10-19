@@ -18,7 +18,7 @@ trait ArrayEmailTrait
 
     /**
      * @param mixed $email
-     * @return BillingMessage
+     * @return $this
      */
     public function setEmail($email)
     {

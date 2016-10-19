@@ -60,7 +60,7 @@ class RegistrationMessage extends AbstractMessage
 
     /**
      * @param $elamaId
-     * @return $this
+     * @return RegistrationMessage
      */
     public function setElamaId($elamaId)
     {
@@ -78,7 +78,7 @@ class RegistrationMessage extends AbstractMessage
 
     /**
      * @param $phone
-     * @return $this
+     * @return RegistrationMessage
      */
     public function setPhone($phone)
     {
@@ -96,7 +96,7 @@ class RegistrationMessage extends AbstractMessage
 
     /**
      * @param $accountType
-     * @return $this
+     * @return RegistrationMessage
      */
     public function setAccountType($accountType)
     {

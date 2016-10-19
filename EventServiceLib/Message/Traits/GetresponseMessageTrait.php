@@ -18,7 +18,7 @@ trait GetresponseMessageTrait
 
     /**
      * @param mixed $name
-     * @return BillingMessage
+     * @return $this
      */
     public function setName($name)
     {

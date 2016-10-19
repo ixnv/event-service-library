@@ -4,14 +4,36 @@
 Название очереди:
 ***elama-event-system***
 
-Формат сообщения, принимаемый event servic'ом:
-```
-{
-  "type": "registration"/"billing",
-  "fields": {
-    "name": <name>,
-    "email": <email>,
-    "registration_date"/"purchase_date": <DATE_ISO8601>
-  }
-}
-```
+Cообщения, принимаемый event servic'ом:
+
+ ELAMA:
+ - RegistrationMessage - Сообщение при регистрации нового пользователя
+ - BillingMessage - Сообщение пополнение счета в elama
+ - AdvPaymentMessage - Сообщение перевода средств на рк
+ - UpdateAmoCrmContactMessage - Обновление контактых данных в AmoCRM
+  
+ Тендерная площадка:
+ - AgencyAddMessage - Добавление нового агенства
+ - AgencyUpdateMessage - Служит для обновления кастомных полей в GetResponse, при подтверждение клиента
+ - StatusChangeMessage - Сообщение при изменение статуса агенства
+ - ClientAddMessage - Добавление клиента
+
+например:
+
+$message = new AdvPaymentMessage();  
+$message  
+   ->setTransferDate($dt->format('Y-m-d H:i:s'))  
+   ->setTransferAmount('500')  
+   ->setAdvPlatform('yandex')  
+   ->setEmail('test@gmail.com')  
+   ->setElamaLogin('elamaLogin@asd.asd')  
+;  
+
+$this->connection = (new ConnectionFactory(...))  
+    ->createAMQPConnection(...);
+$this->queueManager = new AMQPQueueManager($this->connection);  
+$this->eventDispatcher = new EventDispatcher($this->queueManager);  
+$this->eventDispatcher->dispatchMessage($message)
+
+Важно:  
+dispatchMessage - Проверяет сообщение на валидность, если не валидно верен false, если валидно отправит и вернет true
