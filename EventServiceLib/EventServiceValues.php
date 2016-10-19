@@ -9,7 +9,7 @@ class EventServiceValues
     #global
     const QUEUE_NAME = 'elama-event-system';
 
-    const VERSION = '0.1';
+    const VERSION = '0.2';
 
     #compains
     #elama
