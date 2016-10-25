@@ -35,4 +35,4 @@ $this->eventDispatcher = new EventDispatcher($this->queueManager);
 $this->eventDispatcher->dispatchMessage($message)
 ```
 **Важно:**  
-dispatchMessage - Проверяет сообщение на валидность, если не валидно верен false, если валидно отправит и вернет true
+dispatchMessage - Проверяет сообщение на валидность, если не валидно вернет false, если валидно - отправит и вернет true
