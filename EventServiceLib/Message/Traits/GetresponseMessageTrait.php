@@ -31,5 +31,4 @@ trait GetresponseMessageTrait
     {
         return !empty($this->name) && !empty($this->email);
     }
-
 }

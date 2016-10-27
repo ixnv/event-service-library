@@ -26,6 +26,4 @@ trait AmoCrmMessageTrait
         $this->elamaLogin = $elamaLogin;
         return $this;
     }
-
-
 }

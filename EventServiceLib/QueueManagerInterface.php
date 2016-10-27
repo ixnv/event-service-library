@@ -15,6 +15,4 @@ interface QueueManagerInterface
     public function putMessage($message);
 
     public function connectionIsAvailable();
-
-
 }
