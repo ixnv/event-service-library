@@ -3,9 +3,11 @@
 
 namespace EventServiceLib;
 
+trigger_error('Использовать реализации AbstractMessage вместо User', E_USER_DEPRECATED);
+
 /**
  * Class User
- * @deprecated @see Message
+ * @deprecated @see AbstractMessage
  * @package EventServiceLib
  */
 class User
@@ -162,6 +164,4 @@ class User
 
         return $vars;
     }
-
-
 }

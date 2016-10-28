@@ -124,6 +124,4 @@ class RegistrationMessage extends AbstractMessage
             self::AMO_ACCOUNT_TYPE_IO
         ]));
     }
-
-
 }

@@ -39,9 +39,4 @@ class EventServiceValues
 
     #event types
     const EVENT_TYPE_BILLING = 'billing';
-    const EVENT_TYPE_REGISTRATION = 'registration';
-
-
-
-
 }
