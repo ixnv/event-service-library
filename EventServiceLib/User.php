@@ -3,8 +3,6 @@
 
 namespace EventServiceLib;
 
-trigger_error('Использовать реализации AbstractMessage вместо User', E_USER_DEPRECATED);
-
 /**
  * Class User
  * @deprecated @see AbstractMessage
@@ -23,6 +21,7 @@ class User
 
     public function __construct($name, $email)
     {
+        trigger_error('Использовать реализации AbstractMessage вместо User', E_USER_DEPRECATED);
         $this->name = !empty($name) ? $name : $email;
         $this->email = $email;
     }
