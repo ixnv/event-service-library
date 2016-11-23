@@ -7,7 +7,6 @@ namespace Test;
 use EventServiceLib\EventDispatcher;
 use EventServiceLib\Message\RegistrationMessage;
 use EventServiceLib\QueueManagerInterface;
-use EventServiceLib\User;
 
 class EventDispatcherTest extends \PHPUnit_Framework_TestCase
 {
