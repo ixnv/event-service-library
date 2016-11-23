@@ -18,14 +18,19 @@ trait ArrayEmailTrait
 
     /**
      * @param mixed $email
+     *
      * @return $this
      */
     public function setEmail($email)
     {
         $this->email = is_array($email) ? $email : [$email];
+
         return $this;
     }
 
+    /**
+     * @param $email
+     */
     public function addEmail($email)
     {
         $this->email[] = $email;

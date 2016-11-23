@@ -16,6 +16,9 @@ class AgencyUpdateMessage extends AbstractMessage
     protected $agencyNotificationClientId;
     protected $agencyNotificationClientHash;
 
+    /**
+     * @return string
+     */
     function getEventIdentity()
     {
         return 'agencyUpdate';
@@ -31,11 +34,13 @@ class AgencyUpdateMessage extends AbstractMessage
 
     /**
      * @param mixed $agencyNotificationClientId
+     *
      * @return AgencyUpdateMessage
      */
     public function setAgencyNotificationClientId($agencyNotificationClientId)
     {
         $this->agencyNotificationClientId = $agencyNotificationClientId;
+
         return $this;
     }
 
@@ -49,15 +54,19 @@ class AgencyUpdateMessage extends AbstractMessage
 
     /**
      * @param mixed $agencyNotificationClientHash
+     *
      * @return AgencyUpdateMessage
      */
     public function setAgencyNotificationClientHash($agencyNotificationClientHash)
     {
         $this->agencyNotificationClientHash = $agencyNotificationClientHash;
+
         return $this;
     }
 
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty([
@@ -67,6 +76,5 @@ class AgencyUpdateMessage extends AbstractMessage
             $this->agencyNotificationClientId,
         ]);
     }
-
 
 }

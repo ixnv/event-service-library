@@ -13,10 +13,13 @@ use PhpAmqpLib\Message\AMQPMessage;
 class AMQPQueueManagerTest extends \PHPUnit_Framework_TestCase
 {
 
+    /**
+     * @test
+     */
     public function testQueueManagerPutsMessagesInQueue()
     {
         $connection = Phake::mock(AMQPStreamConnection::class);
-        $channel = Phake::mock(AMQPChannel::class);
+        $channel    = Phake::mock(AMQPChannel::class);
         Phake::when($connection)->channel->thenReturn($channel);
 
         $queueManager = new AMQPQueueManager($connection, $channel);
@@ -30,11 +33,13 @@ class AMQPQueueManagerTest extends \PHPUnit_Framework_TestCase
         Phake::verify($channel)->basic_publish($expectedMessage, '', EventServiceValues::QUEUE_NAME);
     }
 
-
+    /**
+     * @test
+     */
     public function testQueueManagerOpensConnection()
     {
         $connection = Phake::mock(AMQPStreamConnection::class);
-        $channel = Phake::mock(AMQPChannel::class);
+        $channel    = Phake::mock(AMQPChannel::class);
         Phake::when($connection)->channel->thenReturn($channel);
         $queueManager = new AMQPQueueManager($connection);
         $queueManager->openConnection();

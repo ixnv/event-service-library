@@ -30,11 +30,13 @@ class BillingMessage extends AbstractMessage
 
     /**
      * @param mixed $purchase_date
+     *
      * @return BillingMessage
      */
     public function setPurchaseDate($purchase_date)
     {
         $this->purchase_date = $purchase_date;
+
         return $this;
     }
 
@@ -47,15 +49,16 @@ class BillingMessage extends AbstractMessage
             $this->email,
             $this->name,
             $this->elamaLogin,
-            $this->purchase_date
+            $this->purchase_date,
         ]);
     }
 
-
+    /**
+     * @return string
+     */
     public function getEventIdentity()
     {
         return 'billing';
     }
-
 
 }

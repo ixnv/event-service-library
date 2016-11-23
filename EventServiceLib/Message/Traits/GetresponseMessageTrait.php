@@ -18,17 +18,22 @@ trait GetresponseMessageTrait
 
     /**
      * @param mixed $name
+     *
      * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
-
+    /**
+     * @return bool
+     */
     function isValid()
     {
         return !empty($this->name) && !empty($this->email);
     }
+
 }

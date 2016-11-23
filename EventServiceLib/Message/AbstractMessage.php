@@ -1,9 +1,6 @@
 <?php
 
 namespace EventServiceLib\Message;
-use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
-use EventServiceLib\Message\Traits\ArrayEmailTrait;
-use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
 
 /**
@@ -18,7 +15,6 @@ abstract class AbstractMessage
      */
     protected $orphanFields = [];
 
-
     /**
      * Test method to restore message state.
      * To setup message use setters.
@@ -32,12 +28,11 @@ abstract class AbstractMessage
                 $this->$fieldName = $value;
             } else {
                 $this->orphanFields[] = [
-                    $fieldName => $value
+                    $fieldName => $value,
                 ];
             }
         }
     }
-
 
     /**
      * @return array
@@ -55,12 +50,13 @@ abstract class AbstractMessage
         return $vars;
     }
 
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return true; #TODO: IMPLEMENT IN MESSAGES
     }
-
 
     /**
      * Return event text identity. E.g. 'billing'
@@ -68,7 +64,6 @@ abstract class AbstractMessage
      * @return string
      */
     abstract function getEventIdentity();
-
 
     /**
      * @return array
@@ -78,14 +73,13 @@ abstract class AbstractMessage
         return $this->orphanFields;
     }
 
-
     /**
      * @param array $values
+     *
      * @return bool
      */
     public function hasEmpty(array $values)
     {
-
         foreach ($values as $value) {
             if (empty($value)) {
                 return true;
@@ -93,7 +87,6 @@ abstract class AbstractMessage
         }
 
         return false;
-
     }
 
 }

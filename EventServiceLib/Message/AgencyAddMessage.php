@@ -16,6 +16,9 @@ class AgencyAddMessage extends AbstractMessage
     protected $status;
     protected $statusComment;
 
+    /**
+     * @return string
+     */
     function getEventIdentity()
     {
         return 'agencyAdd';
@@ -31,11 +34,13 @@ class AgencyAddMessage extends AbstractMessage
 
     /**
      * @param mixed $status
+     *
      * @return AgencyAddMessage
      */
     public function setStatus($status)
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -49,23 +54,26 @@ class AgencyAddMessage extends AbstractMessage
 
     /**
      * @param mixed $statusComment
+     *
      * @return AgencyAddMessage
      */
     public function setStatusComment($statusComment)
     {
         $this->statusComment = $statusComment;
+
         return $this;
     }
 
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty([
             $this->name,
             $this->email,
-            $this->status
+            $this->status,
         ]);
     }
-
 
 }

@@ -19,12 +19,14 @@ class ConnectionFactory
         $this->logger = $logger;
     }
 
+
     /**
      * @param string $host
      * @param int $port
      * @param string $user
      * @param string $password
      * @param string $vHost
+     *
      * @return bool|AMQPStreamConnection
      * @throws Exception
      */
@@ -42,6 +44,7 @@ class ConnectionFactory
 
     /**
      * @param Exception $e
+     *
      * @throws Exception
      */
     private function handleAMQPException(Exception $e)

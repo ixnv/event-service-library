@@ -19,11 +19,10 @@ class AMQPQueueManager implements QueueManagerInterface
     private $channel;
     /** @var  \AMQPQueue */
     private $queue;
-    /** @var  AMQPMessage */
-    private $currentAMQPMessage;
 
     /**
      * AMQPQueueManager constructor.
+     *
      * @param AMQPStreamConnection $connection
      */
     public function __construct($connection)
@@ -38,8 +37,8 @@ class AMQPQueueManager implements QueueManagerInterface
 
     public function openConnection()
     {
-        $this->channel = $this->connection->channel();
-        $this->queue = $this->channel->queue_declare(EventServiceValues::QUEUE_NAME, false, true, false, false);
+        $this->channel   = $this->connection->channel();
+        $this->queue     = $this->channel->queue_declare(EventServiceValues::QUEUE_NAME, false, true, false, false);
         $this->queueSize = $this->queue[1];
     }
 

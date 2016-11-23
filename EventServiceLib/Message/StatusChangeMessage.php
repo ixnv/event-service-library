@@ -16,6 +16,9 @@ class StatusChangeMessage extends AbstractMessage
     protected $status;
     protected $statusComment;
 
+    /**
+     * @return string
+     */
     function getEventIdentity()
     {
         return 'statusChange';
@@ -31,11 +34,13 @@ class StatusChangeMessage extends AbstractMessage
 
     /**
      * @param mixed $status
+     *
      * @return StatusChangeMessage
      */
     public function setStatus($status)
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -49,11 +54,13 @@ class StatusChangeMessage extends AbstractMessage
 
     /**
      * @param mixed $statusComment
+     *
      * @return StatusChangeMessage
      */
     public function setStatusComment($statusComment)
     {
         $this->statusComment = $statusComment;
+
         return $this;
     }
 
@@ -65,7 +72,7 @@ class StatusChangeMessage extends AbstractMessage
         return !$this->hasEmpty([
             $this->name,
             $this->email,
-            $this->status
+            $this->status,
         ]);
     }
 

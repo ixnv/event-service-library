@@ -13,21 +13,25 @@ class ClientAddMessage extends AbstractMessage
     use GetresponseMessageTrait;
     use ArrayEmailTrait;
 
+    /**
+     * @return string
+     */
     function getEventIdentity()
     {
         return 'clientAdd';
     }
 
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
 
         return !$this->hasEmpty([
             $this->email,
-            $this->name
+            $this->name,
         ]);
 
     }
-
 
 }

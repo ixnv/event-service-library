@@ -27,6 +27,9 @@ class RegistrationMessage extends AbstractMessage
     protected $phone;
     protected $accountType;
 
+    /**
+     * @return string
+     */
     function getEventIdentity()
     {
         return 'registration';
@@ -42,11 +45,13 @@ class RegistrationMessage extends AbstractMessage
 
     /**
      * @param mixed $registration_date
+     *
      * @return RegistrationMessage
      */
     public function setRegistrationDate($registration_date)
     {
         $this->registration_date = $registration_date;
+
         return $this;
     }
 
@@ -60,11 +65,13 @@ class RegistrationMessage extends AbstractMessage
 
     /**
      * @param $elamaId
+     *
      * @return RegistrationMessage
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -78,11 +85,13 @@ class RegistrationMessage extends AbstractMessage
 
     /**
      * @param $phone
+     *
      * @return RegistrationMessage
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
+
         return $this;
     }
 
@@ -96,11 +105,13 @@ class RegistrationMessage extends AbstractMessage
 
     /**
      * @param $accountType
+     *
      * @return RegistrationMessage
      */
     public function setAccountType($accountType)
     {
         $this->accountType = $accountType;
+
         return $this;
     }
 
@@ -114,14 +125,15 @@ class RegistrationMessage extends AbstractMessage
             $this->elamaLogin,
             $this->name,
             $this->registration_date,
-            $this->elamaId
+            $this->elamaId,
         ]) && (!$this->accountType || in_array($this->accountType, [
-            self::AMO_ACCOUNT_TYPE_ADVERTISER,
-            self::AMO_ACCOUNT_TYPE_AGENCY,
-            self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
-            self::AMO_ACCOUNT_TYPE_PROXY,
-            self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
-            self::AMO_ACCOUNT_TYPE_IO
-        ]));
+                self::AMO_ACCOUNT_TYPE_ADVERTISER,
+                self::AMO_ACCOUNT_TYPE_AGENCY,
+                self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+                self::AMO_ACCOUNT_TYPE_PROXY,
+                self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+                self::AMO_ACCOUNT_TYPE_IO,
+            ]));
     }
+
 }
