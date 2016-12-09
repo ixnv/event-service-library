@@ -46,6 +46,7 @@ class EventDispatcherTest extends \PHPUnit_Framework_TestCase
         \Phake::verify($queueManagerInterface)->putMessage($expectedMessage);
     }
 
+
 }
 
 
