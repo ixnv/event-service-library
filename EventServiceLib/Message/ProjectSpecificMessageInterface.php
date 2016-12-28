@@ -13,5 +13,5 @@ interface ProjectSpecificMessageInterface
     /**
      * @return mixed
      */
-    public function getEventDirectory();
+    public function getProjectPossession();
 }
