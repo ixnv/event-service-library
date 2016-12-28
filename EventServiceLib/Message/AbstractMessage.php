@@ -53,10 +53,7 @@ abstract class AbstractMessage
     /**
      * @return bool
      */
-    public function isValid()
-    {
-        return true; #TODO: IMPLEMENT IN MESSAGES
-    }
+    abstract public function isValid();
 
     /**
      * Return event text identity. E.g. 'billing'
