@@ -3,10 +3,9 @@
 namespace EventServiceLib\Message\Ppc;
 
 
-use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
-class PpcRegistrationMessage extends AbstractMessage
+class PpcRegistrationMessage extends AbstractPpcMessage
 {
     use ArrayEmailTrait;
 
