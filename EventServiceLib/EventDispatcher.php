@@ -5,6 +5,7 @@ namespace EventServiceLib;
 
 
 use EventServiceLib\Message\AbstractMessage;
+use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
 class EventDispatcher
 {
@@ -35,6 +36,11 @@ class EventDispatcher
             'type'         => $message->getEventIdentity(),
             'fields'       => $message->toArray(),
         ];
+
+        if ($message instanceof ProjectSpecificMessageInterface) {
+            $dispatcherMessage['project'] = $message->getProjectIdentity();
+        }
+
         $dispatcherMessage = json_encode($dispatcherMessage);
         $this->queueManager->putMessage($dispatcherMessage);
         $this->queueManager->closeConnection();
