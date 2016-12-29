@@ -29,7 +29,7 @@ class EventServiceValues
     #ppc
     const PPC_REGISTRATION = 'a';
     const PPC_SUBSCRIPTION = 'W';
-
+    const PPC_COURSE_SUBSCRIPTION = 'p'; # TODO: real campaign id
 
     #custom fields
     const CUSTOM_FIELD_VALUE_REGISTRATION_DATE_ID = 'u'; #used for elama registration event
