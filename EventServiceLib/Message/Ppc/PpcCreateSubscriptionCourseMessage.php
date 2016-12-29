@@ -3,7 +3,7 @@
 namespace EventServiceLib\Message\Ppc;
 
 
-class PpcCreateSubscriptionCourse extends AbstractPpcMessage
+class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 {
     protected $name;
 
