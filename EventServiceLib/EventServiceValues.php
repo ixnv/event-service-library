@@ -26,6 +26,10 @@ class EventServiceValues
     const TENDER_ELAMA_AGENCY_COMPANY = 'g';
     const TENDER_ELAMA_CLIENT_COMPANY = 'O';
 
+    #ppc
+    const PPC_REGISTRATION = 'a';
+    const PPC_SUBSCRIPTION = 'W';
+
 
     #custom fields
     const CUSTOM_FIELD_VALUE_REGISTRATION_DATE_ID = 'u'; #used for elama registration event
