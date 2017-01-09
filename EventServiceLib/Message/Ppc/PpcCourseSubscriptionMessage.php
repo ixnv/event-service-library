@@ -26,7 +26,8 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     {
         return !$this->hasEmpty([
             $this->email,
-            $this->name
+            $this->name,
+            $this->courseId
         ]);
     }
 
