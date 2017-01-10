@@ -40,11 +40,13 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param mixed $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -56,11 +58,13 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param mixed $courseName
+     * @param $courseName
+     * @return $this
      */
     public function setCourseName($courseName)
     {
         $this->courseName = $courseName;
+        return $this;
     }
 
     /**
@@ -72,11 +76,13 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param mixed $courseId
+     * @param $courseId
+     * @return $this
      */
     public function setCourseId($courseId)
     {
         $this->courseId = $courseId;
+        return $this;
     }
 
     /**
@@ -88,11 +94,13 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param mixed $courseStartDate
+     * @param $courseStartDate
+     * @return $this
      */
     public function setCourseStartDate($courseStartDate)
     {
         $this->courseStartDate = $courseStartDate instanceof \DateTime ? $courseStartDate->format('Y-m-d H:i:s') : $courseStartDate;
+        return $this;
     }
 
 
