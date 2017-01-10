@@ -36,11 +36,13 @@ class PpcRegistrationMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param mixed $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -52,11 +54,13 @@ class PpcRegistrationMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param mixed $registrationDate
+     * @param $registrationDate
+     * @return $this
      */
     public function setRegistrationDate($registrationDate)
     {
         $this->registrationDate = $registrationDate instanceof \DateTime ? $registrationDate->format('Y-m-d H:i:s') : $registrationDate;
+        return $this;
     }
 
 

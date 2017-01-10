@@ -33,11 +33,13 @@ class PpcSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param mixed $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
 }
