@@ -3,6 +3,8 @@
 namespace EventServiceLib;
 
 
+use EventServiceLib\Message\AbstractMessage;
+
 interface EventDispatcherInterface
 {
     /**
