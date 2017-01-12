@@ -7,7 +7,7 @@ namespace EventServiceLib;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class EventDispatcher
+class EventDispatcher implements EventDispatcherInterface
 {
     /** @var  QueueManagerInterface */
     private $queueManager;
