@@ -4,7 +4,7 @@
 Название очереди:
 ***elama-event-system***
 
-Cообщения, принимаемые event servic'ом:
+Некоторые сообщения, принимаемые event servic'ом:
 
  ELAMA:
  - RegistrationMessage - Сообщение при регистрации нового пользователя
