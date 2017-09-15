@@ -9,6 +9,8 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 
     protected $id;
 
+    protected $emailMarkup;
+
     public function getEventIdentity()
     {
         return 'ppcCreateSubscriptionCourse';
@@ -58,4 +60,22 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEmailMarkup()
+    {
+        return $this->emailMarkup;
+    }
+
+    /**
+     * @param mixed $emailMarkup
+     * @return PpcCreateSubscriptionCourseMessage
+     */
+    public function setEmailMarkup($emailMarkup)
+    {
+        $this->emailMarkup = $emailMarkup;
+
+        return $this;
+    }
 }
