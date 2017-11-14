@@ -26,6 +26,7 @@ class RegistrationMessage extends AbstractMessage
     protected $elamaId;
     protected $phone;
     protected $accountType;
+    protected $timezone;
 
     /**
      * @return string
@@ -113,6 +114,22 @@ class RegistrationMessage extends AbstractMessage
         $this->accountType = $accountType;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimezone()
+    {
+        return $this->timezone;
+    }
+
+    /**
+     * @param mixed $timezone
+     */
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
     }
 
     /**

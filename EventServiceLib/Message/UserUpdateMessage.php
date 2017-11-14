@@ -3,13 +3,13 @@
 namespace EventServiceLib\Message;
 
 
-class UpdateAmoCrmContactMessage extends RegistrationMessage
+class UserUpdateMessage extends RegistrationMessage
 {
     /**
      * @return string
      */
     function getEventIdentity()
     {
-        return 'updateContact';
+        return 'userUpdate';
     }
 }
