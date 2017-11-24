@@ -11,7 +11,9 @@ class EventServiceValues
 
     const VERSION = '0.2';
 
+    # TODO: Move to event-service?
     #compains
+
     #elama
     const ELAMA_WEBINAR_ID = 'H';
     const ELAMA_TRIAL_ID = 'z';
@@ -30,6 +32,10 @@ class EventServiceValues
     const PPC_REGISTRATION = 'a';
     const PPC_SUBSCRIPTION = 'W';
     const PPC_COURSE_SUBSCRIPTION = 'p'; # TODO: real campaign id
+
+    const PPC_NEWS = 'bU';
+    const PPC_EVENTS = 'b3';
+    const PPC_PARTNERS = 'bN';
 
     #custom fields
     const CUSTOM_FIELD_VALUE_REGISTRATION_DATE_ID = 'u'; #used for elama registration event
