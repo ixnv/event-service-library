@@ -6,7 +6,7 @@ namespace EventServiceLib\Message;
 
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 
-class SetRegistrationSourceMessage
+class SetRegistrationSourceMessage extends AbstractMessage
 {
     use AmoCrmMessageTrait;
 
@@ -51,5 +51,18 @@ class SetRegistrationSourceMessage
         $this->registrationSource = $registrationSource;
         return $this;
     }
+
+    public function isValid()
+    {
+        return !$this->hasEmpty([
+            $this->elamaLogin,
+        ]);
+    }
+
+    function getEventIdentity()
+    {
+        return 'registration';
+    }
+
 
 }
