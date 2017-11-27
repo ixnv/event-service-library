@@ -7,10 +7,10 @@ namespace EventServiceLib\Message;
 class SetRegistrationSourceMessage extends AbstractMessage
 {
     /** @var integer */
-    private $elamaId;
+    protected $elamaId;
 
     /** @var string */
-    private $registrationSource;
+    protected $registrationSource;
 
     /**
      * @return mixed
