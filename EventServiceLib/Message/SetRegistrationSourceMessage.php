@@ -61,8 +61,6 @@ class SetRegistrationSourceMessage extends AbstractMessage
 
     function getEventIdentity()
     {
-        return 'registration';
+        return 'setRegistrationSource';
     }
-
-
 }
