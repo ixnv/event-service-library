@@ -51,7 +51,7 @@ class SetRegistrationSourceMessage extends AbstractMessage
     public function isValid()
     {
         return !$this->hasEmpty([
-            $this->elamaLogin,
+            $this->elamaId,
         ]);
     }
 
