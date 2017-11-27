@@ -4,12 +4,8 @@
 namespace EventServiceLib\Message;
 
 
-use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
-
 class SetRegistrationSourceMessage extends AbstractMessage
 {
-    use AmoCrmMessageTrait;
-
     /** @var integer */
     private $elamaId;
 
