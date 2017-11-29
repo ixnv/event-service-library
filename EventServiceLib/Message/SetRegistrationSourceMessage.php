@@ -1,19 +1,18 @@
 <?php
 
-
 namespace EventServiceLib\Message;
 
 
 class SetRegistrationSourceMessage extends AbstractMessage
 {
-    /** @var integer */
+    /** @var string */
     protected $elamaId;
 
     /** @var string */
     protected $registrationSource;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getElamaId()
     {
@@ -21,7 +20,7 @@ class SetRegistrationSourceMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $elamaId
+     * @param string $elamaId
      * @return SetRegistrationSourceMessage
      */
     public function setElamaId($elamaId)
@@ -31,7 +30,7 @@ class SetRegistrationSourceMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRegistrationSource()
     {
@@ -39,7 +38,7 @@ class SetRegistrationSourceMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $registrationSource
+     * @param string $registrationSource
      * @return SetRegistrationSourceMessage
      */
     public function setRegistrationSource($registrationSource)
