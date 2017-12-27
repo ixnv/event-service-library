@@ -18,6 +18,9 @@ class RegistrationMessage extends AbstractMessage
     const AMO_ACCOUNT_TYPE_PROXY_CLIENT = 'proxy_client'; // Клиент посредника
     const AMO_ACCOUNT_TYPE_IO = 'io'; // ИО
 
+    const COUNTY_RU = 'ru';
+    const COUNTY_KZ = 'kz';
+
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
@@ -38,11 +41,14 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $country
+     * @param $country
+     * @return $this
      */
-    public function setCountry(CountryEnum $country)
+    public function setCountry($country)
     {
-        $this->country = (string) $country;
+        $this->country = $country;
+
+        return $this;
     }
 
     /**
@@ -158,19 +164,25 @@ class RegistrationMessage extends AbstractMessage
     public function isValid()
     {
         return !$this->hasEmpty([
-                $this->email,
-                $this->elamaLogin,
-                $this->name,
-                $this->registration_date,
-                $this->elamaId,
-            ]) && (!$this->accountType || in_array($this->accountType, [
+                    $this->email,
+                    $this->elamaLogin,
+                    $this->name,
+                    $this->registration_date,
+                    $this->elamaId,
+                ])
+                && (!$this->accountType || in_array($this->accountType, [
                     self::AMO_ACCOUNT_TYPE_ADVERTISER,
                     self::AMO_ACCOUNT_TYPE_AGENCY,
                     self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
                     self::AMO_ACCOUNT_TYPE_PROXY,
                     self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
                     self::AMO_ACCOUNT_TYPE_IO,
-                ]));
+                ]))
+                && (!$this->country || in_array($this->country, [
+                    self::COUNTY_RU,
+                    self::COUNTY_KZ
+                ]))
+            ;
     }
 
 }
