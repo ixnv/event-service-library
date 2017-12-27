@@ -1,9 +1,9 @@
 <?php
 
-
 namespace EventServiceLib\Message;
 
 
+use EventServiceLib\Infrastructure\FieldType\CountryEnum;
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
@@ -27,6 +27,23 @@ class RegistrationMessage extends AbstractMessage
     protected $phone;
     protected $accountType;
     protected $timezone;
+    protected $country;
+
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry(CountryEnum $country)
+    {
+        $this->country = (string) $country;
+    }
 
     /**
      * @return string
@@ -125,11 +142,14 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $timezone
+     * @param $timezone
+     * @return $this
      */
     public function setTimezone($timezone)
     {
         $this->timezone = $timezone;
+
+        return $this;
     }
 
     /**
@@ -138,19 +158,19 @@ class RegistrationMessage extends AbstractMessage
     public function isValid()
     {
         return !$this->hasEmpty([
-            $this->email,
-            $this->elamaLogin,
-            $this->name,
-            $this->registration_date,
-            $this->elamaId,
-        ]) && (!$this->accountType || in_array($this->accountType, [
-                self::AMO_ACCOUNT_TYPE_ADVERTISER,
-                self::AMO_ACCOUNT_TYPE_AGENCY,
-                self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
-                self::AMO_ACCOUNT_TYPE_PROXY,
-                self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
-                self::AMO_ACCOUNT_TYPE_IO,
-            ]));
+                $this->email,
+                $this->elamaLogin,
+                $this->name,
+                $this->registration_date,
+                $this->elamaId,
+            ]) && (!$this->accountType || in_array($this->accountType, [
+                    self::AMO_ACCOUNT_TYPE_ADVERTISER,
+                    self::AMO_ACCOUNT_TYPE_AGENCY,
+                    self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+                    self::AMO_ACCOUNT_TYPE_PROXY,
+                    self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+                    self::AMO_ACCOUNT_TYPE_IO,
+                ]));
     }
 
 }
