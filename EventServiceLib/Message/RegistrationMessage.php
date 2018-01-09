@@ -18,8 +18,8 @@ class RegistrationMessage extends AbstractMessage
     const AMO_ACCOUNT_TYPE_PROXY_CLIENT = 'proxy_client'; // Клиент посредника
     const AMO_ACCOUNT_TYPE_IO = 'io'; // ИО
 
-    const COUNTY_RU = 'ru';
-    const COUNTY_KZ = 'kz';
+    const COUNTRY_RU = 'ru';
+    const COUNTRY_KZ = 'kz';
 
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
@@ -179,8 +179,8 @@ class RegistrationMessage extends AbstractMessage
                     self::AMO_ACCOUNT_TYPE_IO,
                 ]))
                 && (!$this->country || in_array($this->country, [
-                    self::COUNTY_RU,
-                    self::COUNTY_KZ
+                    self::COUNTRY_RU,
+                    self::COUNTRY_KZ
                 ]))
             ;
     }
