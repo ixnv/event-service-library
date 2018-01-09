@@ -3,7 +3,6 @@
 namespace EventServiceLib\Message;
 
 
-use EventServiceLib\Infrastructure\FieldType\CountryEnum;
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
