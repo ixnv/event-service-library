@@ -17,8 +17,8 @@ class RegistrationMessage extends AbstractMessage
     const AMO_ACCOUNT_TYPE_PROXY_CLIENT = 'proxy_client'; // Клиент посредника
     const AMO_ACCOUNT_TYPE_IO = 'io'; // ИО
 
-    const COUNTRY_RU = 'ru';
-    const COUNTRY_KZ = 'kz';
+    const COUNTRY_RU = 'rus';
+    const COUNTRY_KZ = 'kaz';
 
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
