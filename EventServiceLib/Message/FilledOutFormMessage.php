@@ -130,8 +130,11 @@ class FilledOutFormMessage extends AbstractMessage
      */
     public function isValid()
     {
+        if (!$this->email && !$this->phone) {
+            return false;
+        }
+
         return !$this->hasEmpty([
-            $this->email,
             $this->formName
         ]);
     }
