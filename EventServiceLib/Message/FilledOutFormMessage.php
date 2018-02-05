@@ -7,6 +7,13 @@ namespace EventServiceLib\Message;
 
 class FilledOutFormMessage extends AbstractMessage
 {
+
+    const FORM_SKYPE_PRESENTATION = 1;
+    const FORM_MESSAGE_TO_MANAGER = 2;
+    const FORM_GET_CONSULTATION = 3;
+    const FORM_CALL_ME = 4;
+    const FORM_PARTNERS = 5;
+
     protected $email;
 
     protected $phone;
@@ -15,7 +22,9 @@ class FilledOutFormMessage extends AbstractMessage
 
     protected $formName;
 
-    protected $formData; // form data ????
+    protected $formData;
+
+    protected $formId;
 
     /**
      * @return string
@@ -121,6 +130,26 @@ class FilledOutFormMessage extends AbstractMessage
     public function setFormData($formData)
     {
         $this->formData = $formData;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFormId()
+    {
+        return $this->formId;
+    }
+
+    /**
+     * @param mixed $formId
+     *
+     * @return FilledOutFormMessage
+     */
+    public function setFormId($formId)
+    {
+        $this->formId = $formId;
 
         return $this;
     }
