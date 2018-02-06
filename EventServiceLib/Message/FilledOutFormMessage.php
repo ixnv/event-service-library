@@ -115,7 +115,7 @@ class FilledOutFormMessage extends AbstractMessage
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getFormData()
     {
@@ -123,7 +123,7 @@ class FilledOutFormMessage extends AbstractMessage
     }
 
     /**
-     * @param string $formData
+     * @param array $formData
      *
      * @return FilledOutFormMessage
      */
@@ -135,7 +135,7 @@ class FilledOutFormMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getFormId()
     {
@@ -143,7 +143,7 @@ class FilledOutFormMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $formId
+     * @param int $formId
      *
      * @return FilledOutFormMessage
      */
