@@ -17,6 +17,7 @@ class EventDispatcherTest extends \PHPUnit_Framework_TestCase
     public function testDispatchMessage()
     {
         $queueManagerInterface = \Phake::mock(QueueManagerInterface::class);
+        \Phake::when($queueManagerInterface)->connectionIsAvailable->thenReturn(true);
         $eventDispatcher       = new EventDispatcher($queueManagerInterface);
 
         $registrationMessage = new RegistrationMessage();

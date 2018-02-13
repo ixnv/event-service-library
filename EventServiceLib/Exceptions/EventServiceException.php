@@ -5,10 +5,9 @@ namespace EventServiceLib\Exceptions;
 class EventServiceException extends \Exception
 {
 
-    public function __construct($message = '', $code = 500)
+    public function __construct($message = '', $code = 500, \Throwable $previous = null)
     {
-        $this->code = $code;
-        $this->message = $message;
+        parent::__construct($message, $code, $previous);
     }
 
 }

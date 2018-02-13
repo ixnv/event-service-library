@@ -45,7 +45,7 @@ class ConnectionFactory
             throw $e;
         }
 
-        throw new EventServiceException("AMQPException caught!");
+        throw new EventServiceException("AMQPException caught!", 500, $e);
     }
 
 }
