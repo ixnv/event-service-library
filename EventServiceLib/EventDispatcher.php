@@ -4,6 +4,7 @@
 namespace EventServiceLib;
 
 
+use EventServiceLib\Exceptions\EventServiceException;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
@@ -22,9 +23,14 @@ class EventDispatcher implements EventDispatcherInterface
      * @param AbstractMessage $message
      *
      * @return bool
+     * @throws EventServiceException
      */
     public function dispatchMessage(AbstractMessage $message)
     {
+        if (!$this->connectionIsAvailable()) {
+            throw new EventServiceException('AMQP connection is not available');
+        }
+
         if (!$message->isValid()) {
             return false; # TODO: Exception?
         }
