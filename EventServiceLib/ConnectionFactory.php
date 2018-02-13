@@ -19,6 +19,7 @@ class ConnectionFactory
      * @param string $vHost
      *
      * @return AMQPStreamConnection
+     * @throws EventServiceException
      * @throws Exception
      */
     public function createAMQPConnection($host, $port, $user, $password, $vHost)
@@ -35,6 +36,7 @@ class ConnectionFactory
     /**
      * @param Exception $e
      *
+     * @throws EventServiceException
      * @throws Exception
      */
     private function handleAMQPException(Exception $e)
