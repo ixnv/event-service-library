@@ -4,22 +4,13 @@
 namespace EventServiceLib;
 
 
+use EventServiceLib\Exceptions\EventServiceException;
 use Exception;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Exception\AMQPExceptionInterface;
-use Psr\Log\LoggerInterface;
 
 class ConnectionFactory
 {
-    /** @var  LoggerInterface */
-    private $logger;
-
-    public function __construct(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
-    }
-
-
     /**
      * @param string $host
      * @param int $port
@@ -27,7 +18,8 @@ class ConnectionFactory
      * @param string $password
      * @param string $vHost
      *
-     * @return bool|AMQPStreamConnection
+     * @return AMQPStreamConnection
+     * @throws EventServiceException
      * @throws Exception
      */
     public function createAMQPConnection($host, $port, $user, $password, $vHost)
@@ -36,7 +28,6 @@ class ConnectionFactory
             $connection = new AMQPStreamConnection($host, $port, $user, $password, $vHost);
         } catch (Exception $e) {
             $this->handleAMQPException($e);
-            $connection = false;
         }
 
         return $connection;
@@ -45,6 +36,7 @@ class ConnectionFactory
     /**
      * @param Exception $e
      *
+     * @throws EventServiceException
      * @throws Exception
      */
     private function handleAMQPException(Exception $e)
@@ -52,7 +44,8 @@ class ConnectionFactory
         if (!$e instanceof AMQPExceptionInterface) {
             throw $e;
         }
-        $this->logger->critical("AMQPException caught!", [$e]);
+
+        throw new EventServiceException("AMQPException caught!", 500, $e);
     }
 
 }

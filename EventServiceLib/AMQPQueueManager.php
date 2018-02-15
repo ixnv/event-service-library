@@ -4,6 +4,7 @@
 namespace EventServiceLib;
 
 
+use EventServiceLib\Exceptions\EventServiceException;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
@@ -35,8 +36,15 @@ class AMQPQueueManager implements QueueManagerInterface
         $this->channel->close();
     }
 
+    /**
+     * @throws EventServiceException
+     */
     public function openConnection()
     {
+        if (!$this->connectionIsAvailable()) {
+            throw new EventServiceException('AMQP connection is not available');
+        }
+
         $this->channel   = $this->connection->channel();
         $this->queue     = $this->channel->queue_declare(EventServiceValues::QUEUE_NAME, false, true, false, false);
         $this->queueSize = $this->queue[1];
@@ -54,13 +62,12 @@ class AMQPQueueManager implements QueueManagerInterface
         $this->channel->basic_publish($message, '', EventServiceValues::QUEUE_NAME);
     }
 
+    /**
+     * @return bool
+     */
     public function connectionIsAvailable()
     {
-        if ($this->connection) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->connection ? true : false;
     }
 
 }
