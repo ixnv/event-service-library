@@ -5,10 +5,16 @@ namespace EventServiceLib\Message;
 
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
+use EventServiceLib\Message\Traits\CountryTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
 class RegistrationMessage extends AbstractMessage
 {
+
+    use GetresponseMessageTrait;
+    use AmoCrmMessageTrait;
+    use ArrayEmailTrait;
+    use CountryTrait;
 
     const AMO_ACCOUNT_TYPE_ADVERTISER = 'advertiser'; // Самостоятельный рекламодатель
     const AMO_ACCOUNT_TYPE_AGENCY_CLIENT = 'agency_client'; // Клиент агенства
@@ -17,38 +23,16 @@ class RegistrationMessage extends AbstractMessage
     const AMO_ACCOUNT_TYPE_PROXY_CLIENT = 'proxy_client'; // Клиент посредника
     const AMO_ACCOUNT_TYPE_IO = 'io'; // ИО
 
+    /** @deprecated just use 3 letter country codes  */
     const COUNTRY_RU = 'rus';
+    /** @deprecated  */
     const COUNTRY_KZ = 'kaz';
-
-    use GetresponseMessageTrait;
-    use AmoCrmMessageTrait;
-    use ArrayEmailTrait;
 
     protected $registration_date; #TODO: use camelCase
     protected $elamaId;
     protected $phone;
     protected $accountType;
     protected $timezone;
-    protected $country;
-
-    /**
-     * @return mixed
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param $country
-     * @return $this
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
 
     /**
      * @return string
@@ -163,13 +147,13 @@ class RegistrationMessage extends AbstractMessage
     public function isValid()
     {
         return !$this->hasEmpty([
-                    $this->email,
-                    $this->elamaLogin,
-                    $this->name,
-                    $this->registration_date,
-                    $this->elamaId,
-                ])
-                && (!$this->accountType || in_array($this->accountType, [
+                $this->email,
+                $this->elamaLogin,
+                $this->name,
+                $this->registration_date,
+                $this->elamaId,
+            ])
+            && (!$this->accountType || in_array($this->accountType, [
                     self::AMO_ACCOUNT_TYPE_ADVERTISER,
                     self::AMO_ACCOUNT_TYPE_AGENCY,
                     self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
@@ -177,11 +161,7 @@ class RegistrationMessage extends AbstractMessage
                     self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
                     self::AMO_ACCOUNT_TYPE_IO,
                 ]))
-                && (!$this->country || in_array($this->country, [
-                    self::COUNTRY_RU,
-                    self::COUNTRY_KZ
-                ]))
-            ;
+            && (!$this->country || mb_strlen($this->country == 3));
     }
 
 }
