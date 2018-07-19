@@ -52,7 +52,7 @@ class BillingMessage extends AbstractMessage
                 $this->elamaLogin,
                 $this->purchase_date,
             ]) &&
-            (!$this->country || mb_strlen($this->country == 3));
+            (!$this->country || mb_strlen($this->country) == 3);
     }
 
     /**

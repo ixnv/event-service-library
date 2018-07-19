@@ -161,7 +161,7 @@ class RegistrationMessage extends AbstractMessage
                     self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
                     self::AMO_ACCOUNT_TYPE_IO,
                 ]))
-            && (!$this->country || mb_strlen($this->country == 3));
+            && (!$this->country || mb_strlen($this->country) == 3);
     }
 
 }
