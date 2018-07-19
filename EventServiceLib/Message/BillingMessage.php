@@ -5,6 +5,7 @@ namespace EventServiceLib\Message;
 
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
+use EventServiceLib\Message\Traits\CountryTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
 /**
@@ -13,10 +14,10 @@ use EventServiceLib\Message\Traits\GetresponseMessageTrait;
  */
 class BillingMessage extends AbstractMessage
 {
-
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
+    use CountryTrait;
 
     protected $purchase_date;
 
@@ -46,11 +47,12 @@ class BillingMessage extends AbstractMessage
     public function isValid()
     {
         return !$this->hasEmpty([
-            $this->email,
-            $this->name,
-            $this->elamaLogin,
-            $this->purchase_date,
-        ]);
+                $this->email,
+                $this->name,
+                $this->elamaLogin,
+                $this->purchase_date,
+            ]) &&
+            (!$this->country || mb_strlen($this->country) == 3);
     }
 
     /**
