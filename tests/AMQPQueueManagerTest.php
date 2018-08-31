@@ -30,7 +30,7 @@ class AMQPQueueManagerTest extends \PHPUnit_Framework_TestCase
             'someMessage',
             ['delivery_mode' => 2]
         );
-        Phake::verify($channel)->basic_publish($expectedMessage, '', EventServiceValues::QUEUE_NAME);
+        Phake::verify($channel)->basic_publish($expectedMessage, 'event-service-fanout');
     }
 
     /**
@@ -44,7 +44,6 @@ class AMQPQueueManagerTest extends \PHPUnit_Framework_TestCase
         $queueManager = new AMQPQueueManager($connection);
         $queueManager->openConnection();
         Phake::verify($connection)->channel;
-        Phake::verify($channel)->queue_declare;
     }
 
 }
