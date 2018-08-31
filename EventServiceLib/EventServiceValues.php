@@ -8,8 +8,10 @@ class EventServiceValues
 {
     #global
     const QUEUE_NAME = 'elama-event-system';
+    const ANALYTICS_QUEUE_NAME = 'elama-analytics';
+    const EXCHANGE_NAME = 'event-service-fanout';
 
-    const VERSION = '0.2';
+    const VERSION = '0.3';
 
     # TODO: Move to event-service?
     #compains

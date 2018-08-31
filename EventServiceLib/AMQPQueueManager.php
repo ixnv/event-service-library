@@ -46,7 +46,6 @@ class AMQPQueueManager implements QueueManagerInterface
         }
 
         $this->channel   = $this->connection->channel();
-        $this->queue     = $this->channel->queue_declare(EventServiceValues::QUEUE_NAME, false, true, false, false);
         $this->queueSize = $this->queue[1];
     }
 
@@ -59,7 +58,7 @@ class AMQPQueueManager implements QueueManagerInterface
             $text,
             ['delivery_mode' => 2]
         );
-        $this->channel->basic_publish($message, '', EventServiceValues::QUEUE_NAME);
+        $this->channel->basic_publish($message, EventServiceValues::EXCHANGE_NAME);
     }
 
     /**
