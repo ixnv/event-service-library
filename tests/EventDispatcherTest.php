@@ -31,7 +31,7 @@ class EventDispatcherTest extends \PHPUnit_Framework_TestCase
         $eventDispatcher->dispatchMessage($registrationMessage);
 
         $expectedMessage = [
-            'version'      => '0.2',
+            'version'      => '0.3',
             'messageClass' => 'EventServiceLib\\Message\\RegistrationMessage',
             'type'         => 'registration',
             'fields'       => [
