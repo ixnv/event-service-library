@@ -21,6 +21,8 @@ class BillingMessage extends AbstractMessage
 
     protected $purchase_date;
 
+    protected $elamaId;
+
     /**
      * @return mixed
      */
@@ -37,6 +39,25 @@ class BillingMessage extends AbstractMessage
     public function setPurchaseDate($purchase_date)
     {
         $this->purchase_date = $purchase_date;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getElamaId()
+    {
+        return $this->elamaId;
+    }
+
+    /**
+     * @param mixed $elamaId
+     * @return BillingMessage
+     */
+    public function setElamaId($elamaId)
+    {
+        $this->elamaId = $elamaId;
 
         return $this;
     }
