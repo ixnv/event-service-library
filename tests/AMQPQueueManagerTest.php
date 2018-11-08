@@ -9,13 +9,11 @@ use Phake;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
+use PHPUnit\Framework\TestCase;
 
-class AMQPQueueManagerTest extends \PHPUnit_Framework_TestCase
+class AMQPQueueManagerTest extends TestCase
 {
 
-    /**
-     * @test
-     */
     public function testQueueManagerPutsMessagesInQueue()
     {
         $connection = Phake::mock(AMQPStreamConnection::class);
@@ -33,9 +31,6 @@ class AMQPQueueManagerTest extends \PHPUnit_Framework_TestCase
         Phake::verify($channel)->basic_publish($expectedMessage, 'event-service-fanout');
     }
 
-    /**
-     * @test
-     */
     public function testQueueManagerOpensConnection()
     {
         $connection = Phake::mock(AMQPStreamConnection::class);

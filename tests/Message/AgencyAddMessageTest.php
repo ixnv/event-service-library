@@ -4,12 +4,11 @@
 namespace Test\Message;
 
 
-class AgencyAddMessageTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class AgencyAddMessageTest extends TestCase
 {
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationSuccess()
     {
         $message = new \EventServiceLib\Message\AgencyAddMessage();
@@ -22,9 +21,6 @@ class AgencyAddMessageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($message->isValid());
     }
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationFail()
     {
         $message = new \EventServiceLib\Message\AgencyAddMessage();

@@ -6,8 +6,9 @@ namespace Test;
 
 use EventServiceLib\ConnectionFactory;
 use EventServiceLib\Exceptions\EventServiceException;
+use PHPUnit\Framework\TestCase;
 
-class ConnectionFactoryTest extends \PHPUnit_Framework_TestCase
+class ConnectionFactoryTest extends TestCase
 {
     /** @var  ConnectionFactory */
     private $factory;
@@ -17,12 +18,10 @@ class ConnectionFactoryTest extends \PHPUnit_Framework_TestCase
         $this->factory = new ConnectionFactory();
     }
 
-    /**
-     * @test
-     */
     public function testCreateAMQPConnectionLogsExceptionAndReturnsFalseWhenParametersAreIncorrect()
     {
-        $this->setExpectedException(EventServiceException::class, 'AMQPException caught!');
+        $this->expectException(EventServiceException::class);
+        $this->expectExceptionMessage('AMQPException caught!');
 
         $result = $this->factory->createAMQPConnection(null, null, null, null, null);
 

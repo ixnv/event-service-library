@@ -4,12 +4,11 @@
 namespace Test\Message;
 
 
-class BillingMessageTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class BillingMessageTest extends TestCase
 {
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationSuccess()
     {
         $message = new \EventServiceLib\Message\BillingMessage();
@@ -23,9 +22,6 @@ class BillingMessageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($message->isValid());
     }
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationFail()
     {
         $message = new \EventServiceLib\Message\BillingMessage();
