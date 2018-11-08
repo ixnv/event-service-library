@@ -4,12 +4,11 @@
 namespace Test\Message;
 
 
-class RegistrationMessageTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class RegistrationMessageTest extends TestCase
 {
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationSuccess()
     {
         $message = new \EventServiceLib\Message\RegistrationMessage();
@@ -25,9 +24,6 @@ class RegistrationMessageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($message->isValid());
     }
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationFail()
     {
         $message = new \EventServiceLib\Message\RegistrationMessage();
@@ -42,9 +38,6 @@ class RegistrationMessageTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($message->isValid());
     }
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationWithInvalidType()
     {
         $message = new \EventServiceLib\Message\RegistrationMessage();

@@ -4,12 +4,11 @@
 namespace Test\Message;
 
 
-class ClientAddMessageTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ClientAddMessageTest extends TestCase
 {
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationSuccess()
     {
         $message = new \EventServiceLib\Message\ClientAddMessage();
@@ -21,9 +20,6 @@ class ClientAddMessageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($message->isValid());
     }
 
-    /**
-     * @test
-     */
     public function testMessageSelfValidationFail()
     {
         $message = new \EventServiceLib\Message\ClientAddMessage();

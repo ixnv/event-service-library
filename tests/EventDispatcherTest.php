@@ -7,13 +7,11 @@ namespace Test;
 use EventServiceLib\EventDispatcher;
 use EventServiceLib\Message\RegistrationMessage;
 use EventServiceLib\QueueManagerInterface;
+use PHPUnit\Framework\TestCase;
 
-class EventDispatcherTest extends \PHPUnit_Framework_TestCase
+class EventDispatcherTest extends TestCase
 {
 
-    /**
-     * @test
-     */
     public function testDispatchMessage()
     {
         $queueManagerInterface = \Phake::mock(QueueManagerInterface::class);
