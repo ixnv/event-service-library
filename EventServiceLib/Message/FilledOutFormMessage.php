@@ -1,9 +1,6 @@
 <?php
 
-
 namespace EventServiceLib\Message;
-
-
 
 class FilledOutFormMessage extends AbstractMessage
 {
@@ -13,6 +10,7 @@ class FilledOutFormMessage extends AbstractMessage
     const FORM_GET_CONSULTATION = 3;
     const FORM_CALL_ME = 4;
     const FORM_PARTNERS = 5;
+    const FORM_BRIEF_CREATE_CAMPAIGN = 6;
 
     protected $email;
 
