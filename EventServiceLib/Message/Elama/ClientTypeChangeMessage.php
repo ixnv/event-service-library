@@ -16,8 +16,8 @@ class ClientTypeChangeMessage extends AbstractMessage
     const CLIENT_TYPE_SS = 'self_service';
     const CLIENT_TYPE_SA = 'sub_agency';
 
-    private $clientType;
-    private $elamaId;
+    protected $clientType;
+    protected $elamaId;
 
     public function getClientType()
     {
