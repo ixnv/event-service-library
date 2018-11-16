@@ -3,6 +3,7 @@
 namespace EventServiceLib\Message\Elama;
 
 use EventServiceLib\Message\AbstractMessage;
+use EventServiceLib\Message\ProjectSpecificMessageInterface;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\CountryTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
