@@ -7,7 +7,7 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\CountryTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
-class ClientTypeChange extends AbstractMessage
+class ClientTypeChangeMessage extends AbstractMessage
 {
 
     use ArrayEmailTrait;
