@@ -17,6 +17,7 @@ class ClientTypeChangeMessage extends AbstractMessage
     const CLIENT_TYPE_SA = 'sub_agency';
 
     private $clientType;
+    private $elamaId;
 
     public function getClientType()
     {
@@ -47,6 +48,25 @@ class ClientTypeChangeMessage extends AbstractMessage
     public function getProjectPossession()
     {
         return 'Elama';
+    }
+
+    /**
+     * @return int
+     */
+    public function getElamaId()
+    {
+        return $this->elamaId;
+    }
+
+    /**
+     * @param int $elamaId
+     * @return ClientTypeChangeMessage
+     */
+    public function setElamaId($elamaId)
+    {
+        $this->elamaId = $elamaId;
+
+        return $this;
     }
 
 }
