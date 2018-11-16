@@ -46,7 +46,7 @@ class ClientTypeChangeMessage extends AbstractMessage implements ProjectSpecific
         ]);
     }
 
-    public function getProjectPossession()
+    public function getProjectIdentity()
     {
         return 'Elama';
     }
