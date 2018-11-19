@@ -9,7 +9,7 @@ trait ArrayEmailTrait
     protected $email = [];
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getEmail()
     {
