@@ -2,11 +2,10 @@
 
 namespace EventServiceLib\Message;
 
-
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
-use EventServiceLib\Message\Traits\CountryTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
+use EventServiceLib\Message\Traits\LocalizationTrait;
 
 class RegistrationMessage extends AbstractMessage
 {
@@ -14,7 +13,7 @@ class RegistrationMessage extends AbstractMessage
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
-    use CountryTrait;
+    use LocalizationTrait;
 
     const AMO_ACCOUNT_TYPE_ADVERTISER = 'advertiser'; // Самостоятельный рекламодатель
     const AMO_ACCOUNT_TYPE_AGENCY_CLIENT = 'agency_client'; // Клиент агенства
@@ -160,8 +159,7 @@ class RegistrationMessage extends AbstractMessage
                     self::AMO_ACCOUNT_TYPE_PROXY,
                     self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
                     self::AMO_ACCOUNT_TYPE_IO,
-                ]))
-            && (!$this->country || mb_strlen($this->country) == 3);
+                ]));
     }
 
 }

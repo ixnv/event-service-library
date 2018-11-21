@@ -2,13 +2,13 @@
 
 namespace EventServiceLib\Message\Traits;
 
-
 trait CountryTrait
 {
+
     protected $country;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCountry()
     {
@@ -16,7 +16,8 @@ trait CountryTrait
     }
 
     /**
-     * @param $country
+     * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -25,4 +26,5 @@ trait CountryTrait
 
         return $this;
     }
+
 }

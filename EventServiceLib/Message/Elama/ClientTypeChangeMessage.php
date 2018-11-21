@@ -5,14 +5,13 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\ProjectSpecificMessageInterface;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
-use EventServiceLib\Message\Traits\CountryTrait;
-use EventServiceLib\Message\Traits\GetresponseMessageTrait;
+use EventServiceLib\Message\Traits\LocalizationTrait;
 
 class ClientTypeChangeMessage extends AbstractMessage implements ProjectSpecificMessageInterface
 {
 
     use ArrayEmailTrait;
-    use CountryTrait;
+    use LocalizationTrait;
 
     const CLIENT_TYPE_SS = 'self_service';
     const CLIENT_TYPE_SA = 'sub_agency';
@@ -41,8 +40,7 @@ class ClientTypeChangeMessage extends AbstractMessage implements ProjectSpecific
     {
         return !$this->hasEmpty([
             $this->clientType,
-            $this->email,
-            $this->country
+            $this->email
         ]);
     }
 
