@@ -8,7 +8,7 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 /**
  * Common event for ppc trigger emails.
  */
-class PpcTriggerEmailMessage extends AbstractMessage
+class PpcTriggerEmailMessage extends AbstractPpcMessage
 {
     use ArrayEmailTrait;
 
