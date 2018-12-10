@@ -32,6 +32,7 @@ class RegistrationMessage extends AbstractMessage
     protected $phone;
     protected $accountType;
     protected $timezone;
+    protected $splitTestSegment;
 
     /**
      * @return string
@@ -136,6 +137,25 @@ class RegistrationMessage extends AbstractMessage
     public function setTimezone($timezone)
     {
         $this->timezone = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSplitTestSegment()
+    {
+        return $this->splitTestSegment;
+    }
+
+    /**
+     * @param string $splitTestSegment
+     * @return RegistrationMessage
+     */
+    public function setSplitTestSegment($splitTestSegment)
+    {
+        $this->splitTestSegment = $splitTestSegment;
 
         return $this;
     }
