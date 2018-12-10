@@ -32,7 +32,7 @@ class RegistrationMessage extends AbstractMessage
     protected $phone;
     protected $accountType;
     protected $timezone;
-    protected $splitTestSegment;
+    protected $splitTestSegment = null;
 
     /**
      * @return string
