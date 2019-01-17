@@ -3,8 +3,9 @@
 namespace EventServiceLib\Message\Elama;
 
 use EventServiceLib\Message\AbstractMessage;
+use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyRegistrationMessage extends AbstractMessage
+class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecificMessageInterface
 {
 
     protected $elamaId;
