@@ -51,4 +51,7 @@ class EventServiceValues
 
     #event types
     const EVENT_TYPE_BILLING = 'billing';
+
+    const LEGAL_TYPE_PERSON = 'private_person';
+    const LEGAL_TYPE_ENTITY = 'legal_entity';
 }
