@@ -24,11 +24,31 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     }
 
     /**
+     * @param integer $elamaId
+     * @return AgencyBriefFilledMessage
+     */
+    public function setElamaId($elamaId)
+    {
+        $this->elamaId = $elamaId;
+        return $this;
+    }
+
+    /**
      * @return integer
      */
     public function getAgencyId()
     {
         return $this->agencyId;
+    }
+
+    /**
+     * @param integer $agencyId
+     * @return AgencyBriefFilledMessage
+     */
+    public function setAgencyId($agencyId)
+    {
+        $this->agencyId = $agencyId;
+        return $this;
     }
 
     /**
@@ -40,6 +60,16 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     }
 
     /**
+     * @param string $legalType
+     * @return AgencyBriefFilledMessage
+     */
+    public function setLegalType($legalType)
+    {
+        $this->legalType = $legalType;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getBriefAsText()
@@ -48,11 +78,31 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     }
 
     /**
+     * @param string $briefAsText
+     * @return AgencyBriefFilledMessage
+     */
+    public function setBriefAsText($briefAsText)
+    {
+        $this->briefAsText = $briefAsText;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getWithdrawalMethod()
     {
         return $this->withdrawalMethod;
+    }
+
+    /**
+     * @param string $withdrawalMethod
+     * @return AgencyBriefFilledMessage
+     */
+    public function setWithdrawalMethod($withdrawalMethod)
+    {
+        $this->withdrawalMethod = $withdrawalMethod;
+        return $this;
     }
 
     public function isValid()
