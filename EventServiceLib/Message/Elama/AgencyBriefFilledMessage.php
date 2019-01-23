@@ -121,7 +121,6 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
                 $this->elamaId,
                 $this->agencyId,
                 $this->legalType,
-                $this->briefAsText,
                 $this->withdrawalMethod
             ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
     }
