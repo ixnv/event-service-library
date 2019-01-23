@@ -12,7 +12,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     protected $elamaId;
     protected $agencyId;
     protected $legalType;
-    protected $briefAsText;
+    protected $briefData;
     protected $withdrawalMethod; # Withdrawal method text identity
 
     /**
@@ -70,20 +70,30 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getBriefAsText()
+    public function getBriefData()
     {
-        return $this->briefAsText;
+        return $this->briefData;
     }
 
     /**
-     * @param string $briefAsText
+     * @param array $briefData
      * @return AgencyBriefFilledMessage
      */
-    public function setBriefAsText($briefAsText)
+    public function setBriefData($briefData)
     {
-        $this->briefAsText = $briefAsText;
+        $this->briefData = $briefData;
+        return $this;
+    }
+
+    /**
+     * @param array $briefDataRow
+     * @return AgencyBriefFilledMessage
+     */
+    public function addBriefDataRow($briefDataRow)
+    {
+        $this->briefData[] = $briefDataRow;
         return $this;
     }
 
@@ -111,7 +121,6 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
                 $this->elamaId,
                 $this->agencyId,
                 $this->legalType,
-                $this->briefAsText,
                 $this->withdrawalMethod
             ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
     }
