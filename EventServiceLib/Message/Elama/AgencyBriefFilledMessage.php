@@ -12,7 +12,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     protected $elamaId;
     protected $agencyId;
     protected $legalType;
-    protected $briefData;
+    protected $bankAccountRequisites;
     protected $withdrawalMethod; # Withdrawal method text identity
 
     /**
@@ -72,28 +72,18 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     /**
      * @return array
      */
-    public function getBriefData()
+    public function getBankAccountRequisites()
     {
-        return $this->briefData;
+        return $this->bankAccountRequisites;
     }
 
     /**
-     * @param array $briefData
+     * @param array $bankAccountRequisites
      * @return AgencyBriefFilledMessage
      */
-    public function setBriefData($briefData)
+    public function setBankAccountRequisites($bankAccountRequisites)
     {
-        $this->briefData = $briefData;
-        return $this;
-    }
-
-    /**
-     * @param array $briefDataRow
-     * @return AgencyBriefFilledMessage
-     */
-    public function addBriefDataRow($briefDataRow)
-    {
-        $this->briefData[] = $briefDataRow;
+        $this->bankAccountRequisites = $bankAccountRequisites;
         return $this;
     }
 
