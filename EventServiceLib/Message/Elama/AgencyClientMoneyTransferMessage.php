@@ -15,7 +15,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     protected $transferDate;
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getElamaId()
     {
@@ -23,7 +23,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     }
 
     /**
-     * @param mixed $elamaId
+     * @param integer $elamaId
      */
     public function setElamaId($elamaId)
     {
@@ -32,7 +32,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getAgencyId()
     {
@@ -40,7 +40,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     }
 
     /**
-     * @param mixed $agencyId
+     * @param integer $agencyId
      */
     public function setAgencyId($agencyId)
     {
@@ -49,7 +49,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getLegalType()
     {
@@ -57,7 +57,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     }
 
     /**
-     * @param mixed $legalType
+     * @param string $legalType
      */
     public function setLegalType($legalType)
     {
