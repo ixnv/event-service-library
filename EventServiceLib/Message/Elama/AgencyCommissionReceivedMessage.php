@@ -2,6 +2,7 @@
 
 namespace EventServiceLib\Message\Elama;
 
+use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
