@@ -25,7 +25,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     /**
      * @param mixed $elamaId
      */
-    public function setElamaId($elamaId): void
+    public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
         return $this;
@@ -42,7 +42,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     /**
      * @param mixed $agencyId
      */
-    public function setAgencyId($agencyId): void
+    public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
         return $this;
@@ -59,7 +59,7 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage implements Projec
     /**
      * @param mixed $legalType
      */
-    public function setLegalType($legalType): void
+    public function setLegalType($legalType)
     {
         $this->legalType = $legalType;
         return $this;
