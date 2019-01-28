@@ -86,6 +86,9 @@ class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecif
         return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty([
@@ -96,16 +99,25 @@ class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecif
         ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
     }
 
+    /**
+     * @return string
+     */
     function getEventIdentity()
     {
-        return 'AgencyRegistration';
+        return 'agencyRegistration';
     }
-    
+
+    /**
+     * @return string
+     */
     public function getProjectIdentity()
     {
         return 'Elama';
     }
 
+    /**
+     * @return string
+     */
     public function getProjectPossession()
     {
         return 'Elama';
