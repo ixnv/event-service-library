@@ -15,7 +15,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
     protected $addingDate;
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getElamaId()
     {
