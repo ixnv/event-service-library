@@ -19,11 +19,18 @@ class ClientTypeChangeMessage extends AbstractMessage implements ProjectSpecific
     protected $clientType;
     protected $elamaId;
 
+    /**
+     * @return string
+     */
     public function getClientType()
     {
         return $this->clientType;
     }
 
+    /**
+     * @param string $clientType
+     * @return $this
+     */
     public function setClientType($clientType)
     {
         $this->clientType = $clientType;
@@ -31,11 +38,17 @@ class ClientTypeChangeMessage extends AbstractMessage implements ProjectSpecific
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getEventIdentity()
     {
         return 'clientTypeChange';
     }
 
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty([
@@ -44,11 +57,17 @@ class ClientTypeChangeMessage extends AbstractMessage implements ProjectSpecific
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function getProjectIdentity()
     {
         return 'Elama';
     }
 
+    /**
+     * @return string
+     */
     public function getProjectPossession()
     {
         return 'Elama';

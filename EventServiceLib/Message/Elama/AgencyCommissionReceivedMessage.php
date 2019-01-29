@@ -6,14 +6,13 @@ use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class AgencyCommissionReceivedMessage extends AbstractMessage implements ProjectSpecificMessageInterface
 {
 
     protected $elamaId;
     protected $agencyId;
     protected $legalType;
-    protected $bankAccountRequisites;
-    protected $withdrawalMethod; # Withdrawal method text identity
+    protected $amount;
 
     /**
      * @return integer
@@ -25,7 +24,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param integer $elamaId
-     * @return AgencyBriefFilledMessage
+     * @return AgencyCommissionRecivedMessage
      */
     public function setElamaId($elamaId)
     {
@@ -43,7 +42,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param integer $agencyId
-     * @return AgencyBriefFilledMessage
+     * @return AgencyCommissionRecivedMessage
      */
     public function setAgencyId($agencyId)
     {
@@ -61,7 +60,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param string $legalType
-     * @return AgencyBriefFilledMessage
+     * @return AgencyCommissionRecivedMessage
      */
     public function setLegalType($legalType)
     {
@@ -70,38 +69,20 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     }
 
     /**
-     * @return array
-     */
-    public function getBankAccountRequisites()
-    {
-        return $this->bankAccountRequisites;
-    }
-
-    /**
-     * @param array $bankAccountRequisites
-     * @return AgencyBriefFilledMessage
-     */
-    public function setBankAccountRequisites($bankAccountRequisites)
-    {
-        $this->bankAccountRequisites = $bankAccountRequisites;
-        return $this;
-    }
-
-    /**
      * @return string
      */
-    public function getWithdrawalMethod()
+    public function getAmount()
     {
-        return $this->withdrawalMethod;
+        return $this->amount;
     }
 
     /**
-     * @param string $withdrawalMethod
-     * @return AgencyBriefFilledMessage
+     * @param string $amount
+     * @return AgencyCommissionRecivedMessage
      */
-    public function setWithdrawalMethod($withdrawalMethod)
+    public function setAmount($amount)
     {
-        $this->withdrawalMethod = $withdrawalMethod;
+        $this->amount = $amount;
         return $this;
     }
 
@@ -114,7 +95,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
                 $this->elamaId,
                 $this->agencyId,
                 $this->legalType,
-                $this->withdrawalMethod
+                $this->amount,
             ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
     }
 
@@ -123,7 +104,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
      */
     function getEventIdentity()
     {
-        return 'agencyBriefFilled';
+        return 'agencyCommissionReceived';
     }
 
     /**
@@ -141,5 +122,5 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     {
         return 'Elama';
     }
-
+    
 }
