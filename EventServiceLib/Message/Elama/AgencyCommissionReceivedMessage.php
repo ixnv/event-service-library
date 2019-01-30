@@ -12,7 +12,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage implements Project
     protected $elamaId;
     protected $agencyId;
     protected $legalType;
-    protected $amount;
+    protected $amount = 0;
 
     /**
      * @return integer
@@ -95,7 +95,6 @@ class AgencyCommissionReceivedMessage extends AbstractMessage implements Project
                 $this->elamaId,
                 $this->agencyId,
                 $this->legalType,
-                $this->amount,
             ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
     }
 
