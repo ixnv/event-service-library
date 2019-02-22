@@ -2,17 +2,15 @@
 
 namespace EventServiceLib\Message\Elama;
 
-use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class AgencyClientRemovedMessage extends AbstractMessage implements ProjectSpecificMessageInterface
 {
 
     protected $elamaId;
     protected $agencyId;
-    protected $legalType;
-    protected $addingDate;
+    protected $removingDate;
 
     /**
      * @return integer
@@ -24,7 +22,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param integer $elamaId
-     * @return AgencyClientAddedMessage
+     * @return AgencyClientRemovedMessage
      */
     public function setElamaId($elamaId)
     {
@@ -42,7 +40,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param integer $agencyId
-     * @return AgencyClientAddedMessage
+     * @return AgencyClientRemovedMessage
      */
     public function setAgencyId($agencyId)
     {
@@ -53,35 +51,20 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
     /**
      * @return string
      */
-    public function getLegalType()
+    public function getRemovingDate()
     {
-        return $this->legalType;
+        return $this->removingDate;
     }
 
     /**
-     * @param string $legalType
-     * @return AgencyClientAddedMessage
+     * @param string $removingDate - date string in "Y-m-d" format
+     *
+     * @return AgencyClientRemovedMessage
      */
-    public function setLegalType($legalType)
+    public function setRemovingDate($removingDate)
     {
-        $this->legalType = $legalType;
-        return $this;
-    }
+        $this->removingDate = $removingDate;
 
-    /**
-     * @return string
-     */
-    public function getAddingDate()
-    {
-        return $this->addingDate;
-    }
-
-    /**
-     * @param string $addingDate - date string in "Y-m-d" format
-     */
-    public function setAddingDate($addingDate)
-    {
-        $this->addingDate = $addingDate;
         return $this;
     }
 
@@ -93,9 +76,8 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
         return !$this->hasEmpty([
                 $this->elamaId,
                 $this->agencyId,
-                $this->legalType,
-                $this->addingDate,
-            ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
+                $this->removingDate,
+            ]);
     }
 
     /**
@@ -103,7 +85,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
      */
     function getEventIdentity()
     {
-        return 'agencyClientAdded';
+        return 'agencyClientRemoved';
     }
 
     /**
