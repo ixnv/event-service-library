@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace EventServiceLib\Message\Elama;
+namespace EventServiceLib\Message\Infosite;
 
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\ProjectSpecificMessageInterface;
