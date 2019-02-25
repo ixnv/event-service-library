@@ -9,10 +9,31 @@ use EventServiceLib\Message\ProjectSpecificMessageInterface;
 class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecificMessageInterface
 {
 
+    protected $clientElamaId;
     protected $elamaId;
     protected $agencyId;
     protected $legalType;
     protected $addingDate;
+
+    /**
+     * @return integer
+     */
+    public function getClientElamaId()
+    {
+        return $this->clientElamaId;
+    }
+
+    /**
+     * @param integer $clientElamaId
+     *
+     * @return AgencyClientAddedMessage
+     */
+    public function setClientElamaId($clientElamaId)
+    {
+        $this->clientElamaId = $clientElamaId;
+
+        return $this;
+    }
 
     /**
      * @return integer
@@ -91,6 +112,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
     public function isValid()
     {
         return !$this->hasEmpty([
+                $this->clientElamaId,
                 $this->elamaId,
                 $this->agencyId,
                 $this->legalType,
