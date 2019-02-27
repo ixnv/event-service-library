@@ -112,7 +112,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
     public function isValid()
     {
         return !$this->hasEmpty([
-                $this->clientElamaId,
+//                $this->clientElamaId, // BC, вернуть как только агентства обновят событие
                 $this->elamaId,
                 $this->agencyId,
                 $this->legalType,
