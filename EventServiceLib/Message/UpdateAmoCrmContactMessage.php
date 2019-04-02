@@ -15,7 +15,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     use ArrayEmailTrait;
     use LocalizationTrait;
 
-    protected $registrationDate;
+    protected $registration_date;
     protected $elamaId;
     protected $phone;
     protected $accountType;
@@ -35,17 +35,17 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
      */
     public function getRegistrationDate()
     {
-        return $this->registrationDate;
+        return $this->registration_date;
     }
 
     /**
-     * @param mixed $registrationDate
+     * @param mixed $registration_date
      *
      * @return RegistrationMessage
      */
-    public function setRegistrationDate($registrationDate)
+    public function setRegistrationDate($registration_date)
     {
-        $this->registrationDate = $registrationDate;
+        $this->registration_date = $registration_date;
 
         return $this;
     }
@@ -157,7 +157,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
                 $this->email,
                 $this->elamaLogin,
                 $this->name,
-                $this->registrationDate,
+                $this->registration_date,
                 $this->elamaId,
             ])
             && (!$this->accountType || in_array($this->accountType, [
