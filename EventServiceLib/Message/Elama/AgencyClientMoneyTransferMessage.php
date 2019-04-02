@@ -6,14 +6,13 @@ use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class AgencyClientMoneyTransferMessage extends AbstractMessage implements ProjectSpecificMessageInterface
 {
 
     protected $elamaId;
     protected $agencyId;
     protected $legalType;
-    protected $bankAccountRequisites;
-    protected $withdrawalMethod; # Withdrawal method text identity
+    protected $transferDate;
 
     /**
      * @return integer
@@ -25,7 +24,6 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param integer $elamaId
-     * @return AgencyBriefFilledMessage
      */
     public function setElamaId($elamaId)
     {
@@ -43,7 +41,6 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param integer $agencyId
-     * @return AgencyBriefFilledMessage
      */
     public function setAgencyId($agencyId)
     {
@@ -61,7 +58,6 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param string $legalType
-     * @return AgencyBriefFilledMessage
      */
     public function setLegalType($legalType)
     {
@@ -70,38 +66,20 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     }
 
     /**
-     * @return array
-     */
-    public function getBankAccountRequisites()
-    {
-        return $this->bankAccountRequisites;
-    }
-
-    /**
-     * @param array $bankAccountRequisites
-     * @return AgencyBriefFilledMessage
-     */
-    public function setBankAccountRequisites($bankAccountRequisites)
-    {
-        $this->bankAccountRequisites = $bankAccountRequisites;
-        return $this;
-    }
-
-    /**
      * @return string
      */
-    public function getWithdrawalMethod()
+    public function getTransferDate()
     {
-        return $this->withdrawalMethod;
+        return $this->transferDate;
     }
 
     /**
-     * @param string $withdrawalMethod
-     * @return AgencyBriefFilledMessage
+     * @param string $transferDate - date string in "Y-m-d" format
+     * @return AgencyСlientMoneyTransferMessage
      */
-    public function setWithdrawalMethod($withdrawalMethod)
+    public function setTransferDate($transferDate)
     {
-        $this->withdrawalMethod = $withdrawalMethod;
+        $this->transferDate = $transferDate;
         return $this;
     }
 
@@ -114,7 +92,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
                 $this->elamaId,
                 $this->agencyId,
                 $this->legalType,
-                $this->withdrawalMethod
+                $this->transferDate,
             ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
     }
 
@@ -123,7 +101,7 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
      */
     function getEventIdentity()
     {
-        return 'agencyBriefFilled';
+        return 'agencyClientMoneyTransfer';
     }
 
     /**
