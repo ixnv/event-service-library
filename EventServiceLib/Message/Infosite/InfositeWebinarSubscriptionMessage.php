@@ -93,7 +93,7 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
      */
     function getEventIdentity()
     {
-        return 'infositeBlogSubscription';
+        return 'infositeWebinarSubscription';
     }
 
     /**
