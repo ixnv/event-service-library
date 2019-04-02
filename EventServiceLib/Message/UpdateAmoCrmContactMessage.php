@@ -41,7 +41,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     /**
      * @param mixed $registration_date
      *
-     * @return RegistrationMessage
+     * @return UpdateAmoCrmContactMessage
      */
     public function setRegistrationDate($registration_date)
     {
@@ -61,7 +61,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     /**
      * @param $elamaId
      *
-     * @return RegistrationMessage
+     * @return UpdateAmoCrmContactMessage
      */
     public function setElamaId($elamaId)
     {
@@ -81,7 +81,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     /**
      * @param $phone
      *
-     * @return RegistrationMessage
+     * @return UpdateAmoCrmContactMessage
      */
     public function setPhone($phone)
     {
@@ -101,7 +101,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     /**
      * @param $accountType
      *
-     * @return RegistrationMessage
+     * @return UpdateAmoCrmContactMessage
      */
     public function setAccountType($accountType)
     {
@@ -139,7 +139,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
 
     /**
      * @param string $splitTestSegment
-     * @return RegistrationMessage
+     * @return UpdateAmoCrmContactMessage
      */
     public function setSplitTestSegment($splitTestSegment)
     {

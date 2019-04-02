@@ -14,6 +14,7 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     protected $email;
     protected $webinarType;
     protected $addingDate;
+    protected $startDateTime;
 
     /**
      * @return string
@@ -71,6 +72,25 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     public function setAddingDate($addingDate)
     {
         $this->addingDate = $addingDate;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStartDateTime()
+    {
+        return $this->startDateTime;
+    }
+
+    /**
+     * @param string $startDateTime
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setStartDateTime($startDateTime)
+    {
+        $this->startDateTime = $startDateTime;
 
         return $this;
     }
