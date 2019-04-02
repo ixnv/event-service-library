@@ -7,7 +7,7 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class RegistrationMessage extends AbstractMessage
+class UpdateAmoCrmContactMessage extends AbstractMessage
 {
 
     use GetresponseMessageTrait;
