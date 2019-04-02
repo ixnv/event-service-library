@@ -14,6 +14,7 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     protected $email;
     protected $webinarType;
     protected $addingDate;
+    protected $startDateTime;
 
     /**
      * @return string
@@ -76,6 +77,25 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     }
 
     /**
+     * @return string
+     */
+    public function getStartDateTime()
+    {
+        return $this->startDateTime;
+    }
+
+    /**
+     * @param string $startDateTime
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setStartDateTime($startDateTime)
+    {
+        $this->startDateTime = $startDateTime;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isValid()
@@ -93,7 +113,7 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
      */
     function getEventIdentity()
     {
-        return 'infositeBlogSubscription';
+        return 'infositeWebinarSubscription';
     }
 
     /**
