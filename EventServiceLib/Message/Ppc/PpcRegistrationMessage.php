@@ -10,6 +10,7 @@ class PpcRegistrationMessage extends AbstractPpcMessage
     use ArrayEmailTrait;
 
     protected $name;
+    protected $surName;
 
     protected $registrationDate;
 
@@ -23,6 +24,7 @@ class PpcRegistrationMessage extends AbstractPpcMessage
         return !$this->hasEmpty([
             $this->email,
             $this->name,
+            $this->surName,
             $this->registrationDate,
         ]);
     }
@@ -42,6 +44,24 @@ class PpcRegistrationMessage extends AbstractPpcMessage
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSurName()
+    {
+        return $this->surName;
+    }
+
+    /**
+     * @param $surName
+     * @return $this
+     */
+    public function setSurName($surName)
+    {
+        $this->surName = $surName;
         return $this;
     }
 
