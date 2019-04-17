@@ -27,7 +27,7 @@ class PpcTriggerEmailMessage extends AbstractPpcMessage
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getTags()
     {
@@ -35,8 +35,9 @@ class PpcTriggerEmailMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param array $tags
-     * @return $this
+     * @param string[] $tags
+     *
+     * @return PpcTriggerEmailMessage
      */
     public function setTags(array $tags)
     {
@@ -44,5 +45,4 @@ class PpcTriggerEmailMessage extends AbstractPpcMessage
 
         return $this;
     }
-
 }

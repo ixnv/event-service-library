@@ -25,7 +25,7 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -33,17 +33,19 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param $name
-     * @return $this
+     * @param string $name
+     *
+     * @return PpcCreateSubscriptionCourseMessage
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -51,12 +53,14 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param mixed $id
-     * @return PpcCreateSubscriptionCourse
+     * @param int $id
+     *
+     * @return PpcCreateSubscriptionCourseMessage
      */
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -70,6 +74,7 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 
     /**
      * @param mixed $emailMarkup
+     *
      * @return PpcCreateSubscriptionCourseMessage
      */
     public function setEmailMarkup($emailMarkup)

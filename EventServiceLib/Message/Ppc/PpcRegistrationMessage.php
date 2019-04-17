@@ -2,7 +2,6 @@
 
 namespace EventServiceLib\Message\Ppc;
 
-
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class PpcRegistrationMessage extends AbstractPpcMessage
@@ -10,7 +9,7 @@ class PpcRegistrationMessage extends AbstractPpcMessage
     use ArrayEmailTrait;
 
     protected $name;
-    protected $surName;
+    protected $surname;
 
     protected $registrationDate;
 
@@ -24,13 +23,13 @@ class PpcRegistrationMessage extends AbstractPpcMessage
         return !$this->hasEmpty([
             $this->email,
             $this->name,
-            $this->surName,
+            $this->surname,
             $this->registrationDate,
         ]);
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -38,35 +37,39 @@ class PpcRegistrationMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param $name
-     * @return $this
+     * @param string $name
+     *
+     * @return PpcRegistrationMessage
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getSurName()
+    public function getSurname()
     {
-        return $this->surName;
+        return $this->surname;
     }
 
     /**
-     * @param $surName
-     * @return $this
+     * @param string $surname
+     *
+     * @return PpcRegistrationMessage
      */
-    public function setSurName($surName)
+    public function setSurName($surname)
     {
-        $this->surName = $surName;
+        $this->surname = $surname;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRegistrationDate()
     {
@@ -74,15 +77,14 @@ class PpcRegistrationMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param $registrationDate
-     * @return $this
+     * @param string $registrationDate
+     *
+     * @return PpcRegistrationMessage
      */
     public function setRegistrationDate($registrationDate)
     {
         $this->registrationDate = $registrationDate instanceof \DateTime ? $registrationDate->format('Y-m-d H:i:s') : $registrationDate;
+
         return $this;
     }
-
-
-
 }

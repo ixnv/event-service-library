@@ -2,7 +2,6 @@
 
 namespace EventServiceLib\Message\Ppc;
 
-
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class PpcAfficheSubscriptionMessage extends AbstractPpcMessage
@@ -25,7 +24,7 @@ class PpcAfficheSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -33,13 +32,14 @@ class PpcAfficheSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param $name
-     * @return $this
+     * @param string $name
+     *
+     * @return PpcAfficheSubscriptionMessage
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
-
 }
