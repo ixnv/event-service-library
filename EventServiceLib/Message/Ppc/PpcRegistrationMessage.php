@@ -61,7 +61,7 @@ class PpcRegistrationMessage extends AbstractPpcMessage
      *
      * @return PpcRegistrationMessage
      */
-    public function setSurName($surname)
+    public function setSurname($surname)
     {
         $this->surname = $surname;
 
