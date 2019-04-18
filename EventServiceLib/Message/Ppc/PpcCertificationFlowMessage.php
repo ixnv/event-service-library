@@ -20,7 +20,6 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
     public function isValid()
     {
         return !$this->hasEmpty([
-            $this->complete,
             $this->numAttempt,
             $this->typeCertification,
 
