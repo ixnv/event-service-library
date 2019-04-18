@@ -8,13 +8,17 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
 {
     use ArrayEmailTrait;
 
+    const STAGE_START = 'start'; //первая попытка прохождения сертификации
+    const STAGE_CONTINUE = 'continue'; // n-нная попытка прохождения сертификации
+    const STAGE_SUCCESSFULLY_PASSED = 'successfully_passed'; // успешное прохождение сертификации
+
     private $stage;
     private $numAttempt;
     private $typeCertification;
 
     public function getEventIdentity()
     {
-        return 'ppcCourseSubscription';
+        return 'ppcCertificationFlow';
     }
 
     public function isValid()
