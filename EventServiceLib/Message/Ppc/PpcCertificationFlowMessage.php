@@ -8,9 +8,9 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
 {
     use ArrayEmailTrait;
 
-    private $numAttempt;
-    private $typeCertification;
-    private $complete = false;
+    protected $numAttempt;
+    protected $typeCertification;
+    protected $complete = false;
 
     public function getEventIdentity()
     {
@@ -22,7 +22,8 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
         return !$this->hasEmpty([
             $this->complete,
             $this->numAttempt,
-            $this->typeCertification
+            $this->typeCertification,
+
         ]);
     }
 
