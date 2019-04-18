@@ -10,7 +10,6 @@ class PpcRegistrationMessage extends AbstractPpcMessage
 
     protected $name;
     protected $surname;
-
     protected $registrationDate;
 
     public function getEventIdentity()
@@ -87,4 +86,5 @@ class PpcRegistrationMessage extends AbstractPpcMessage
 
         return $this;
     }
+
 }

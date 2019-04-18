@@ -45,4 +45,5 @@ class PpcTriggerEmailMessage extends AbstractPpcMessage
 
         return $this;
     }
+
 }

@@ -42,4 +42,5 @@ class PpcAfficheSubscriptionMessage extends AbstractPpcMessage
 
         return $this;
     }
+
 }

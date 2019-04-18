@@ -6,9 +6,7 @@ namespace EventServiceLib\Message\Ppc;
 class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 {
     protected $name;
-
     protected $id;
-
     protected $emailMarkup;
 
     public function getEventIdentity()
@@ -83,4 +81,5 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 
         return $this;
     }
+
 }

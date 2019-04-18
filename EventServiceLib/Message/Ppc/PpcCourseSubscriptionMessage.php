@@ -9,11 +9,8 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     use ArrayEmailTrait;
 
     protected $name;
-
     protected $courseName;
-
     protected $courseId;
-
     protected $courseStartDate;
 
     public function getEventIdentity()
