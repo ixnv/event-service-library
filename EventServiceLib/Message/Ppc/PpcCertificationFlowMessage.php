@@ -8,10 +8,10 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
 {
     use ArrayEmailTrait;
 
-    const CERTIFICATION_PASSED = 'passed'; // сертификация пройдена
-    const CERTIFICATION_FAILED = 'failed'; // сертификация не пройдена
+    const STATUS_PASSED = 1; // сертификация пройдена
+    const STATUS_FAILED = 0; // сертификация не пройдена
 
-    private $stage;
+    private $status;
     private $numAttempt;
     private $typeCertification;
 
@@ -23,28 +23,28 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
     public function isValid()
     {
         return !$this->hasEmpty([
-            $this->stage,
+            $this->status,
             $this->numAttempt,
             $this->typeCertification
         ]);
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getStage()
+    public function getStatus()
     {
-        return $this->stage;
+        return $this->status;
     }
 
     /**
-     * @param string $stage
+     * @param int $status
      *
      * @return PpcCertificationFlowMessage
      */
-    public function setStage($stage)
+    public function setStatus($status)
     {
-        $this->stage = $stage;
+        $this->status = $status;
 
         return $this;
     }
