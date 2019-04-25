@@ -17,4 +17,5 @@ abstract class AbstractPpcMessage extends AbstractMessage implements ProjectSpec
     {
         return 'Ppc';
     }
+
 }

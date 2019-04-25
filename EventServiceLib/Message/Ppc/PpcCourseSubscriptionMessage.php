@@ -2,7 +2,6 @@
 
 namespace EventServiceLib\Message\Ppc;
 
-
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class PpcCourseSubscriptionMessage extends AbstractPpcMessage
@@ -10,11 +9,8 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     use ArrayEmailTrait;
 
     protected $name;
-
     protected $courseName;
-
     protected $courseId;
-
     protected $courseStartDate;
 
     public function getEventIdentity()
@@ -32,7 +28,7 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -40,17 +36,19 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param $name
-     * @return $this
+     * @param string $name
+     *
+     * @return PpcCourseSubscriptionMessage
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCourseName()
     {
@@ -58,17 +56,19 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param $courseName
-     * @return $this
+     * @param string $courseName
+     *
+     * @return PpcCourseSubscriptionMessage
      */
     public function setCourseName($courseName)
     {
         $this->courseName = $courseName;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCourseId()
     {
@@ -76,17 +76,19 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param $courseId
-     * @return $this
+     * @param int $courseId
+     *
+     * @return PpcCourseSubscriptionMessage
      */
     public function setCourseId($courseId)
     {
         $this->courseId = $courseId;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCourseStartDate()
     {
@@ -94,14 +96,15 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     }
 
     /**
-     * @param $courseStartDate
-     * @return $this
+     * @param string $courseStartDate
+     *
+     * @return PpcCourseSubscriptionMessage
      */
     public function setCourseStartDate($courseStartDate)
     {
         $this->courseStartDate = $courseStartDate instanceof \DateTime ? $courseStartDate->format('Y-m-d H:i:s') : $courseStartDate;
+
         return $this;
     }
-
 
 }

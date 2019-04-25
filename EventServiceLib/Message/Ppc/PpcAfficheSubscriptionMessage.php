@@ -4,7 +4,7 @@ namespace EventServiceLib\Message\Ppc;
 
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
-class PpcSubscriptionMessage extends AbstractPpcMessage
+class PpcAfficheSubscriptionMessage extends AbstractPpcMessage
 {
     use ArrayEmailTrait;
 
@@ -12,7 +12,7 @@ class PpcSubscriptionMessage extends AbstractPpcMessage
 
     public function getEventIdentity()
     {
-        return 'ppcSubscription';
+        return 'ppcAfficheSubscription';
     }
 
     public function isValid()
@@ -34,7 +34,7 @@ class PpcSubscriptionMessage extends AbstractPpcMessage
     /**
      * @param string $name
      *
-     * @return PpcSubscriptionMessage
+     * @return PpcAfficheSubscriptionMessage
      */
     public function setName($name)
     {
