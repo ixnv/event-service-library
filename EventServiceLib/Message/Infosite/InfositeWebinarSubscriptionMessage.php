@@ -11,10 +11,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     use LocalizationTrait;
 
-    protected $webinarName;
+
     protected $phone;
     protected $email;
     protected $webinarType;
+    protected $webinarName;
     protected $addingDate;
     protected $startDateTime;
     protected $formData;

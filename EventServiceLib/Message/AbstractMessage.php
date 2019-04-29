@@ -2,11 +2,6 @@
 
 namespace EventServiceLib\Message;
 
-
-/**
- * Class AbstractMessage
- * @package EventServiceLib\Message
- */
 abstract class AbstractMessage
 {
 
@@ -14,6 +9,10 @@ abstract class AbstractMessage
      * @var array
      */
     protected $orphanFields = [];
+
+    protected $messageVersion = '0.0.1';
+
+    protected $messageUniqId = '';
 
     /**
      * Test method to restore message state.
@@ -84,6 +83,22 @@ abstract class AbstractMessage
         }
 
         return false;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessageVersion()
+    {
+        return $this->messageVersion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessageUniqId()
+    {
+        return $this->messageUniqId;
     }
 
 }
