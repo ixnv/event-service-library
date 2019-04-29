@@ -16,6 +16,7 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     protected $email;
     protected $webinarType;
     protected $webinarName;
+    protected $subscriberName;
     protected $addingDate;
     protected $startDateTime;
     protected $formData;
@@ -156,6 +157,26 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     public function setFormData($formData)
     {
         $this->formData = $formData;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubscriberName()
+    {
+        return $this->subscriberName;
+    }
+
+    /**
+     * @param string $subscriberName
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setSubscriberName($subscriberName)
+    {
+        $this->subscriberName = $subscriberName;
 
         return $this;
     }
