@@ -11,6 +11,8 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     use LocalizationTrait;
 
+    protected $webinarName;
+    protected $phone;
     protected $email;
     protected $webinarType;
     protected $addingDate;
@@ -91,6 +93,46 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     public function setStartDateTime($startDateTime)
     {
         $this->startDateTime = $startDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebinarName()
+    {
+        return $this->webinarName;
+    }
+
+    /**
+     * @param string $webinarName
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setWebinarName($webinarName)
+    {
+        $this->webinarName = $webinarName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
 
         return $this;
     }
