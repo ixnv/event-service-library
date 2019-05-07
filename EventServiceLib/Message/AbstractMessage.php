@@ -10,8 +10,6 @@ abstract class AbstractMessage
      */
     protected $orphanFields = [];
 
-    protected $messageVersion = '0.0.1';
-
     protected $messageUniqId = '';
 
     /**
@@ -83,14 +81,6 @@ abstract class AbstractMessage
         }
 
         return false;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMessageVersion()
-    {
-        return $this->messageVersion;
     }
 
     /**
