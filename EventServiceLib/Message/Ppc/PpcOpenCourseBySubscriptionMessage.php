@@ -23,7 +23,6 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
             $this->courseName,
             $this->courseUrl,
             $this->emailMarkup,
-            $this->isComplexCourse
         ]);
     }
 
