@@ -16,7 +16,7 @@ class EventDispatcherTest extends TestCase
     {
         $queueManagerInterface = \Phake::mock(QueueManagerInterface::class);
         \Phake::when($queueManagerInterface)->connectionIsAvailable->thenReturn(true);
-        $eventDispatcher       = new EventDispatcher($queueManagerInterface);
+        $eventDispatcher = new EventDispatcher($queueManagerInterface);
 
         $registrationMessage = new RegistrationMessage();
         $registrationMessage
@@ -36,6 +36,7 @@ class EventDispatcherTest extends TestCase
                 'registration_date' => date(DATE_ISO8601),
                 'elamaId'           => 120,
                 'orphanFields'      => [],
+                'messageUniqId'     => '',
                 'name'              => 'Name',
                 'elamaLogin'        => 'name@email.ru',
                 'email'             => ['name@email.ru'],

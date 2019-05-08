@@ -11,10 +11,15 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     use LocalizationTrait;
 
+
+    protected $phone;
     protected $email;
     protected $webinarType;
+    protected $webinarName;
+    protected $subscriberName;
     protected $addingDate;
     protected $startDateTime;
+    protected $formData;
 
     /**
      * @return string
@@ -86,6 +91,7 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $startDateTime
+     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setStartDateTime($startDateTime)
@@ -96,16 +102,96 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     }
 
     /**
+     * @return string
+     */
+    public function getWebinarName()
+    {
+        return $this->webinarName;
+    }
+
+    /**
+     * @param string $webinarName
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setWebinarName($webinarName)
+    {
+        $this->webinarName = $webinarName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFormData()
+    {
+        return $this->formData;
+    }
+
+    /**
+     * @param array $formData
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setFormData($formData)
+    {
+        $this->formData = $formData;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubscriberName()
+    {
+        return $this->subscriberName;
+    }
+
+    /**
+     * @param string $subscriberName
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setSubscriberName($subscriberName)
+    {
+        $this->subscriberName = $subscriberName;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isValid()
     {
         return !$this->hasEmpty([
-                $this->email,
-                $this->webinarType,
-                $this->addingDate,
-                $this->locale,
-            ]);
+            $this->email,
+            $this->webinarType,
+            $this->addingDate,
+            $this->locale,
+        ]);
     }
 
     /**
