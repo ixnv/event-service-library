@@ -1,7 +1,8 @@
 <?php
 
-namespace EventServiceLib\Message;
+namespace EventServiceLib\Message\Tender;
 
+use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
 class TenderNewClientMessage extends AbstractMessage
