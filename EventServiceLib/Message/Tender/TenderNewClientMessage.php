@@ -1,16 +1,12 @@
 <?php
 
-
 namespace EventServiceLib\Message;
 
-
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
-use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 
-class ClientAddMessage extends AbstractMessage
+class TenderNewClientMessage extends AbstractMessage
 {
 
-    use GetresponseMessageTrait;
     use ArrayEmailTrait;
 
     /**
@@ -18,7 +14,7 @@ class ClientAddMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'clientAdd';
+        return 'tenderNewClient';
     }
 
     /**
@@ -29,7 +25,6 @@ class ClientAddMessage extends AbstractMessage
 
         return !$this->hasEmpty([
             $this->email,
-            $this->name,
         ]);
 
     }
