@@ -2,12 +2,34 @@
 
 namespace EventServiceLib\Message;
 
-use EventServiceLib\Message\Traits\ArrayEmailTrait;
+use EventServiceLib\Message\Traits\LocalizationTrait;
 
 class TenderNewAgencyMessage extends AbstractMessage
 {
 
-    use ArrayEmailTrait;
+    use LocalizationTrait;
+
+    protected $email;
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     *
+     * @return TenderNewAgencyMessage
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
 
     /**
      * @return string
@@ -24,6 +46,7 @@ class TenderNewAgencyMessage extends AbstractMessage
     {
         return !$this->hasEmpty([
             $this->email,
+            $this->locale
         ]);
     }
 
