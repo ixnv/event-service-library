@@ -10,6 +10,7 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
 
     protected $email;
     protected $webinarId;
+    protected $webinarPlatformName;
 
     /**
      * @return string
@@ -52,6 +53,26 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
     }
 
     /**
+     * @return string
+     */
+    public function getWebinarPlatformName()
+    {
+        return $this->webinarPlatformName;
+    }
+
+    /**
+     * @param string $webinarPlatformName
+     *
+     * @return OptimoveAttendedWebinarMessage
+     */
+    public function setWebinarPlatformName($webinarPlatformName)
+    {
+        $this->webinarPlatformName = $webinarPlatformName;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isValid()
@@ -59,6 +80,7 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
         return !$this->hasEmpty([
             $this->email,
             $this->webinarId,
+            $this->webinarPlatformName
         ]);
     }
 
