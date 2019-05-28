@@ -32,6 +32,26 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
     }
 
     /**
+     * @return string
+     */
+    public function getWebinarId()
+    {
+        return $this->webinarId;
+    }
+
+    /**
+     * @param string $webinarId
+     *
+     * @return OptimoveAttendedWebinarMessage
+     */
+    public function setWebinarId($webinarId)
+    {
+        $this->webinarId = $webinarId;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isValid()
