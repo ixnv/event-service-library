@@ -16,6 +16,8 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     protected $email;
     protected $webinarType;
     protected $webinarName;
+    protected $webinarExternalId;
+    protected $webinarPlatformName;
     protected $subscriberName;
     protected $addingDate;
     protected $startDateTime;
@@ -177,6 +179,46 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     public function setSubscriberName($subscriberName)
     {
         $this->subscriberName = $subscriberName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebinarExternalId()
+    {
+        return $this->webinarExternalId;
+    }
+
+    /**
+     * @param string $webinarExternalId
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setWebinarExternalId($webinarExternalId)
+    {
+        $this->webinarExternalId = $webinarExternalId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebinarPlatformName()
+    {
+        return $this->webinarPlatformName;
+    }
+
+    /**
+     * @param string $webinarPlatformName
+     *
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setWebinarPlatformName($webinarPlatformName)
+    {
+        $this->webinarPlatformName = $webinarPlatformName;
 
         return $this;
     }
