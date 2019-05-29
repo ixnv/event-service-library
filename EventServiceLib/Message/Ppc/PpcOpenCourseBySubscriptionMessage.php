@@ -9,6 +9,7 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
     protected $courseName;
     protected $courseUrl;
     protected $emailMarkup;
+    protected $isComplexCourse;
 
     public function getEventIdentity()
     {
@@ -21,7 +22,7 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
             $this->courseId,
             $this->courseName,
             $this->courseUrl,
-            $this->emailMarkup
+            $this->emailMarkup,
         ]);
     }
 
@@ -101,6 +102,26 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
     public function setEmailMarkup($emailMarkup)
     {
         $this->emailMarkup = $emailMarkup;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsComplexCourse()
+    {
+        return $this->isComplexCourse;
+    }
+
+    /**
+     * @param bool $isComplexCourse
+     *
+     * @return PpcOpenCourseBySubscriptionMessage
+     */
+    public function setIsComplexCourse($isComplexCourse)
+    {
+        $this->isComplexCourse = $isComplexCourse;
 
         return $this;
     }
