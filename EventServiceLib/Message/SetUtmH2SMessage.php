@@ -2,7 +2,8 @@
 
 namespace EventServiceLib\Message;
 
-class SetBriefIoMessage extends AbstractMessage
+
+class SetUtmH2SMessage extends AbstractMessage
 {
     /** @var string */
     protected $brifIoId;
@@ -20,7 +21,7 @@ class SetBriefIoMessage extends AbstractMessage
 
     /**
      * @param string $brifIoId
-     * @return SetBriefIoMessage
+     * @return SetUtmH2SMessage
      */
     public function setBrifIoId($brifIoId)
     {
@@ -39,7 +40,7 @@ class SetBriefIoMessage extends AbstractMessage
 
     /**
      * @param string $briefIoSource
-     * @return SetBriefIoMessage
+     * @return SetUtmH2SMessage
      */
     public function setBriefIoSource($briefIoSource)
     {
@@ -49,13 +50,12 @@ class SetBriefIoMessage extends AbstractMessage
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->brifIoId,
-        ]);
+        return !empty($this->brifIoId);
     }
 
     public function getEventIdentity()
     {
-        return 'setBriefIoSource';
+        return 'setH2SSource';
     }
+
 }
