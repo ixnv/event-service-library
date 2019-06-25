@@ -5,7 +5,7 @@ namespace EventServiceLib\Message;
 class SetUtmBriefIoMessage extends AbstractMessage
 {
     /** @var string */
-    protected $brifIoId;
+    protected $elamaId;
 
     /** @var string */
     protected $briefIoSource;
@@ -13,18 +13,18 @@ class SetUtmBriefIoMessage extends AbstractMessage
     /**
      * @return string
      */
-    public function getBrifIoId()
+    public function getElamaId()
     {
-        return $this->brifIoId;
+        return $this->elamaId;
     }
 
     /**
-     * @param string $brifIoId
+     * @param string $elamaId
      * @return SetUtmBriefIoMessage
      */
-    public function setBrifIoId($brifIoId)
+    public function setElamaId($elamaId)
     {
-        $this->brifIoId = $brifIoId;
+        $this->elamaId = $elamaId;
 
         return $this;
     }
@@ -44,6 +44,7 @@ class SetUtmBriefIoMessage extends AbstractMessage
     public function setBriefIoSource($briefIoSource)
     {
         $this->briefIoSource = $briefIoSource;
+
         return $this;
     }
 

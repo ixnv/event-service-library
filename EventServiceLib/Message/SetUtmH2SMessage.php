@@ -6,7 +6,7 @@ namespace EventServiceLib\Message;
 class SetUtmH2SMessage extends AbstractMessage
 {
     /** @var string */
-    protected $brifIoId;
+    protected $elamaId;
 
     /** @var string */
     protected $briefIoSource;
@@ -14,18 +14,18 @@ class SetUtmH2SMessage extends AbstractMessage
     /**
      * @return string
      */
-    public function getBrifIoId()
+    public function getElamaId()
     {
-        return $this->brifIoId;
+        return $this->elamaId;
     }
 
     /**
-     * @param string $brifIoId
+     * @param string $elamaId
      * @return SetUtmH2SMessage
      */
-    public function setBrifIoId($brifIoId)
+    public function setElamaId($elamaId)
     {
-        $this->brifIoId = $brifIoId;
+        $this->elamaId = $elamaId;
 
         return $this;
     }
@@ -45,6 +45,7 @@ class SetUtmH2SMessage extends AbstractMessage
     public function setBriefIoSource($briefIoSource)
     {
         $this->briefIoSource = $briefIoSource;
+
         return $this;
     }
 
