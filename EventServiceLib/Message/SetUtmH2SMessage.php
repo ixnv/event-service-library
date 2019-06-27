@@ -21,6 +21,7 @@ class SetUtmH2SMessage extends AbstractMessage
 
     /**
      * @param string $elamaId
+     *
      * @return SetUtmH2SMessage
      */
     public function setElamaId($elamaId)
@@ -40,6 +41,7 @@ class SetUtmH2SMessage extends AbstractMessage
 
     /**
      * @param string $briefIoSource
+     *
      * @return SetUtmH2SMessage
      */
     public function setBriefIoSource($briefIoSource)

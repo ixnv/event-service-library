@@ -21,11 +21,13 @@ class SetRegistrationSourceMessage extends AbstractMessage
 
     /**
      * @param string $elamaId
+     *
      * @return SetRegistrationSourceMessage
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -39,11 +41,13 @@ class SetRegistrationSourceMessage extends AbstractMessage
 
     /**
      * @param string $registrationSource
+     *
      * @return SetRegistrationSourceMessage
      */
     public function setRegistrationSource($registrationSource)
     {
         $this->registrationSource = $registrationSource;
+
         return $this;
     }
 

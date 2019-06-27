@@ -20,6 +20,7 @@ class SetUtmBriefIoMessage extends AbstractMessage
 
     /**
      * @param string $elamaId
+     *
      * @return SetUtmBriefIoMessage
      */
     public function setElamaId($elamaId)
@@ -39,6 +40,7 @@ class SetUtmBriefIoMessage extends AbstractMessage
 
     /**
      * @param string $briefIoSource
+     *
      * @return SetUtmBriefIoMessage
      */
     public function setBriefIoSource($briefIoSource)
