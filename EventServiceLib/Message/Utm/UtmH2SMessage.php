@@ -1,18 +1,19 @@
 <?php
 
-namespace EventServiceLib\Message;
+namespace EventServiceLib\Message\Utm;
 
+use EventServiceLib\Message\AbstractMessage;
 
-class SetUtmH2SMessage extends AbstractMessage
+class UtmH2SMessage extends AbstractMessage
 {
-    /** @var string */
+    /** @var int */
     protected $elamaId;
 
     /** @var string */
     protected $briefIoSource;
 
     /**
-     * @return string
+     * @return int
      */
     public function getElamaId()
     {
@@ -20,9 +21,9 @@ class SetUtmH2SMessage extends AbstractMessage
     }
 
     /**
-     * @param string $elamaId
+     * @param int $elamaId
      *
-     * @return SetUtmH2SMessage
+     * @return UtmH2SMessage
      */
     public function setElamaId($elamaId)
     {
@@ -42,7 +43,7 @@ class SetUtmH2SMessage extends AbstractMessage
     /**
      * @param string $briefIoSource
      *
-     * @return SetUtmH2SMessage
+     * @return UtmH2SMessage
      */
     public function setBriefIoSource($briefIoSource)
     {
@@ -58,7 +59,7 @@ class SetUtmH2SMessage extends AbstractMessage
 
     public function getEventIdentity()
     {
-        return 'setH2SSource';
+        return 'utmH2S';
     }
 
 }
