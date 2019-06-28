@@ -54,7 +54,7 @@ class UtmBriefIoMessage extends AbstractMessage
 
     public function isValid()
     {
-        return !empty($this->brifIoId);
+        return !$this->hasEmpty([$this->briefIoId, $this->briefIoSource]);
     }
 
     public function getEventIdentity()

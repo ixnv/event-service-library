@@ -7,17 +7,17 @@ use EventServiceLib\Message\AbstractMessage;
 class UtmH2SMessage extends AbstractMessage
 {
     /** @var int */
-    protected $briefIoId;
+    protected $briefH2SId;
 
     /** @var string */
-    protected $briefIoSource;
+    protected $briefH2SSource;
 
     /**
      * @return int
      */
-    public function getBriefIoId()
+    public function getBriefH2SId()
     {
-        return $this->briefIoId;
+        return $this->briefH2SId;
     }
 
     /**
@@ -25,9 +25,9 @@ class UtmH2SMessage extends AbstractMessage
      *
      * @return UtmH2SMessage
      */
-    public function setBriefIoId($elamaId)
+    public function setBriefH2SId($elamaId)
     {
-        $this->briefIoId = $elamaId;
+        $this->briefH2SId = $elamaId;
 
         return $this;
     }
@@ -35,26 +35,26 @@ class UtmH2SMessage extends AbstractMessage
     /**
      * @return string
      */
-    public function getBriefIoSource()
+    public function getBriefH2SSource()
     {
-        return $this->briefIoSource;
+        return $this->briefH2SSource;
     }
 
     /**
-     * @param string $briefIoSource
+     * @param string $briefH2SSource
      *
      * @return UtmH2SMessage
      */
-    public function setBriefIoSource($briefIoSource)
+    public function setBriefH2SSource($briefH2SSource)
     {
-        $this->briefIoSource = $briefIoSource;
+        $this->briefH2SSource = $briefH2SSource;
 
         return $this;
     }
 
     public function isValid()
     {
-        return !empty($this->brifIoId);
+        return !$this->hasEmpty([$this->briefH2SId, $this->briefH2SSource]);
     }
 
     public function getEventIdentity()

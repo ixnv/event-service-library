@@ -54,13 +54,12 @@ class UtmRegistrationMessage extends AbstractMessage
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-        ]);
+        return !$this->hasEmpty([$this->elamaId, $this->registrationSource]);
     }
 
     function getEventIdentity()
     {
         return 'utmRegistration';
     }
+
 }
