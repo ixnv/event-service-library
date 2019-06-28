@@ -7,7 +7,7 @@ use EventServiceLib\Message\AbstractMessage;
 class UtmH2SMessage extends AbstractMessage
 {
     /** @var int */
-    protected $elamaId;
+    protected $briefIoId;
 
     /** @var string */
     protected $briefIoSource;
@@ -15,9 +15,9 @@ class UtmH2SMessage extends AbstractMessage
     /**
      * @return int
      */
-    public function getElamaId()
+    public function getBriefIoId()
     {
-        return $this->elamaId;
+        return $this->briefIoId;
     }
 
     /**
@@ -25,9 +25,9 @@ class UtmH2SMessage extends AbstractMessage
      *
      * @return UtmH2SMessage
      */
-    public function setElamaId($elamaId)
+    public function setBriefIoId($elamaId)
     {
-        $this->elamaId = $elamaId;
+        $this->briefIoId = $elamaId;
 
         return $this;
     }
