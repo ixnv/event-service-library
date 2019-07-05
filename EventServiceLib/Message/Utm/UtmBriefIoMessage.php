@@ -21,13 +21,13 @@ class UtmBriefIoMessage extends AbstractMessage
     }
 
     /**
-     * @param int $elamaId
+     * @param int $briefIoId
      *
      * @return UtmBriefIoMessage
      */
-    public function setBriefIoId($elamaId)
+    public function setBriefIoId($briefIoId)
     {
-        $this->briefIoId = $elamaId;
+        $this->briefIoId = $briefIoId;
 
         return $this;
     }

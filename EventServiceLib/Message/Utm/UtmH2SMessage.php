@@ -21,13 +21,13 @@ class UtmH2SMessage extends AbstractMessage
     }
 
     /**
-     * @param int $elamaId
+     * @param int $briefH2SId
      *
      * @return UtmH2SMessage
      */
-    public function setBriefH2SId($elamaId)
+    public function setBriefH2SId($briefH2SId)
     {
-        $this->briefH2SId = $elamaId;
+        $this->briefH2SId = $briefH2SId;
 
         return $this;
     }
