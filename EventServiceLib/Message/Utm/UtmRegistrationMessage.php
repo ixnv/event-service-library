@@ -1,18 +1,19 @@
 <?php
 
-namespace EventServiceLib\Message;
+namespace EventServiceLib\Message\Utm;
 
+use EventServiceLib\Message\AbstractMessage;
 
-class SetRegistrationSourceMessage extends AbstractMessage
+class UtmRegistrationMessage extends AbstractMessage
 {
-    /** @var string */
+    /** @var int */
     protected $elamaId;
 
     /** @var string */
     protected $registrationSource;
 
     /**
-     * @return string
+     * @return int
      */
     public function getElamaId()
     {
@@ -20,12 +21,14 @@ class SetRegistrationSourceMessage extends AbstractMessage
     }
 
     /**
-     * @param string $elamaId
-     * @return SetRegistrationSourceMessage
+     * @param int $elamaId
+     *
+     * @return UtmRegistrationMessage
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -39,23 +42,24 @@ class SetRegistrationSourceMessage extends AbstractMessage
 
     /**
      * @param string $registrationSource
-     * @return SetRegistrationSourceMessage
+     *
+     * @return UtmRegistrationMessage
      */
     public function setRegistrationSource($registrationSource)
     {
         $this->registrationSource = $registrationSource;
+
         return $this;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-        ]);
+        return !$this->hasEmpty([$this->elamaId, $this->registrationSource]);
     }
 
     function getEventIdentity()
     {
-        return 'setRegistrationSource';
+        return 'utmRegistration';
     }
+
 }
