@@ -1,14 +1,13 @@
 <?php
 
-
 namespace EventServiceLib\Message\Notificator;
-
 
 use EventServiceLib\Message\AbstractMessage;
 
 class UserLeaveH2SForm extends AbstractMessage
 {
     public $data = [];
+    public $elamaId;
 
     /**
      * @return array
@@ -31,8 +30,18 @@ class UserLeaveH2SForm extends AbstractMessage
         return true;
     }
 
-    function getEventIdentity()
+    public function getEventIdentity()
     {
         return 'leaveH2SForm';
+    }
+
+    public function setElamaId(int $elamaId)
+    {
+        $this->elamaId = $elamaId;
+    }
+
+    public function getElamaId(): int
+    {
+        return $this->elamaId;
     }
 }
