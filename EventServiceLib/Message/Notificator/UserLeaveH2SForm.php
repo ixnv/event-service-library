@@ -6,28 +6,11 @@ use EventServiceLib\Message\AbstractMessage;
 
 class UserLeaveH2SForm extends AbstractMessage
 {
-    public $data = [];
     public $elamaId;
-
-    /**
-     * @return array
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-    /**
-     * @param array $data
-     */
-    public function setData($data)
-    {
-        $this->data = $data;
-    }
 
     public function isValid()
     {
-        return true;
+        return !$this->hasEmpty([$this->elamaId]);
     }
 
     public function getEventIdentity()
@@ -44,4 +27,5 @@ class UserLeaveH2SForm extends AbstractMessage
     {
         return $this->elamaId;
     }
+
 }
