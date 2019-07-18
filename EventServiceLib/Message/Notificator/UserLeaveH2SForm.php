@@ -8,6 +8,9 @@ class UserLeaveH2SForm extends AbstractMessage
 {
     public $elamaId;
 
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty([$this->elamaId]);
@@ -18,12 +21,18 @@ class UserLeaveH2SForm extends AbstractMessage
         return 'leaveH2SForm';
     }
 
-    public function setElamaId(int $elamaId)
+    /**
+     * @param int $elamaId
+     */
+    public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
     }
 
-    public function getElamaId(): int
+    /**
+     * @return int
+     */
+    public function getElamaId()
     {
         return $this->elamaId;
     }
