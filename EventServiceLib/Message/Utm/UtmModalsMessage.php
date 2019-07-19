@@ -4,7 +4,7 @@ namespace EventServiceLib\Message\Utm;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class InfositeModalsMessage extends AbstractMessage
+class UtmModalsMessage extends AbstractMessage
 {
     /** @var int */
     protected $elamaId;
@@ -23,7 +23,7 @@ class InfositeModalsMessage extends AbstractMessage
     /**
      * @param int $elamaId
      *
-     * @return InfositeModalsMessage
+     * @return UtmModalsMessage
      */
     public function setElamaId($elamaId)
     {
