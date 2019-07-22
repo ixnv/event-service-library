@@ -2,7 +2,9 @@
 
 namespace EventServiceLib\Message\Mailchimp;
 
-class MailchimpUsersMessage
+use EventServiceLib\Message\AbstractMessage;
+
+class MailchimpUsersMessage extends AbstractMessage
 {
     public $elamaId;
 
@@ -20,6 +22,22 @@ class MailchimpUsersMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty([$this->elamaId]);
+    }
+
+    /**
+     * @return string
+     */
+    function getEventIdentity()
+    {
+        return 'mailchimpUsers';
     }
 
 }
