@@ -7,6 +7,40 @@ use EventServiceLib\Message\AbstractMessage;
 class MailchimpUsersMessage extends AbstractMessage
 {
     public $elamaId;
+    public $interestCategory;
+    public $interest;
+
+    /**
+     * @return string
+     */
+    public function getInterest()
+    {
+        return $this->interest;
+    }
+
+    /**
+     * @param string $interest
+     */
+    public function setInterest($interest)
+    {
+        $this->interest = $interest;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInterestCategory()
+    {
+        return $this->interestCategory;
+    }
+
+    /**
+     * @param string $interestCategory
+     */
+    public function setInterestCategory($interestCategory)
+    {
+        $this->interestCategory = $interestCategory;
+    }
 
     /**
      * @return int
