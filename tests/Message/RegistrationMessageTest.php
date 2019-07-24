@@ -35,7 +35,7 @@ class RegistrationMessageTest extends TestCase
             ->setElamaLogin('1')
             ->setName('1')
             ->setEmail('1')
-            ->setReferrerLink('a54784f37527d4b7480cdd8d503c80bf');
+            ->setReferralLink('a54784f37527d4b7480cdd8d503c80bf');
 
         $this->assertTrue($message->isValid());
     }

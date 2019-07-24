@@ -33,7 +33,7 @@ class RegistrationMessage extends AbstractMessage
     protected $accountType;
     protected $timezone;
     protected $splitTestSegment = null;
-    protected $referrerLink = null;
+    protected $referralLink = null;
 
     /**
      * @return string
@@ -164,18 +164,18 @@ class RegistrationMessage extends AbstractMessage
     /**
      * @return string|null
      */
-    public function getReferrerLink()
+    public function getReferralLink()
     {
-        return $this->referrerLink;
+        return $this->referralLink;
     }
 
     /**
-     * @param string $referrerLink
+     * @param string $referralLink
      * @return RegistrationMessage
      */
-    public function setReferrerLink($referrerLink)
+    public function setReferralLink($referralLink)
     {
-        $this->referrerLink = $referrerLink;
+        $this->referralLink = $referralLink;
 
         return $this;
     }
