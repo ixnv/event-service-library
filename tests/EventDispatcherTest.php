@@ -36,12 +36,12 @@ class EventDispatcherTest extends TestCase
             'fields'       => [
                 'registration_date' => date(DATE_ISO8601),
                 'elamaId'           => 120,
+                'referralLink'      => 'a54784f37527d4b7480cdd8d503c80bf',
                 'orphanFields'      => [],
                 'messageUniqId'     => '',
                 'name'              => 'Name',
                 'elamaLogin'        => 'name@email.ru',
                 'email'             => ['name@email.ru'],
-                'referralLink'      => 'a54784f37527d4b7480cdd8d503c80bf'
             ],
         ];
         $expectedMessage = json_encode($expectedMessage);
