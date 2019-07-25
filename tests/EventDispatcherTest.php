@@ -24,7 +24,8 @@ class EventDispatcherTest extends TestCase
             ->setElamaLogin('name@email.ru')
             ->setElamaId(120)
             ->setName('Name')
-            ->setRegistrationDate(date(DATE_ISO8601));
+            ->setRegistrationDate(date(DATE_ISO8601))
+            ->setReferralLink('a54784f37527d4b7480cdd8d503c80bf');
 
         $eventDispatcher->dispatchMessage($registrationMessage);
 
@@ -40,6 +41,7 @@ class EventDispatcherTest extends TestCase
                 'name'              => 'Name',
                 'elamaLogin'        => 'name@email.ru',
                 'email'             => ['name@email.ru'],
+                'referralLink'      => 'a54784f37527d4b7480cdd8d503c80bf'
             ],
         ];
         $expectedMessage = json_encode($expectedMessage);
