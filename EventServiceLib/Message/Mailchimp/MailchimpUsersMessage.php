@@ -9,6 +9,27 @@ class MailchimpUsersMessage extends AbstractMessage
     public $elamaId;
     public $interestCategory;
     public $interest;
+    public $carrotquestEvent;
+
+    /**
+     * @return string
+     */
+    public function getCarrotquestEvent()
+    {
+        return $this->carrotquestEvent;
+    }
+
+    /**
+     * @param string $carrotquestEvent
+     *
+     * @return $this
+     */
+    public function setCarrotquestEvent($carrotquestEvent)
+    {
+        $this->carrotquestEvent = $carrotquestEvent;
+
+        return $this;
+    }
 
     /**
      * @return string
@@ -20,10 +41,14 @@ class MailchimpUsersMessage extends AbstractMessage
 
     /**
      * @param string $interest
+     *
+     * @return $this
      */
     public function setInterest($interest)
     {
         $this->interest = $interest;
+
+        return $this;
     }
 
     /**
@@ -36,10 +61,14 @@ class MailchimpUsersMessage extends AbstractMessage
 
     /**
      * @param string $interestCategory
+     *
+     * @return $this
      */
     public function setInterestCategory($interestCategory)
     {
         $this->interestCategory = $interestCategory;
+
+        return $this;
     }
 
     /**
@@ -52,10 +81,14 @@ class MailchimpUsersMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
+     *
+     * @return $this
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
+        return $this;
     }
 
     /**
