@@ -11,17 +11,13 @@ class FilledOutFormMessage extends AbstractMessage
     const FORM_CALL_ME = 4;
     const FORM_PARTNERS = 5;
     const FORM_BRIEF_CREATE_CAMPAIGN = 6;
+    const FORM_SERVICES_GET_CONSULTATION = 7;
 
     protected $email;
-
     protected $phone;
-
     protected $name;
-
     protected $formName;
-
     protected $formData;
-
     protected $formId;
 
     /**
