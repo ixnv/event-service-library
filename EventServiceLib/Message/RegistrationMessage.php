@@ -22,9 +22,6 @@ class RegistrationMessage extends AbstractMessage
     const AMO_ACCOUNT_TYPE_PROXY_CLIENT = 'proxy_client'; // Клиент посредника
     const AMO_ACCOUNT_TYPE_IO = 'io'; // ИО
 
-    # источник регистрации (form_id), по умолчанию(значение null) - Регистрация на сайте
-    const CONTACT_SOURCE_COURSE_PAGE = 'course_page'; // Регистрация на сайте (Курс по теории)
-
     /** @deprecated just use 3 letter country codes  */
     const COUNTRY_RU = 'rus';
     /** @deprecated  */
