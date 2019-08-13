@@ -49,7 +49,6 @@ class WorksectionCreateH2SFinishedMessage extends AbstractMessage
         return $this;
     }
 
-
     /**
      * @return int
      */
