@@ -35,6 +35,7 @@ class RegistrationMessage extends AbstractMessage
     protected $splitTestSegment = null;
     protected $referralLink = null;
     protected $contactSource;
+    protected $googleClientId;
 
     /**
      * @return string
@@ -198,6 +199,26 @@ class RegistrationMessage extends AbstractMessage
     public function setContactSource($contactSource)
     {
         $this->contactSource = $contactSource;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGoogleClientId()
+    {
+        return $this->googleClientId;
+    }
+
+    /**
+     * @param string $googleClientId
+     *
+     * @return RegistrationMessage
+     */
+    public function setGoogleClientId($googleClientId)
+    {
+        $this->googleClientId = $googleClientId;
 
         return $this;
     }
