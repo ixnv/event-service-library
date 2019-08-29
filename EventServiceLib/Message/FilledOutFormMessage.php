@@ -158,7 +158,7 @@ class FilledOutFormMessage extends AbstractMessage
     }
 
     /**
-     * @param $filledFormId
+     * @param int $filledFormId
      *
      * @return FilledOutFormMessage
      */
