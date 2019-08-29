@@ -6,33 +6,11 @@ use EventServiceLib\Message\AbstractMessage;
 
 class UtmModalsMessage extends AbstractMessage
 {
-    /** @var int */
-    protected $elamaId;
-
     /** @var string */
     protected $modalSource;
+
     /** @var int */
     protected $filledFormId;
-
-    /**
-     * @return int
-     */
-    public function getElamaId()
-    {
-        return $this->elamaId;
-    }
-
-    /**
-     * @param int $elamaId
-     *
-     * @return UtmModalsMessage
-     */
-    public function setElamaId($elamaId)
-    {
-        $this->elamaId = $elamaId;
-
-        return $this;
-    }
 
     /**
      * @return string
