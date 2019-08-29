@@ -11,6 +11,8 @@ class UtmModalsMessage extends AbstractMessage
 
     /** @var string */
     protected $modalSource;
+    /** @var int */
+    protected $filledFormId;
 
     /**
      * @return int
@@ -48,6 +50,26 @@ class UtmModalsMessage extends AbstractMessage
     public function setModalSource($modalSource)
     {
         $this->modalSource = $modalSource;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFilledFormId()
+    {
+        return $this->filledFormId;
+    }
+
+    /**
+     * @param $filledFormId
+     *
+     * @return $this
+     */
+    public function setFilledFormId($filledFormId)
+    {
+        $this->filledFormId = $filledFormId;
 
         return $this;
     }
