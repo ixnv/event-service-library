@@ -57,7 +57,7 @@ class UtmModalsMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([$this->elamaId, $this->modalSource]);
+        return !$this->hasEmpty([$this->filledFormId, $this->modalSource]);
     }
 
     public function getEventIdentity()
