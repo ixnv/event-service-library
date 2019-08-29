@@ -19,6 +19,7 @@ class FilledOutFormMessage extends AbstractMessage
     protected $formName;
     protected $formData;
     protected $formId;
+    protected $filledFormId;
 
     /**
      * @return string
@@ -144,6 +145,26 @@ class FilledOutFormMessage extends AbstractMessage
     public function setFormId($formId)
     {
         $this->formId = $formId;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFilledFormId()
+    {
+        return $this->filledFormId;
+    }
+
+    /**
+     * @param $filledFormId
+     *
+     * @return FilledOutFormMessage
+     */
+    public function setFilledFormId($filledFormId)
+    {
+        $this->filledFormId = $filledFormId;
 
         return $this;
     }
