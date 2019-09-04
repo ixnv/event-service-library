@@ -4,10 +4,10 @@ namespace EventServiceLib\Message\Utm;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class UtmModalsMessage extends AbstractMessage
+class UtmIoConsultationMessage extends AbstractMessage
 {
     /** @var string */
-    protected $modalSource;
+    protected $source;
 
     /** @var int */
     protected $filledFormId;
@@ -15,19 +15,19 @@ class UtmModalsMessage extends AbstractMessage
     /**
      * @return string
      */
-    public function getModalSource()
+    public function getSource()
     {
-        return $this->modalSource;
+        return $this->source;
     }
 
     /**
-     * @param $modalSource
+     * @param $source
      *
      * @return $this
      */
-    public function setModalSource($modalSource)
+    public function setSource($source)
     {
-        $this->modalSource = $modalSource;
+        $this->source = $source;
 
         return $this;
     }
@@ -57,12 +57,12 @@ class UtmModalsMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([$this->filledFormId, $this->modalSource]);
+        return !$this->hasEmpty([$this->filledFormId, $this->source]);
     }
 
     public function getEventIdentity()
     {
-        return 'InfositeModals';
+        return 'utmIoConsultation';
     }
 
 }
