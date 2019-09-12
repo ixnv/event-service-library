@@ -13,7 +13,7 @@ class ManagerAssignmentMessage extends AbstractMessage
      *
      * @var int
      */
-    private $elamaId;
+    protected $elamaId;
 
     /**
      * Идентификатор назначенного менеджера в eLama,
@@ -21,7 +21,7 @@ class ManagerAssignmentMessage extends AbstractMessage
      *
      * @var int|null
      */
-    private $managerId;
+    protected $managerId;
 
     /**
      * @return string
