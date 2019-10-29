@@ -4,7 +4,7 @@ namespace EventServiceLib\Message\Report;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class GetReportTrial extends AbstractMessage
+class GetReportTrialMessage extends AbstractMessage
 {
 
     protected $elamaId;
@@ -19,7 +19,7 @@ class GetReportTrial extends AbstractMessage
 
     /**
      * @param int $elamaId
-     * @return GetReportTrial
+     * @return GetReportTrialMessage
      */
     public function setElamaId($elamaId)
     {
