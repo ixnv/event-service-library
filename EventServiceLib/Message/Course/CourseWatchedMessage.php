@@ -1,6 +1,6 @@
 <?php
 
-namespace EventServiceLib\Message\Ppc;
+namespace EventServiceLib\Message\Course;
 
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
