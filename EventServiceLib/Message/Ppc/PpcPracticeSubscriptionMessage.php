@@ -22,8 +22,7 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
         return !$this->hasEmpty([
             $this->email,
             $this->practiceId,
-            $this->practiceName,
-            $this->practiceSubscriptionEnabled
+            $this->practiceName
         ]);
     }
 
