@@ -14,7 +14,7 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
     public function getEventIdentity()
     {
-        return 'ppcCourseSubscription';
+        return 'ppcPracticeSubscription';
     }
 
     public function isValid()
