@@ -8,9 +8,9 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 {
     use ArrayEmailTrait;
 
-    private $practiceId;
-    private $practiceName;
-    private $practiceSubscriptionEnabled;
+    protected $practiceId;
+    protected $practiceName;
+    protected $practiceSubscriptionEnabled;
 
     public function getEventIdentity()
     {
