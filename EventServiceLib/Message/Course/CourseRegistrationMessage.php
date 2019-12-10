@@ -10,6 +10,8 @@ class CourseRegistrationMessage extends AbstractMessage
     use ArrayEmailTrait;
 
     protected $courseTag;
+    protected $name;
+    protected $phone;
 
     public function getEventIdentity()
     {
@@ -20,7 +22,8 @@ class CourseRegistrationMessage extends AbstractMessage
     {
         return !$this->hasEmpty([
             $this->email,
-            $this->courseTag
+            $this->courseTag,
+            $this->name
         ]);
     }
 
@@ -39,6 +42,44 @@ class CourseRegistrationMessage extends AbstractMessage
     public function setCourseTag($courseTag)
     {
         $this->courseTag = $courseTag;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return CourseRegistrationMessage
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return CourseRegistrationMessage
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
 
         return $this;
     }
