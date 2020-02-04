@@ -1,6 +1,6 @@
 <?php
 
-namespace EventServiceLib\Message\Report;
+namespace EventServiceLib\Message\Lingvo;
 
 use EventServiceLib\Message\AbstractMessage;
 
@@ -8,7 +8,7 @@ class LingvoActivateTrialMessage extends AbstractMessage
 {
 
     protected $elamaId;
-    protected $unit;
+    protected $unit; // ss\sa
     protected $activateTrialDate; // Дата подключение триала
     protected $hasProject = false;
     protected $hasGeneration = false;
