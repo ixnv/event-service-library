@@ -8,9 +8,9 @@ class AccountAttachMessage extends AbstractMessage
 {
 
     protected $elamaId;
-    protected $advPlatform;
+    protected $advSystem;
+    protected $accountType;
     protected $email;
-    protected $isExternal = false;
 
     /**
      * @return int
@@ -34,20 +34,36 @@ class AccountAttachMessage extends AbstractMessage
     /**
      * @return string
      */
-    public function getAdvPlatform()
+    public function getAdvSystem()
     {
-        return $this->advPlatform;
+        return $this->advSystem;
     }
 
     /**
-     * @param string $advPlatform
+     * @param string $advSystem
      * @return AccountAttachMessage
      */
-    public function setAdvPlatform($advPlatform)
+    public function setAdvSystem($advSystem)
     {
-        $this->advPlatform = $advPlatform;
+        $this->advSystem = $advSystem;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccountType()
+    {
+        return $this->accountType;
+    }
+
+    /**
+     * @param string $accountType
+     */
+    public function setAccountType($accountType)
+    {
+        $this->accountType = $accountType;
     }
 
     /**
@@ -70,31 +86,11 @@ class AccountAttachMessage extends AbstractMessage
     }
 
     /**
-     * @return bool
-     */
-    public function isExternal()
-    {
-        return $this->isExternal;
-    }
-
-    /**
-     * @param bool $isExternal
-     * @return AccountAttachMessage
-     */
-    public function setIsExternal($isExternal)
-    {
-        $this->isExternal = $isExternal;
-
-        return $this;
-    }
-
-
-    /**
      * @return string
      */
     function getEventIdentity()
     {
-        return 'accountAttachTrial';
+        return 'accountAttach';
     }
 
     /**
@@ -104,8 +100,8 @@ class AccountAttachMessage extends AbstractMessage
     {
         return !$this->hasEmpty([
             $this->elamaId,
-            $this->advPlatform
+            $this->accountType,
+            $this->advSystem
         ]);
     }
-
 }
