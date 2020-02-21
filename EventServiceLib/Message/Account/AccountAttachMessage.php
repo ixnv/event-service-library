@@ -6,7 +6,6 @@ use EventServiceLib\Message\AbstractMessage;
 
 class AccountAttachMessage extends AbstractMessage
 {
-
     protected $elamaId;
     protected $advSystem;
     protected $accountType;
@@ -60,10 +59,13 @@ class AccountAttachMessage extends AbstractMessage
 
     /**
      * @param string $accountType
+     * @return AccountAttachMessage
      */
     public function setAccountType($accountType)
     {
         $this->accountType = $accountType;
+
+        return $this;
     }
 
     /**
