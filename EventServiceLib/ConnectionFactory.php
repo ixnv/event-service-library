@@ -1,8 +1,6 @@
 <?php
 
-
 namespace EventServiceLib;
-
 
 use EventServiceLib\Exceptions\EventServiceException;
 use Exception;
@@ -46,8 +44,7 @@ class ConnectionFactory
         $context = null,
         $keepalive = false,
         $heartbeat = 0
-    )
-    {
+    ) {
         try {
             $connection = new AMQPStreamConnection(
                 $host,
