@@ -17,15 +17,54 @@ class ConnectionFactory
      * @param string $user
      * @param string $password
      * @param string $vHost
+     * @param bool $insist
+     * @param string $loginMethod
+     * @param null $loginResponse
+     * @param string $locale
+     * @param int $connectionTimeout
+     * @param int $readWriteTimeout
+     * @param null $context
+     * @param bool $keepalive
+     * @param int $heartbeat
      *
      * @return AMQPStreamConnection
      * @throws EventServiceException
      * @throws Exception
      */
-    public function createAMQPConnection($host, $port, $user, $password, $vHost)
+    public function createAMQPConnection(
+        $host,
+        $port,
+        $user,
+        $password,
+        $vHost,
+        $insist = false,
+        $loginMethod = 'AMQPLAIN',
+        $loginResponse = null,
+        $locale = 'en_US',
+        $connectionTimeout = 3,
+        $readWriteTimeout = 3,
+        $context = null,
+        $keepalive = false,
+        $heartbeat = 0
+    )
     {
         try {
-            $connection = new AMQPStreamConnection($host, $port, $user, $password, $vHost);
+            $connection = new AMQPStreamConnection(
+                $host,
+                $port,
+                $user,
+                $password,
+                $vHost,
+                $insist,
+                $loginMethod,
+                $loginResponse,
+                $locale,
+                $connectionTimeout,
+                $readWriteTimeout,
+                $context,
+                $keepalive,
+                $heartbeat
+            );
         } catch (Exception $e) {
             $this->handleAMQPException($e);
         }
