@@ -32,8 +32,8 @@ class RegistrationMessage extends AbstractMessage
     protected $phone;
     protected $accountType;
     protected $timezone;
-    protected $splitTestSegment = null;
-    protected $referralLink = null;
+    protected $splitTestSegment;
+    protected $referralLink;
     protected $contactSource;
     protected $googleClientId;
 
@@ -46,7 +46,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRegistrationDate()
     {
@@ -54,7 +54,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $registration_date
+     * @param string $registration_date
      *
      * @return RegistrationMessage
      */
@@ -66,7 +66,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getElamaId()
     {
@@ -74,7 +74,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param $elamaId
+     * @param int $elamaId
      *
      * @return RegistrationMessage
      */
@@ -86,7 +86,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
     public function getPhone()
     {
@@ -94,7 +94,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param $phone
+     * @param string $phone
      *
      * @return RegistrationMessage
      */
@@ -106,7 +106,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
     public function getAccountType()
     {
@@ -114,7 +114,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param $accountType
+     * @param string $accountType
      *
      * @return RegistrationMessage
      */
@@ -126,7 +126,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
     public function getTimezone()
     {
@@ -134,7 +134,7 @@ class RegistrationMessage extends AbstractMessage
     }
 
     /**
-     * @param $timezone
+     * @param string $timezone
      * @return $this
      */
     public function setTimezone($timezone)
@@ -231,7 +231,7 @@ class RegistrationMessage extends AbstractMessage
         return !$this->hasEmpty([
                 $this->email,
                 $this->elamaLogin,
-                $this->name,
+                $this->country,
                 $this->registration_date,
                 $this->elamaId,
             ])
