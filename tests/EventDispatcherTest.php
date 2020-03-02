@@ -22,6 +22,7 @@ class EventDispatcherTest extends TestCase
         $registrationMessage
             ->setEmail('name@email.ru')
             ->setElamaLogin('name@email.ru')
+            ->setCountry('rus')
             ->setElamaId(120)
             ->setName('Name')
             ->setRegistrationDate(date(DATE_ISO8601))
@@ -42,6 +43,7 @@ class EventDispatcherTest extends TestCase
                 'name'              => 'Name',
                 'elamaLogin'        => 'name@email.ru',
                 'email'             => ['name@email.ru'],
+                'country'           => 'rus'
             ],
         ];
         $expectedMessage = json_encode($expectedMessage);
