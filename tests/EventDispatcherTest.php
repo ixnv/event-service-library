@@ -43,6 +43,7 @@ class EventDispatcherTest extends TestCase
                 'name'              => 'Name',
                 'elamaLogin'        => 'name@email.ru',
                 'email'             => ['name@email.ru'],
+                'country'           => 'rus'
             ],
         ];
         $expectedMessage = json_encode($expectedMessage);
