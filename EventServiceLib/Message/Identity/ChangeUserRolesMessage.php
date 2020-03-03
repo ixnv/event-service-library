@@ -103,7 +103,6 @@ class ChangeUserRolesMessage extends AbstractMessage
         return !$this->hasEmpty([
             $this->email,
             $this->userId,
-            $this->newRoles,
         ]);
     }
 }
