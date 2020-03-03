@@ -116,7 +116,7 @@ class LoginUserMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'removeUser';
+        return 'loginUser';
     }
 
     /**
