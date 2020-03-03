@@ -1,81 +1,94 @@
 <?php
 
-namespace EventServiceLib\Message;
+namespace EventServiceLib\Message\Identity;
 
+use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
-use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-/**
- * @deprecated
- * @see ChangeUserInfoMessage
- */
-class UpdateAmoCrmContactMessage extends AbstractMessage
+class ChangeUserInfoMessage extends AbstractMessage
 {
-
-    use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
     use LocalizationTrait;
 
-    protected $registration_date;
-    protected $elamaId;
+    protected $timestamp;
+    protected $name;
+    protected $userId; // elamaId
     protected $phone;
     protected $accountType;
     protected $timezone;
-    protected $splitTestSegment = null;
+    protected $splitTestSegment;
 
     /**
      * @return string
      */
     public function getEventIdentity()
     {
-        return 'updateContact';
+        return 'changeUserInfo';
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getRegistrationDate()
+    public function getTimestamp()
     {
-        return $this->registration_date;
+        return $this->timestamp;
     }
 
     /**
-     * @param mixed $registration_date
-     *
-     * @return UpdateAmoCrmContactMessage
+     * @param int $timestamp
+     * @return ChangeUserInfoMessage
      */
-    public function setRegistrationDate($registration_date)
+    public function setTimestamp($timestamp)
     {
-        $this->registration_date = $registration_date;
+        $this->timestamp = $timestamp;
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getElamaId()
+    public function getName()
     {
-        return $this->elamaId;
+        return $this->name;
     }
 
     /**
-     * @param $elamaId
-     *
-     * @return UpdateAmoCrmContactMessage
+     * @param string $name
+     * @return ChangeUserInfoMessage
      */
-    public function setElamaId($elamaId)
+    public function setName($name)
     {
-        $this->elamaId = $elamaId;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     *
+     * @return ChangeUserInfoMessage
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
      */
     public function getPhone()
     {
@@ -83,9 +96,9 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param $phone
+     * @param string $phone
      *
-     * @return UpdateAmoCrmContactMessage
+     * @return ChangeUserInfoMessage
      */
     public function setPhone($phone)
     {
@@ -95,7 +108,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAccountType()
     {
@@ -103,9 +116,9 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param $accountType
+     * @param string $accountType
      *
-     * @return UpdateAmoCrmContactMessage
+     * @return ChangeUserInfoMessage
      */
     public function setAccountType($accountType)
     {
@@ -115,7 +128,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getTimezone()
     {
@@ -123,8 +136,8 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param $timezone
-     * @return $this
+     * @param int $timezone
+     * @return ChangeUserInfoMessage
      */
     public function setTimezone($timezone)
     {
@@ -143,7 +156,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
 
     /**
      * @param string $splitTestSegment
-     * @return UpdateAmoCrmContactMessage
+     * @return ChangeUserInfoMessage
      */
     public function setSplitTestSegment($splitTestSegment)
     {
@@ -161,17 +174,16 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
                 $this->email,
                 $this->elamaLogin,
                 $this->name,
-                $this->registration_date,
-                $this->elamaId,
+                $this->timestamp,
+                $this->userId,
             ])
             && (!$this->accountType || in_array($this->accountType, [
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_ADVERTISER,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_IO,
-                ]));
+                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_ADVERTISER,
+                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY,
+                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_PROXY,
+                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_IO,
+                ], true));
     }
-
 }

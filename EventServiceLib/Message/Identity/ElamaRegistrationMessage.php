@@ -1,20 +1,15 @@
 <?php
 
-namespace EventServiceLib\Message;
+namespace EventServiceLib\Message\Identity;
 
-use EventServiceLib\Message\Identity\ElamaRegistrationMessage;
+use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-/**
- * @deprecated
- * @see ElamaRegistrationMessage
- */
-class RegistrationMessage extends AbstractMessage
+class ElamaRegistrationMessage extends AbstractMessage
 {
-
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
@@ -27,13 +22,8 @@ class RegistrationMessage extends AbstractMessage
     const AMO_ACCOUNT_TYPE_PROXY_CLIENT = 'proxy_client'; // Клиент посредника
     const AMO_ACCOUNT_TYPE_IO = 'io'; // ИО
 
-    /** @deprecated just use 3 letter country codes  */
-    const COUNTRY_RU = 'rus';
-    /** @deprecated  */
-    const COUNTRY_KZ = 'kaz';
-
-    protected $registration_date; #TODO: use camelCase
-    protected $elamaId;
+    protected $timestamp;
+    protected $userId; // elamaId
     protected $phone;
     protected $accountType;
     protected $timezone;
@@ -45,27 +35,26 @@ class RegistrationMessage extends AbstractMessage
     /**
      * @return string
      */
-    function getEventIdentity()
+    public function getEventIdentity()
     {
-        return 'registration';
+        return 'elamaRegistration';
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getRegistrationDate()
+    public function getTimestamp()
     {
-        return $this->registration_date;
+        return $this->timestamp;
     }
 
     /**
-     * @param string $registration_date
-     *
-     * @return RegistrationMessage
+     * @param int $timestamp
+     * @return ElamaRegistrationMessage
      */
-    public function setRegistrationDate($registration_date)
+    public function setTimestamp($timestamp)
     {
-        $this->registration_date = $registration_date;
+        $this->timestamp = $timestamp;
 
         return $this;
     }
@@ -73,19 +62,19 @@ class RegistrationMessage extends AbstractMessage
     /**
      * @return int
      */
-    public function getElamaId()
+    public function getUserId()
     {
-        return $this->elamaId;
+        return $this->userId;
     }
 
     /**
-     * @param int $elamaId
+     * @param int $userId
      *
-     * @return RegistrationMessage
+     * @return ElamaRegistrationMessage
      */
-    public function setElamaId($elamaId)
+    public function setUserId($userId)
     {
-        $this->elamaId = $elamaId;
+        $this->userId = $userId;
 
         return $this;
     }
@@ -101,7 +90,7 @@ class RegistrationMessage extends AbstractMessage
     /**
      * @param string $phone
      *
-     * @return RegistrationMessage
+     * @return ElamaRegistrationMessage
      */
     public function setPhone($phone)
     {
@@ -121,7 +110,7 @@ class RegistrationMessage extends AbstractMessage
     /**
      * @param string $accountType
      *
-     * @return RegistrationMessage
+     * @return ElamaRegistrationMessage
      */
     public function setAccountType($accountType)
     {
@@ -159,7 +148,7 @@ class RegistrationMessage extends AbstractMessage
 
     /**
      * @param string $splitTestSegment
-     * @return RegistrationMessage
+     * @return ElamaRegistrationMessage
      */
     public function setSplitTestSegment($splitTestSegment)
     {
@@ -179,7 +168,7 @@ class RegistrationMessage extends AbstractMessage
     /**
      * @param string $referralLink
      *
-     * @return RegistrationMessage
+     * @return ElamaRegistrationMessage
      */
     public function setReferralLink($referralLink)
     {
@@ -199,7 +188,7 @@ class RegistrationMessage extends AbstractMessage
     /**
      * @param string $contactSource
      *
-     * @return RegistrationMessage
+     * @return ElamaRegistrationMessage
      */
     public function setContactSource($contactSource)
     {
@@ -219,7 +208,7 @@ class RegistrationMessage extends AbstractMessage
     /**
      * @param string $googleClientId
      *
-     * @return RegistrationMessage
+     * @return ElamaRegistrationMessage
      */
     public function setGoogleClientId($googleClientId)
     {
@@ -237,8 +226,8 @@ class RegistrationMessage extends AbstractMessage
                 $this->email,
                 $this->elamaLogin,
                 $this->country,
-                $this->registration_date,
-                $this->elamaId,
+                $this->timestamp,
+                $this->userId,
             ])
             && (!$this->accountType || in_array($this->accountType, [
                     self::AMO_ACCOUNT_TYPE_ADVERTISER,
@@ -247,7 +236,6 @@ class RegistrationMessage extends AbstractMessage
                     self::AMO_ACCOUNT_TYPE_PROXY,
                     self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
                     self::AMO_ACCOUNT_TYPE_IO,
-                ]));
+                ], true));
     }
-
 }
