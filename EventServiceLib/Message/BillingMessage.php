@@ -22,8 +22,14 @@ class BillingMessage extends AbstractMessage
 
     protected $elamaId;
 
+    protected $contractType;
+
+    protected $amount;
+
+    protected $currency;
+
     /**
-     * @return mixed
+     * @return string
      */
     public function getPurchaseDate()
     {
@@ -31,7 +37,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $purchase_date
+     * @param string $purchase_date
      *
      * @return BillingMessage
      */
@@ -43,7 +49,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getElamaId()
     {
@@ -51,12 +57,69 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $elamaId
+     * @param int $elamaId
      * @return BillingMessage
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContractType()
+    {
+        return $this->contractType;
+    }
+
+    /**
+     * @param string $contractType
+     * @return BillingMessage
+     */
+    public function setContractType($contractType)
+    {
+        $this->contractType = $contractType;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param float $amount
+     * @return BillingMessage
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param mixed $currency
+     * @return BillingMessage
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
 
         return $this;
     }
@@ -71,6 +134,9 @@ class BillingMessage extends AbstractMessage
                 $this->name,
                 $this->elamaLogin,
                 $this->purchase_date,
+                $this->contractType,
+                $this->amount,
+                $this->currency
             ]);
     }
 
