@@ -17,6 +17,7 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     protected $webinarType;
     protected $webinarName;
     protected $webinarExternalId;
+    protected $webinarLevel;
     protected $webinarPlatformName;
     protected $subscriberName;
     protected $addingDate;
@@ -199,6 +200,25 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     public function setWebinarExternalId($webinarExternalId)
     {
         $this->webinarExternalId = $webinarExternalId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebinarLevel()
+    {
+        return $this->webinarLevel;
+    }
+
+    /**
+     * @param string $webinarLevel
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setWebinarLevel($webinarLevel)
+    {
+        $this->webinarLevel = $webinarLevel;
 
         return $this;
     }
