@@ -28,6 +28,8 @@ class BillingMessage extends AbstractMessage
 
     protected $currency;
 
+    protected $isInitial;
+
     /**
      * @return string
      */
@@ -127,6 +129,22 @@ class BillingMessage extends AbstractMessage
     /**
      * @return bool
      */
+    public function getIsInitial()
+    {
+        return $this->isInitial;
+    }
+
+    /**
+     * @param bool $isInitial
+     */
+    public function setIsInitial($isInitial)
+    {
+        $this->isInitial = $isInitial;
+    }
+
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty([
@@ -136,7 +154,8 @@ class BillingMessage extends AbstractMessage
                 $this->purchase_date,
                 $this->contractType,
                 $this->amount,
-                $this->currency
+                $this->currency,
+                $this->isInitial
             ]);
     }
 
