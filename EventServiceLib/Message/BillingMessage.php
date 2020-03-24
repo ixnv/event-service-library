@@ -29,7 +29,7 @@ class BillingMessage extends AbstractMessage
     protected $currency;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPurchaseDate()
     {
@@ -37,7 +37,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $purchase_date
+     * @param string $purchase_date
      *
      * @return BillingMessage
      */
@@ -49,7 +49,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getElamaId()
     {
@@ -57,7 +57,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $elamaId
+     * @param int $elamaId
      * @return BillingMessage
      */
     public function setElamaId($elamaId)
@@ -68,7 +68,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getContractType()
     {
@@ -76,7 +76,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $contractType
+     * @param string $contractType
      * @return BillingMessage
      */
     public function setContractType($contractType)
@@ -87,7 +87,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getAmount()
     {
@@ -95,7 +95,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $amount
+     * @param float $amount
      * @return BillingMessage
      */
     public function setAmount($amount)
@@ -106,7 +106,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCurrency()
     {

@@ -24,7 +24,7 @@ class AdvPaymentMessage extends AbstractMessage
 
     protected $phone;
 
-    protected $elamaAccountId;
+    protected $advSystemAccountId;
 
     /**
      * @return string
@@ -35,7 +35,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getElamaId()
     {
@@ -43,7 +43,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $elamaId
+     * @param int $elamaId
      *
      * @return AdvPaymentMessage
      */
@@ -55,7 +55,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getTransferAmount()
     {
@@ -63,7 +63,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $transferAmount
+     * @param float $transferAmount
      *
      * @return AdvPaymentMessage
      */
@@ -75,7 +75,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTransferDate()
     {
@@ -83,7 +83,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $transferDate
+     * @param string $transferDate
      *
      * @return AdvPaymentMessage
      */
@@ -95,7 +95,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAdvPlatform()
     {
@@ -103,7 +103,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $advPlatform
+     * @param string $advPlatform
      *
      * @return AdvPaymentMessage
      */
@@ -115,7 +115,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
     public function getPhone()
     {
@@ -123,7 +123,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $phone
+     * @param string|null $phone
      *
      * @return AdvPaymentMessage
      */
@@ -135,7 +135,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTransferCurrency()
     {
@@ -143,7 +143,7 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $transferCurrency
+     * @param string $transferCurrency
      * @return AdvPaymentMessage
      */
     public function setTransferCurrency($transferCurrency)
@@ -154,20 +154,20 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getElamaAccountId()
+    public function getAdvSystemAccountId()
     {
-        return $this->elamaAccountId;
+        return $this->advSystemAccountId;
     }
 
     /**
-     * @param mixed $elamaAccountId
+     * @param string $advSystemAccountId
      * @return AdvPaymentMessage
      */
-    public function setElamaAccountId($elamaAccountId)
+    public function setAdvSystemAccountId($advSystemAccountId)
     {
-        $this->elamaAccountId = $elamaAccountId;
+        $this->advSystemAccountId = $advSystemAccountId;
 
         return $this;
     }
@@ -184,7 +184,7 @@ class AdvPaymentMessage extends AbstractMessage
             $this->transferCurrency,
             $this->transferDate,
             $this->advPlatform,
-            $this->elamaAccountId
+            $this->advSystemAccountId
         ]);
     }
 
