@@ -129,17 +129,20 @@ class BillingMessage extends AbstractMessage
     /**
      * @return bool
      */
-    public function getIsInitial()
+    public function isInitial()
     {
         return $this->isInitial;
     }
 
     /**
      * @param bool $isInitial
+     * @return BillingMessage
      */
     public function setIsInitial($isInitial)
     {
         $this->isInitial = $isInitial;
+
+        return $this;
     }
 
     /**
