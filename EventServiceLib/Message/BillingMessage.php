@@ -22,6 +22,12 @@ class BillingMessage extends AbstractMessage
 
     protected $elamaId;
 
+    protected $contractType;
+
+    protected $amount;
+
+    protected $currency;
+
     /**
      * @return mixed
      */
@@ -62,6 +68,63 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
+     * @return mixed
+     */
+    public function getContractType()
+    {
+        return $this->contractType;
+    }
+
+    /**
+     * @param mixed $contractType
+     * @return BillingMessage
+     */
+    public function setContractType($contractType)
+    {
+        $this->contractType = $contractType;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param mixed $amount
+     * @return BillingMessage
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param mixed $currency
+     * @return BillingMessage
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isValid()
@@ -71,6 +134,9 @@ class BillingMessage extends AbstractMessage
                 $this->name,
                 $this->elamaLogin,
                 $this->purchase_date,
+                $this->contractType,
+                $this->amount,
+                $this->currency
             ]);
     }
 

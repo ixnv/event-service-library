@@ -16,11 +16,15 @@ class AdvPaymentMessage extends AbstractMessage
 
     protected $transferAmount;
 
+    protected $transferCurrency;
+
     protected $transferDate;
 
     protected $advPlatform;
 
     protected $phone;
+
+    protected $elamaAccountId;
 
     /**
      * @return string
@@ -131,6 +135,44 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
+     * @return mixed
+     */
+    public function getTransferCurrency()
+    {
+        return $this->transferCurrency;
+    }
+
+    /**
+     * @param mixed $transferCurrency
+     * @return AdvPaymentMessage
+     */
+    public function setTransferCurrency($transferCurrency)
+    {
+        $this->transferCurrency = $transferCurrency;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getElamaAccountId()
+    {
+        return $this->elamaAccountId;
+    }
+
+    /**
+     * @param mixed $elamaAccountId
+     * @return AdvPaymentMessage
+     */
+    public function setElamaAccountId($elamaAccountId)
+    {
+        $this->elamaAccountId = $elamaAccountId;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isValid()
@@ -139,8 +181,10 @@ class AdvPaymentMessage extends AbstractMessage
             $this->email,
             $this->elamaLogin,
             $this->transferAmount,
+            $this->transferCurrency,
             $this->transferDate,
             $this->advPlatform,
+            $this->elamaAccountId
         ]);
     }
 
