@@ -7,10 +7,6 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-/**
- * Class BillingMessage
- * @package EventServiceLib\Message
- */
 class BillingMessage extends AbstractMessage
 {
     use GetresponseMessageTrait;
@@ -19,15 +15,10 @@ class BillingMessage extends AbstractMessage
     use LocalizationTrait;
 
     protected $purchase_date;
-
     protected $elamaId;
-
     protected $contractType;
-
     protected $amount;
-
     protected $currency;
-
     protected $isInitial;
 
     /**
@@ -116,7 +107,7 @@ class BillingMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $currency
+     * @param string $currency
      * @return BillingMessage
      */
     public function setCurrency($currency)
@@ -157,8 +148,7 @@ class BillingMessage extends AbstractMessage
                 $this->purchase_date,
                 $this->contractType,
                 $this->amount,
-                $this->currency,
-                $this->isInitial
+                $this->currency
             ]);
     }
 
