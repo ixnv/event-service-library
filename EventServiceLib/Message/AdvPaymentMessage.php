@@ -1,8 +1,6 @@
 <?php
 
-
 namespace EventServiceLib\Message;
-
 
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
@@ -13,17 +11,11 @@ class AdvPaymentMessage extends AbstractMessage
     use ArrayEmailTrait;
 
     protected $elamaId;
-
     protected $transferAmount;
-
     protected $transferCurrency;
-
     protected $transferDate;
-
     protected $advPlatform;
-
     protected $phone;
-
     protected $advSystemAccountId;
 
     /**
