@@ -17,6 +17,9 @@ class AdvPaymentMessage extends AbstractMessage
     protected $advPlatform;
     protected $phone;
     protected $advSystemAccountId;
+    protected $chargedAmount;
+    protected $chargedAmountCurrency;
+    protected $chargedAmountToRubRate;
 
     /**
      * @return string
@@ -165,6 +168,63 @@ class AdvPaymentMessage extends AbstractMessage
     }
 
     /**
+     * @return string
+     */
+    public function getChargedAmount()
+    {
+        return $this->chargedAmount;
+    }
+
+    /**
+     * @param string $chargedAmount
+     * @return AdvPaymentMessage
+     */
+    public function setChargedAmount($chargedAmount)
+    {
+        $this->chargedAmount = $chargedAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getChargedAmountCurrency()
+    {
+        return $this->chargedAmountCurrency;
+    }
+
+    /**
+     * @param string $chargedAmountCurrency
+     * @return AdvPaymentMessage
+     */
+    public function setChargedAmountCurrency($chargedAmountCurrency)
+    {
+        $this->chargedAmountCurrency = $chargedAmountCurrency;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getChargedAmountToRubRate()
+    {
+        return $this->chargedAmountToRubRate;
+    }
+
+    /**
+     * @param float $chargedAmountToRubRate
+     * @return AdvPaymentMessage
+     */
+    public function setChargedAmountToRubRate($chargedAmountToRubRate)
+    {
+        $this->chargedAmountToRubRate = $chargedAmountToRubRate;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isValid()
@@ -176,7 +236,10 @@ class AdvPaymentMessage extends AbstractMessage
             $this->transferCurrency,
             $this->transferDate,
             $this->advPlatform,
-            $this->advSystemAccountId
+            $this->advSystemAccountId,
+            $this->chargedAmount,
+            $this->chargedAmountCurrency,
+            $this->chargedAmountToRubRate
         ]);
     }
 
