@@ -7,9 +7,8 @@ use EventServiceLib\Message\AbstractMessage;
 class ChangeUserRolesMessage extends AbstractMessage
 {
     protected $userId; // elamaId
-    protected $email;
-    protected $oldRoles;
-    protected $newRoles;
+    protected $deletedRoles;
+    protected $addedRoles;
 
     /**
      * @return string
@@ -39,20 +38,20 @@ class ChangeUserRolesMessage extends AbstractMessage
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getEmail()
+    public function getDeletedRoles()
     {
-        return $this->email;
+        return $this->deletedRoles;
     }
 
     /**
-     * @param string $email
+     * @param array $deletedRoles
      * @return ChangeUserRolesMessage
      */
-    public function setEmail($email)
+    public function setDeletedRoles($deletedRoles)
     {
-        $this->email = $email;
+        $this->deletedRoles = $deletedRoles;
 
         return $this;
     }
@@ -60,37 +59,18 @@ class ChangeUserRolesMessage extends AbstractMessage
     /**
      * @return array
      */
-    public function getOldRoles()
+    public function getAddedRoles()
     {
-        return $this->oldRoles;
+        return $this->addedRoles;
     }
 
     /**
-     * @param array $oldRoles
+     * @param array $addedRoles
      * @return ChangeUserRolesMessage
      */
-    public function setOldRoles($oldRoles)
+    public function setAddedRoles($addedRoles)
     {
-        $this->oldRoles = $oldRoles;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getNewRoles()
-    {
-        return $this->newRoles;
-    }
-
-    /**
-     * @param array $newRoles
-     * @return ChangeUserRolesMessage
-     */
-    public function setNewRoles($newRoles)
-    {
-        $this->newRoles = $newRoles;
+        $this->addedRoles = $addedRoles;
 
         return $this;
     }
@@ -100,9 +80,11 @@ class ChangeUserRolesMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->userId,
-        ]);
+        return !$this->hasEmpty(
+                [
+                    $this->userId,
+                ]
+            ) &&
+            (!$this->hasEmpty([$this->deletedRoles]) || !$this->hasEmpty([$this->addedRoles]));
     }
 }
