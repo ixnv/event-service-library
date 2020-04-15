@@ -1,6 +1,8 @@
 <?php
 
-namespace EventServiceLib\Message;
+namespace EventServiceLib\Message\Elama;
+
+use EventServiceLib\Message\AbstractMessage;
 
 class ChangeUserUnitTypeMessage extends AbstractMessage
 {
