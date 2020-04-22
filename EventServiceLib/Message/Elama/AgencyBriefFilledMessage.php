@@ -5,7 +5,11 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 
-/** при заполнение информации об агентстве */
+/**
+ * после проверки заботой заявки на присоединение к пп
+ *
+ * @deprecated see AgencyModerationApplicationForJoiningMessage
+ */
 class AgencyBriefFilledMessage extends AbstractMessage
 {
 

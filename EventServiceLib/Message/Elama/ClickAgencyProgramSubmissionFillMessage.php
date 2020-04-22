@@ -5,7 +5,7 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\Message\AbstractMessage;
 
 /** при клике на кнопку "Заполнить заявку" для участия в партнерской программе */
-class AgencyClickBriefFilledButtonMessage extends AbstractMessage
+class ClickAgencyProgramSubmissionFillMessage extends AbstractMessage
 {
     protected $elamaId;
 
@@ -19,7 +19,7 @@ class AgencyClickBriefFilledButtonMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
-     * @return AgencyClickBriefFilledButtonMessage
+     * @return ClickAgencyProgramSubmissionFillMessage
      */
     public function setElamaId($elamaId)
     {
@@ -45,6 +45,6 @@ class AgencyClickBriefFilledButtonMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'agencyClickBriefFilledButton';
+        return 'clickAgencyProgramSubmissionFill';
     }
 }

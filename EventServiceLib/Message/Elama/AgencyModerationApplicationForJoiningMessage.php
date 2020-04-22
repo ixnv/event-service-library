@@ -10,9 +10,15 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     const STATUS_APPROVED = 'approved';
     const STATUS_REJECTED = 'rejected';
 
+    const LEGAL_TYPE_PERSON = 'private_person';
+    const LEGAL_TYPE_ENTITY = 'legal_entity';
+
     protected $elamaId;
     protected $agencyId;
     protected $status;
+    protected $legalType;
+    protected $bankAccountRequisites;
+    protected $withdrawalMethod; # Withdrawal method text identity
 
     /**
      * @return integer
@@ -69,6 +75,60 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     }
 
     /**
+     * @return string
+     */
+    public function getLegalType()
+    {
+        return $this->legalType;
+    }
+
+    /**
+     * @param string $legalType
+     * @return AgencyModerationApplicationForJoiningMessage
+     */
+    public function setLegalType($legalType)
+    {
+        $this->legalType = $legalType;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getBankAccountRequisites()
+    {
+        return $this->bankAccountRequisites;
+    }
+
+    /**
+     * @param array $bankAccountRequisites
+     * @return AgencyModerationApplicationForJoiningMessage
+     */
+    public function setBankAccountRequisites($bankAccountRequisites)
+    {
+        $this->bankAccountRequisites = $bankAccountRequisites;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWithdrawalMethod()
+    {
+        return $this->withdrawalMethod;
+    }
+
+    /**
+     * @param string $withdrawalMethod
+     * @return AgencyModerationApplicationForJoiningMessage
+     */
+    public function setWithdrawalMethod($withdrawalMethod)
+    {
+        $this->withdrawalMethod = $withdrawalMethod;
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isValid()
@@ -78,10 +138,15 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
                     $this->elamaId,
                     $this->agencyId,
                     $this->status,
+                    $this->legalType,
+                    $this->withdrawalMethod
                 ]
             ) && in_array(
                 $this->status,
                 [self::STATUS_APPROVED, self::STATUS_REJECTED]
+            ) && in_array(
+                $this->legalType,
+                [self::LEGAL_TYPE_ENTITY, self::LEGAL_TYPE_PERSON]
             );
     }
 
