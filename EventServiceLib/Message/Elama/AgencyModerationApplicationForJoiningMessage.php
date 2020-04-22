@@ -1,20 +1,21 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Elama;
 
-use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 
-/**
- * после проверки заботой заявки на присоединение к пп
- *
- * @deprecated see AgencyModerationApplicationForJoiningMessage
- */
-class AgencyBriefFilledMessage extends AbstractMessage
+/** после проверки заботой заявки на присоединение к пп */
+class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
 {
+    const STATUS_APPROVED = 'approved';
+    const STATUS_REJECTED = 'rejected';
+
+    const LEGAL_TYPE_PERSON = 'private_person';
+    const LEGAL_TYPE_ENTITY = 'legal_entity';
 
     protected $elamaId;
     protected $agencyId;
+    protected $status;
     protected $legalType;
     protected $bankAccountRequisites;
     protected $withdrawalMethod; # Withdrawal method text identity
@@ -29,7 +30,7 @@ class AgencyBriefFilledMessage extends AbstractMessage
 
     /**
      * @param integer $elamaId
-     * @return AgencyBriefFilledMessage
+     * @return AgencyModerationApplicationForJoiningMessage
      */
     public function setElamaId($elamaId)
     {
@@ -47,11 +48,29 @@ class AgencyBriefFilledMessage extends AbstractMessage
 
     /**
      * @param integer $agencyId
-     * @return AgencyBriefFilledMessage
+     * @return AgencyModerationApplicationForJoiningMessage
      */
     public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     * @return AgencyModerationApplicationForJoiningMessage
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
         return $this;
     }
 
@@ -65,7 +84,7 @@ class AgencyBriefFilledMessage extends AbstractMessage
 
     /**
      * @param string $legalType
-     * @return AgencyBriefFilledMessage
+     * @return AgencyModerationApplicationForJoiningMessage
      */
     public function setLegalType($legalType)
     {
@@ -83,7 +102,7 @@ class AgencyBriefFilledMessage extends AbstractMessage
 
     /**
      * @param array $bankAccountRequisites
-     * @return AgencyBriefFilledMessage
+     * @return AgencyModerationApplicationForJoiningMessage
      */
     public function setBankAccountRequisites($bankAccountRequisites)
     {
@@ -101,7 +120,7 @@ class AgencyBriefFilledMessage extends AbstractMessage
 
     /**
      * @param string $withdrawalMethod
-     * @return AgencyBriefFilledMessage
+     * @return AgencyModerationApplicationForJoiningMessage
      */
     public function setWithdrawalMethod($withdrawalMethod)
     {
@@ -118,12 +137,16 @@ class AgencyBriefFilledMessage extends AbstractMessage
                 [
                     $this->elamaId,
                     $this->agencyId,
+                    $this->status,
                     $this->legalType,
                     $this->withdrawalMethod
                 ]
             ) && in_array(
+                $this->status,
+                [self::STATUS_APPROVED, self::STATUS_REJECTED]
+            ) && in_array(
                 $this->legalType,
-                [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]
+                [self::LEGAL_TYPE_ENTITY, self::LEGAL_TYPE_PERSON]
             );
     }
 
@@ -132,6 +155,6 @@ class AgencyBriefFilledMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'agencyBriefFilled';
+        return 'agencyModerationApplicationForJoining';
     }
 }
