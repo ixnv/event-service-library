@@ -4,9 +4,9 @@ namespace EventServiceLib\Message\Elama;
 
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+/** при заполнение информации об агентстве */
+class AgencyBriefFilledMessage extends AbstractMessage
 {
 
     protected $elamaId;
@@ -110,12 +110,17 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-                $this->elamaId,
-                $this->agencyId,
+        return !$this->hasEmpty(
+                [
+                    $this->elamaId,
+                    $this->agencyId,
+                    $this->legalType,
+                    $this->withdrawalMethod
+                ]
+            ) && in_array(
                 $this->legalType,
-                $this->withdrawalMethod
-            ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
+                [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]
+            );
     }
 
     /**
@@ -125,21 +130,4 @@ class AgencyBriefFilledMessage extends AbstractMessage implements ProjectSpecifi
     {
         return 'agencyBriefFilled';
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Elama';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Elama';
-    }
-
 }

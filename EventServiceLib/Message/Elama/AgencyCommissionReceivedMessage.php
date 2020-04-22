@@ -4,9 +4,9 @@ namespace EventServiceLib\Message\Elama;
 
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyCommissionReceivedMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+/** при выплате вознагрождения агентству */
+class AgencyCommissionReceivedMessage extends AbstractMessage
 {
 
     protected $elamaId;
@@ -24,7 +24,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage implements Project
 
     /**
      * @param integer $elamaId
-     * @return AgencyCommissionRecivedMessage
+     * @return AgencyCommissionReceivedMessage
      */
     public function setElamaId($elamaId)
     {
@@ -42,7 +42,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage implements Project
 
     /**
      * @param integer $agencyId
-     * @return AgencyCommissionRecivedMessage
+     * @return AgencyCommissionReceivedMessage
      */
     public function setAgencyId($agencyId)
     {
@@ -60,7 +60,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage implements Project
 
     /**
      * @param string $legalType
-     * @return AgencyCommissionRecivedMessage
+     * @return AgencyCommissionReceivedMessage
      */
     public function setLegalType($legalType)
     {
@@ -78,7 +78,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage implements Project
 
     /**
      * @param string $amount
-     * @return AgencyCommissionRecivedMessage
+     * @return AgencyCommissionReceivedMessage
      */
     public function setAmount($amount)
     {
@@ -91,11 +91,16 @@ class AgencyCommissionReceivedMessage extends AbstractMessage implements Project
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-                $this->elamaId,
-                $this->agencyId,
+        return !$this->hasEmpty(
+                [
+                    $this->elamaId,
+                    $this->agencyId,
+                    $this->legalType,
+                ]
+            ) && in_array(
                 $this->legalType,
-            ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
+                [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]
+            );
     }
 
     /**
@@ -105,21 +110,4 @@ class AgencyCommissionReceivedMessage extends AbstractMessage implements Project
     {
         return 'agencyCommissionReceived';
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Elama';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Elama';
-    }
-    
 }
