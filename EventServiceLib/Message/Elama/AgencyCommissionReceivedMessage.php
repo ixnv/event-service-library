@@ -5,7 +5,7 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 
-/** при выплате вознагрождения агентству */
+/** при выплате вознаграждения агентству */
 class AgencyCommissionReceivedMessage extends AbstractMessage
 {
 
