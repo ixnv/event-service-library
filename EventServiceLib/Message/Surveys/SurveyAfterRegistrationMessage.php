@@ -1,6 +1,8 @@
 <?php
 
-namespace EventServiceLib\Message;
+namespace EventServiceLib\Message\Surveys;
+
+use EventServiceLib\Message\AbstractMessage;
 
 class SurveyAfterRegistrationMessage extends AbstractMessage
 {
@@ -8,7 +10,8 @@ class SurveyAfterRegistrationMessage extends AbstractMessage
     protected $email;
     protected $registrationReason; // причина регистрации
     protected $budget; // бюджет
-    protected $linkToSite; // ссылка на сайт
+    protected $whatItAdvertises; // что рекламирует
+    protected $participationInPartnerProgram; // участие в партнерской программе
     protected $agencySiteUrl; // сайт агентства
     protected $numberOfClients; // количество клиентов
     protected $learningGoal; // цель обучения
@@ -88,18 +91,36 @@ class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @return string|null
      */
-    public function getLinkToSite()
+    public function getWhatItAdvertises()
     {
-        return $this->linkToSite;
+        return $this->whatItAdvertises;
     }
 
     /**
-     * @param string $linkToSite
+     * @param string $whatItAdvertises
      * @return SurveyAfterRegistrationMessage
      */
-    public function setLinkToSite($linkToSite)
+    public function setWhatItAdvertises($whatItAdvertises)
     {
-        $this->linkToSite = $linkToSite;
+        $this->whatItAdvertises = $whatItAdvertises;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getParticipationInPartnerProgram()
+    {
+        return $this->participationInPartnerProgram;
+    }
+
+    /**
+     * @param string $participationInPartnerProgram
+     * @return SurveyAfterRegistrationMessage
+     */
+    public function setParticipationInPartnerProgram($participationInPartnerProgram)
+    {
+        $this->participationInPartnerProgram = $participationInPartnerProgram;
         return $this;
     }
 
