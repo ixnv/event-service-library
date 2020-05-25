@@ -13,6 +13,7 @@ class ToolsConnectMessage extends AbstractMessage
     protected $email;
     protected $toolName;
     protected $userLocale;
+    protected $date; // дата подключения
 
     /**
      * @return int
@@ -83,6 +84,24 @@ class ToolsConnectMessage extends AbstractMessage
     public function setUserLocale($userLocale)
     {
         $this->userLocale = $userLocale;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param string $date
+     * @return ToolsConnectMessage
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
         return $this;
     }
 
