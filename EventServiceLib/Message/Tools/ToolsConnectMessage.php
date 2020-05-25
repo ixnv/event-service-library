@@ -9,10 +9,10 @@ class ToolsConnectMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'toolsConnect';
 
-    private $elamaId;
-    private $email;
-    private $toolName;
-    private $userLocale;
+    protected $elamaId;
+    protected $email;
+    protected $toolName;
+    protected $userLocale;
 
     /**
      * @return int
@@ -92,14 +92,15 @@ class ToolsConnectMessage extends AbstractMessage
     public function isValid()
     {
         return
-            !$this->hasEmpty([$this->toolName]) ||
-            !$this->hasEmpty(
-                [
-                    $this->email,
-                    $this->userLocale
-                ]
-            ) ||
-            !$this->hasEmpty([$this->elamaId]);
+            !$this->hasEmpty([$this->toolName]) && (
+                !$this->hasEmpty(
+                    [
+                        $this->email,
+                        $this->userLocale
+                    ]
+                ) ||
+                !$this->hasEmpty([$this->elamaId])
+            );
     }
 
     /**
