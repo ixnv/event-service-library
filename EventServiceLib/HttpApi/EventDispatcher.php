@@ -48,7 +48,7 @@ class EventDispatcher implements EventDispatcherInterface
 
         $dispatcherMessage = self::encodeDispatcherMessage($dispatcherMessage);
 
-        $this->ESApi->callApi($dispatcherMessage);
+        $this->ESApi->sendMessage($dispatcherMessage);
 
         return true;
     }
