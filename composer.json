@@ -1,25 +1,27 @@
 {
-    "name": "elama/event-service-library",
-    "description": "Библиотека для пуша событий в очередь event service",
-    "type": "library",
-    "authors": [],
-    "require": {
-        "php": ">=5.5",
-        "php-amqplib/php-amqplib": "~2.5",
-        "psr/log": "~1.0"
-    },
-    "require-dev": {
-        "phake/phake": "*",
-        "phpunit/phpunit": "^7.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "EventServiceLib\\": "EventServiceLib/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
+  "name": "elama/event-service-library",
+  "description": "Библиотека для пуша событий в очередь event service",
+  "type": "library",
+  "authors": [],
+  "require": {
+    "php": ">=5.5",
+    "php-amqplib/php-amqplib": "~2.5",
+    "psr/log": "~1.0",
+    "ext-json": "*",
+    "ext-curl": "*"
+  },
+  "require-dev": {
+    "phake/phake": "*",
+    "phpunit/phpunit": "^7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "EventServiceLib\\": "EventServiceLib/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
 }
