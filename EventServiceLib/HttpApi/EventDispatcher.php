@@ -27,7 +27,7 @@ class EventDispatcher implements EventDispatcherInterface
      */
     public function dispatchMessage(AbstractMessage $message)
     {
-        if (!$message->isValid() || $message->getEventIdentity() === MessageInterface::EVENT_IDENTITY) {
+        if (!$message->isValid()) {
             return false;
         }
 

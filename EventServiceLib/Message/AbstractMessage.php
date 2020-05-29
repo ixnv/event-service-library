@@ -7,6 +7,14 @@ abstract class AbstractMessage implements MessageInterface
     protected $orphanFields = [];
     protected $messageUniqId = '';
 
+    public function __construct()
+    {
+        if (!defined('static::EVENT_IDENTITY'))
+        {
+            throw new \Exception('Constant EVENT_IDENTITY is not defined on subclass ' . get_class($this));
+        }
+    }
+
     /**
      * Test method to restore message state.
      * To setup message use setters.
@@ -54,7 +62,7 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function getEventIdentity()
     {
-        return self::EVENT_IDENTITY;
+        return static::EVENT_IDENTITY;
     }
 
     /**

@@ -28,7 +28,7 @@ class EventDispatcher implements EventDispatcherInterface
             throw new EventServiceException('AMQP connection is not available');
         }
 
-        if (!$message->isValid() || $message->getEventIdentity() === MessageInterface::EVENT_IDENTITY) {
+        if (!$message->isValid()) {
             return false; # TODO: Exception?
         }
 
