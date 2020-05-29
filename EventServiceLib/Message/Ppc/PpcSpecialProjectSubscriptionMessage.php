@@ -6,22 +6,26 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class PpcSpecialProjectSubscriptionMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcSpecialProjectSubscription';
+
     use ArrayEmailTrait;
 
-    /** @var string  $specialProjectName*/
+    /** @var string $specialProjectName */
     protected $specialProjectName;
 
     public function getEventIdentity()
     {
-        return 'ppcSpecialProjectSubscription';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->specialProjectName
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->specialProjectName
+            ]
+        );
     }
 
     /**
@@ -34,7 +38,6 @@ class PpcSpecialProjectSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param string $specialProjectName
-     *
      * @return PpcSpecialProjectSubscriptionMessage
      */
     public function setSpecialProjectName($specialProjectName)
@@ -43,5 +46,4 @@ class PpcSpecialProjectSubscriptionMessage extends AbstractPpcMessage
 
         return $this;
     }
-
 }

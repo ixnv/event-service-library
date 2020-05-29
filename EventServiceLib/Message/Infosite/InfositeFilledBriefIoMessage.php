@@ -1,12 +1,12 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Infosite;
 
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class InfositeFilledBriefIoMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class InfositeFilledBriefIoMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'infositeFilledBriefIo';
 
     protected $formData;
 
@@ -20,7 +20,6 @@ class InfositeFilledBriefIoMessage extends AbstractMessage implements ProjectSpe
 
     /**
      * @param array $formData
-     *
      * @return InfositeFilledBriefIoMessage
      */
     public function setFormData($formData)
@@ -35,9 +34,11 @@ class InfositeFilledBriefIoMessage extends AbstractMessage implements ProjectSpe
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->formData
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->formData
+            ]
+        );
     }
 
     /**
@@ -45,23 +46,6 @@ class InfositeFilledBriefIoMessage extends AbstractMessage implements ProjectSpe
      */
     public function getEventIdentity()
     {
-        return 'infositeFilledBriefIo';
+        return self::EVENT_IDENTITY;
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Infosite';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Infosite';
-    }
-
 }

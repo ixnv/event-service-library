@@ -6,6 +6,8 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcPracticeSubscription';
+
     use ArrayEmailTrait;
 
     protected $practiceId;
@@ -14,16 +16,18 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
     public function getEventIdentity()
     {
-        return 'ppcPracticeSubscription';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->practiceId,
-            $this->practiceName
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->practiceId,
+                $this->practiceName
+            ]
+        );
     }
 
     /**
@@ -36,8 +40,7 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param int $practiceId
-     *
-     * @return $this
+     * @return PpcPracticeSubscriptionMessage
      */
     public function setPracticeId($practiceId)
     {
@@ -56,8 +59,7 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param string $practiceName
-     *
-     * @return $this
+     * @return PpcPracticeSubscriptionMessage
      */
     public function setPracticeName($practiceName)
     {
@@ -76,8 +78,7 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param $practiceSubscriptionEnabled
-     *
-     * @return $this
+     * @return PpcPracticeSubscriptionMessage
      */
     public function setPracticeSubscriptionEnabled($practiceSubscriptionEnabled)
     {
@@ -85,5 +86,4 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
         return $this;
     }
-
 }

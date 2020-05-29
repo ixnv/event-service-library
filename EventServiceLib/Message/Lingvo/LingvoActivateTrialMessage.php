@@ -6,6 +6,8 @@ use EventServiceLib\Message\AbstractMessage;
 
 class LingvoActivateTrialMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'lingvoActivateTrialTrial';
+
     const PRIORITY_HIGH = 'high';
     const PRIORITY_MEDIUM = 'medium';
     const PRIORITY_LOW = 'low';
@@ -119,7 +121,7 @@ class LingvoActivateTrialMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'lingvoActivateTrialTrial';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -165,9 +167,10 @@ class LingvoActivateTrialMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+            ]
+        );
     }
-
 }

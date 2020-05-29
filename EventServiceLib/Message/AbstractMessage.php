@@ -69,7 +69,6 @@ abstract class AbstractMessage
 
     /**
      * @param array $values
-     *
      * @return bool
      */
     public function hasEmpty(array $values)
@@ -90,5 +89,4 @@ abstract class AbstractMessage
     {
         return $this->messageUniqId;
     }
-
 }

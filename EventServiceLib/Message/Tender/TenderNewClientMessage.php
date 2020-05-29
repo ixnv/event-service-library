@@ -7,6 +7,7 @@ use EventServiceLib\Message\Traits\LocalizationTrait;
 
 class TenderNewClientMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'tenderNewClient';
 
     use LocalizationTrait;
 
@@ -37,7 +38,7 @@ class TenderNewClientMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'tenderNewClient';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -45,10 +46,11 @@ class TenderNewClientMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->locale
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->locale
+            ]
+        );
     }
-
 }

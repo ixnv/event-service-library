@@ -2,9 +2,10 @@
 
 namespace EventServiceLib\Message\Ppc;
 
-
 class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcOpenCourseBySubscription';
+
     protected $courseId;
     protected $courseName;
     protected $courseUrl;
@@ -13,17 +14,19 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
 
     public function getEventIdentity()
     {
-        return 'ppcOpenCourseBySubscription';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->courseId,
-            $this->courseName,
-            $this->courseUrl,
-            $this->emailMarkup,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->courseId,
+                $this->courseName,
+                $this->courseUrl,
+                $this->emailMarkup,
+            ]
+        );
     }
 
     /**
@@ -36,7 +39,6 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param int $courseId
-     *
      * @return PpcOpenCourseBySubscriptionMessage
      */
     public function setCourseId($courseId)
@@ -56,7 +58,6 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param string $courseName
-     *
      * @return PpcOpenCourseBySubscriptionMessage
      */
     public function setCourseName($courseName)
@@ -76,7 +77,6 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param string $courseUrl
-     *
      * @return PpcOpenCourseBySubscriptionMessage
      */
     public function setCourseUrl($courseUrl)
@@ -96,7 +96,6 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param mixed $emailMarkup
-     *
      * @return PpcOpenCourseBySubscriptionMessage
      */
     public function setEmailMarkup($emailMarkup)
@@ -116,7 +115,6 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param bool $isComplexCourse
-     *
      * @return PpcOpenCourseBySubscriptionMessage
      */
     public function setIsComplexCourse($isComplexCourse)
@@ -125,5 +123,4 @@ class PpcOpenCourseBySubscriptionMessage extends AbstractPpcMessage
 
         return $this;
     }
-
 }

@@ -7,6 +7,8 @@ use EventServiceLib\Message\AbstractMessage;
 /** при клике на кнопку "Заполнить заявку" для участия в партнерской программе */
 class ClickAgencyProgramSubmissionFillMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'clickAgencyProgramSubmissionFill';
+
     protected $elamaId;
 
     /**
@@ -24,6 +26,7 @@ class ClickAgencyProgramSubmissionFillMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -45,6 +48,6 @@ class ClickAgencyProgramSubmissionFillMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'clickAgencyProgramSubmissionFill';
+        return self::EVENT_IDENTITY;
     }
 }

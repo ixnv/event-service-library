@@ -7,6 +7,8 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class AdvPaymentMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'advPayment';
+
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
 
@@ -26,7 +28,7 @@ class AdvPaymentMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'advPayment';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -39,7 +41,6 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
-     *
      * @return AdvPaymentMessage
      */
     public function setElamaId($elamaId)
@@ -59,7 +60,6 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param float $transferAmount
-     *
      * @return AdvPaymentMessage
      */
     public function setTransferAmount($transferAmount)
@@ -79,7 +79,6 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param string $transferDate
-     *
      * @return AdvPaymentMessage
      */
     public function setTransferDate($transferDate)
@@ -99,7 +98,6 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param string $advPlatform
-     *
      * @return AdvPaymentMessage
      */
     public function setAdvPlatform($advPlatform)
@@ -119,7 +117,6 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param string|null $phone
-     *
      * @return AdvPaymentMessage
      */
     public function setPhone($phone)
@@ -229,18 +226,19 @@ class AdvPaymentMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->elamaLogin,
-            $this->transferAmount,
-            $this->transferCurrency,
-            $this->transferDate,
-            $this->advPlatform,
-            $this->advSystemAccountId,
-            $this->chargedAmount,
-            $this->chargedAmountCurrency,
-            $this->chargedAmountToRubRate
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->elamaLogin,
+                $this->transferAmount,
+                $this->transferCurrency,
+                $this->transferDate,
+                $this->advPlatform,
+                $this->advSystemAccountId,
+                $this->chargedAmount,
+                $this->chargedAmountCurrency,
+                $this->chargedAmountToRubRate
+            ]
+        );
     }
-
 }

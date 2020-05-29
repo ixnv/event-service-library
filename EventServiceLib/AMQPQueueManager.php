@@ -62,5 +62,4 @@ class AMQPQueueManager implements QueueManagerInterface
     {
         return $this->connection ? true : false;
     }
-
 }

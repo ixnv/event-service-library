@@ -4,7 +4,6 @@ namespace EventServiceLib\Message\Traits;
 
 trait CountryTrait
 {
-
     protected $country;
 
     /**
@@ -17,7 +16,6 @@ trait CountryTrait
 
     /**
      * @param string $country
-     *
      * @return $this
      */
     public function setCountry($country)
@@ -26,5 +24,4 @@ trait CountryTrait
 
         return $this;
     }
-
 }

@@ -6,10 +6,9 @@ use EventServiceLib\Message\AbstractMessage;
 
 class UtmIoConsultationMessage extends AbstractMessage
 {
-    /** @var string */
-    protected $source;
+    const EVENT_IDENTITY = 'utmIoConsultation';
 
-    /** @var int */
+    protected $source;
     protected $filledFormId;
 
     /**
@@ -22,8 +21,7 @@ class UtmIoConsultationMessage extends AbstractMessage
 
     /**
      * @param $source
-     *
-     * @return $this
+     * @return UtmIoConsultationMessage
      */
     public function setSource($source)
     {
@@ -42,8 +40,7 @@ class UtmIoConsultationMessage extends AbstractMessage
 
     /**
      * @param $filledFormId
-     *
-     * @return $this
+     * @return UtmIoConsultationMessage
      */
     public function setFilledFormId($filledFormId)
     {
@@ -62,7 +59,6 @@ class UtmIoConsultationMessage extends AbstractMessage
 
     public function getEventIdentity()
     {
-        return 'utmIoConsultation';
+        return self::EVENT_IDENTITY;
     }
-
 }

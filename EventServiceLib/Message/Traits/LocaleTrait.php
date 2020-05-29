@@ -4,7 +4,6 @@ namespace EventServiceLib\Message\Traits;
 
 trait LocaleTrait
 {
-
     protected $locale;
 
     /**
@@ -17,7 +16,6 @@ trait LocaleTrait
 
     /**
      * @param string $locale
-     *
      * @return $this
      */
     public function setLocale($locale)
@@ -26,5 +24,4 @@ trait LocaleTrait
 
         return $this;
     }
-
 }

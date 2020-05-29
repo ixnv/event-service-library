@@ -1,13 +1,13 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Elama;
 
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class AgencyClientAddedMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'agencyClientAdded';
 
     protected $clientElamaId;
     protected $elamaId;
@@ -25,7 +25,6 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param integer $clientElamaId
-     *
      * @return AgencyClientAddedMessage
      */
     public function setClientElamaId($clientElamaId)
@@ -50,6 +49,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -68,6 +68,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
     public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
+
         return $this;
     }
 
@@ -86,6 +87,7 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
     public function setLegalType($legalType)
     {
         $this->legalType = $legalType;
+
         return $this;
     }
 
@@ -99,10 +101,12 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
 
     /**
      * @param string $addingDate - date string in "Y-m-d" format
+     * @return AgencyClientAddedMessage
      */
     public function setAddingDate($addingDate)
     {
         $this->addingDate = $addingDate;
+
         return $this;
     }
 
@@ -111,13 +115,18 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
+        return !$this->hasEmpty(
+                [
 //                $this->clientElamaId, // BC, вернуть как только агентства обновят событие
-                $this->elamaId,
-                $this->agencyId,
+                    $this->elamaId,
+                    $this->agencyId,
+                    $this->legalType,
+                    $this->addingDate,
+                ]
+            ) && in_array(
                 $this->legalType,
-                $this->addingDate,
-            ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
+                [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]
+            );
     }
 
     /**
@@ -125,23 +134,6 @@ class AgencyClientAddedMessage extends AbstractMessage implements ProjectSpecifi
      */
     function getEventIdentity()
     {
-        return 'agencyClientAdded';
+        return self::EVENT_IDENTITY;
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Elama';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Elama';
-    }
-
 }

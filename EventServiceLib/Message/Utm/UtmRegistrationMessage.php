@@ -6,10 +6,9 @@ use EventServiceLib\Message\AbstractMessage;
 
 class UtmRegistrationMessage extends AbstractMessage
 {
-    /** @var int */
-    protected $elamaId;
+    const EVENT_IDENTITY = 'utmRegistration';
 
-    /** @var string */
+    protected $elamaId;
     protected $registrationSource;
 
     /**
@@ -22,7 +21,6 @@ class UtmRegistrationMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
-     *
      * @return UtmRegistrationMessage
      */
     public function setElamaId($elamaId)
@@ -42,7 +40,6 @@ class UtmRegistrationMessage extends AbstractMessage
 
     /**
      * @param string $registrationSource
-     *
      * @return UtmRegistrationMessage
      */
     public function setRegistrationSource($registrationSource)
@@ -61,5 +58,4 @@ class UtmRegistrationMessage extends AbstractMessage
     {
         return 'utmRegistration';
     }
-
 }

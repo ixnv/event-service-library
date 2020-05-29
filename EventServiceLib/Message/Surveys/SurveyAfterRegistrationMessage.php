@@ -6,6 +6,8 @@ use EventServiceLib\Message\AbstractMessage;
 
 class SurveyAfterRegistrationMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'surveysAfterRegistration';
+
     protected $elamaId;
     protected $email;
     protected $registrationReason; // причина регистрации
@@ -196,7 +198,6 @@ class SurveyAfterRegistrationMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'surveysAfterRegistration';
+        return self::EVENT_IDENTITY;
     }
-
 }

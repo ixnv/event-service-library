@@ -6,6 +6,7 @@ use EventServiceLib\Message\AbstractMessage;
 
 class AccountManagerMayBeDetachedMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'accountManagerMayBeDetached';
 
     protected $elamaId;
     protected $email;
@@ -20,7 +21,7 @@ class AccountManagerMayBeDetachedMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
-     * @return $this
+     * @return AccountManagerMayBeDetachedMessage
      */
     public function setElamaId($elamaId)
     {
@@ -44,6 +45,7 @@ class AccountManagerMayBeDetachedMessage extends AbstractMessage
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -52,7 +54,7 @@ class AccountManagerMayBeDetachedMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'accountManagerMayBeDetached';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -66,5 +68,4 @@ class AccountManagerMayBeDetachedMessage extends AbstractMessage
             ]
         );
     }
-
 }

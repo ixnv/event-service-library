@@ -4,6 +4,7 @@ namespace EventServiceLib\Message;
 
 class FilledOutFormMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'filledOutForm';
 
     const FORM_SKYPE_PRESENTATION = 1;
     const FORM_MESSAGE_TO_MANAGER = 2;
@@ -26,7 +27,7 @@ class FilledOutFormMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'filledOutForm';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -39,7 +40,6 @@ class FilledOutFormMessage extends AbstractMessage
 
     /**
      * @param string $email
-     *
      * @return FilledOutFormMessage
      */
     public function setEmail($email)
@@ -59,7 +59,6 @@ class FilledOutFormMessage extends AbstractMessage
 
     /**
      * @param string $phone
-     *
      * @return FilledOutFormMessage
      */
     public function setPhone($phone)
@@ -79,7 +78,6 @@ class FilledOutFormMessage extends AbstractMessage
 
     /**
      * @param string $name
-     *
      * @return FilledOutFormMessage
      */
     public function setName($name)
@@ -99,7 +97,6 @@ class FilledOutFormMessage extends AbstractMessage
 
     /**
      * @param string $formName
-     *
      * @return FilledOutFormMessage
      */
     public function setFormName($formName)
@@ -119,7 +116,6 @@ class FilledOutFormMessage extends AbstractMessage
 
     /**
      * @param array $formData
-     *
      * @return FilledOutFormMessage
      */
     public function setFormData($formData)
@@ -139,7 +135,6 @@ class FilledOutFormMessage extends AbstractMessage
 
     /**
      * @param int $formId
-     *
      * @return FilledOutFormMessage
      */
     public function setFormId($formId)
@@ -159,7 +154,6 @@ class FilledOutFormMessage extends AbstractMessage
 
     /**
      * @param int $filledFormId
-     *
      * @return FilledOutFormMessage
      */
     public function setFilledFormId($filledFormId)
@@ -178,9 +172,10 @@ class FilledOutFormMessage extends AbstractMessage
             return false;
         }
 
-        return !$this->hasEmpty([
-            $this->formName
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->formName
+            ]
+        );
     }
-
 }

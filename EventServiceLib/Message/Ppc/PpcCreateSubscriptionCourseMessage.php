@@ -2,24 +2,27 @@
 
 namespace EventServiceLib\Message\Ppc;
 
-
 class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcCreateSubscriptionCourse';
+
     protected $name;
     protected $id;
     protected $emailMarkup;
 
     public function getEventIdentity()
     {
-        return 'ppcCreateSubscriptionCourse';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->name,
-            $this->id,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->name,
+                $this->id,
+            ]
+        );
     }
 
     /**
@@ -32,7 +35,6 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 
     /**
      * @param string $name
-     *
      * @return PpcCreateSubscriptionCourseMessage
      */
     public function setName($name)
@@ -52,7 +54,6 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 
     /**
      * @param int $id
-     *
      * @return PpcCreateSubscriptionCourseMessage
      */
     public function setId($id)
@@ -72,7 +73,6 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 
     /**
      * @param mixed $emailMarkup
-     *
      * @return PpcCreateSubscriptionCourseMessage
      */
     public function setEmailMarkup($emailMarkup)
@@ -81,5 +81,4 @@ class PpcCreateSubscriptionCourseMessage extends AbstractPpcMessage
 
         return $this;
     }
-
 }

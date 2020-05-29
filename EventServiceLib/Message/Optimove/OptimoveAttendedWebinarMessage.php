@@ -1,12 +1,12 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Optimove;
 
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class OptimoveAttendedWebinarMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'optimoveAttendedWebinar';
 
     protected $email;
     protected $webinarId;
@@ -22,7 +22,6 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
 
     /**
      * @param string $email
-     *
      * @return OptimoveAttendedWebinarMessage
      */
     public function setEmail($email)
@@ -42,7 +41,6 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
 
     /**
      * @param string $webinarId
-     *
      * @return OptimoveAttendedWebinarMessage
      */
     public function setWebinarId($webinarId)
@@ -62,7 +60,6 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
 
     /**
      * @param string $webinarPlatformName
-     *
      * @return OptimoveAttendedWebinarMessage
      */
     public function setWebinarPlatformName($webinarPlatformName)
@@ -77,11 +74,13 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->webinarId,
-            $this->webinarPlatformName
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->webinarId,
+                $this->webinarPlatformName
+            ]
+        );
     }
 
     /**
@@ -89,23 +88,6 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
      */
     function getEventIdentity()
     {
-        return 'optimoveAttendedWebinar';
+        return self::EVENT_IDENTITY;
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Optimove';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Optimove';
-    }
-
 }

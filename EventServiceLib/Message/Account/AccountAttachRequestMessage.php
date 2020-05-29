@@ -6,6 +6,8 @@ use EventServiceLib\Message\AbstractMessage;
 
 class AccountAttachRequestMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'accountAttachRequest';
+
     protected $elamaId;
     protected $advSystem;
     protected $requestStatus;
@@ -25,6 +27,7 @@ class AccountAttachRequestMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -43,6 +46,7 @@ class AccountAttachRequestMessage extends AbstractMessage
     public function setAdvSystem($advSystem)
     {
         $this->advSystem = $advSystem;
+
         return $this;
     }
 
@@ -61,6 +65,7 @@ class AccountAttachRequestMessage extends AbstractMessage
     public function setRequestStatus($requestStatus)
     {
         $this->requestStatus = $requestStatus;
+
         return $this;
     }
 
@@ -69,7 +74,7 @@ class AccountAttachRequestMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'accountAttachRequest';
+        return self::EVENT_IDENTITY;
     }
 
     /**

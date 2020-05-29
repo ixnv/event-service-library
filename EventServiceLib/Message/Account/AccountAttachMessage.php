@@ -6,6 +6,8 @@ use EventServiceLib\Message\AbstractMessage;
 
 class AccountAttachMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'accountAttach';
+
     protected $elamaId;
     protected $advSystem;
     protected $accountType;
@@ -92,7 +94,7 @@ class AccountAttachMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'accountAttach';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -100,10 +102,12 @@ class AccountAttachMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-            $this->accountType,
-            $this->advSystem
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+                $this->accountType,
+                $this->advSystem
+            ]
+        );
     }
 }

@@ -7,6 +7,7 @@ namespace EventServiceLib\Message;
  */
 class ManagerAssignmentMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'managerAssignment';
 
     /**
      * Идентификатор пользователя в eLama, менеджер которого был изменен
@@ -28,7 +29,7 @@ class ManagerAssignmentMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'managerAssignment';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -36,9 +37,11 @@ class ManagerAssignmentMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+            ]
+        );
     }
 
     /**
@@ -78,5 +81,4 @@ class ManagerAssignmentMessage extends AbstractMessage
 
         return $this;
     }
-
 }

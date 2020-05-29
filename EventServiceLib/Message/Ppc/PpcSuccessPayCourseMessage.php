@@ -6,6 +6,8 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class PpcSuccessPayCourseMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcSuccessPayCourse';
+
     use ArrayEmailTrait;
 
     protected $name;
@@ -14,17 +16,19 @@ class PpcSuccessPayCourseMessage extends AbstractPpcMessage
 
     public function getEventIdentity()
     {
-        return 'ppcSuccessPayCourse';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->name,
-            $this->surname,
-            $this->courseIdentity,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->name,
+                $this->surname,
+                $this->courseIdentity,
+            ]
+        );
     }
 
     /**
@@ -37,7 +41,6 @@ class PpcSuccessPayCourseMessage extends AbstractPpcMessage
 
     /**
      * @param string $name
-     *
      * @return PpcSuccessPayCourseMessage
      */
     public function setName($name)
@@ -57,7 +60,6 @@ class PpcSuccessPayCourseMessage extends AbstractPpcMessage
 
     /**
      * @param string $surname
-     *
      * @return PpcSuccessPayCourseMessage
      */
     public function setSurname($surname)
@@ -77,7 +79,6 @@ class PpcSuccessPayCourseMessage extends AbstractPpcMessage
 
     /**
      * @param string $courseIdentity
-     *
      * @return PpcSuccessPayCourseMessage
      */
     public function setCourseIdentity($courseIdentity)
@@ -86,5 +87,4 @@ class PpcSuccessPayCourseMessage extends AbstractPpcMessage
 
         return $this;
     }
-
 }

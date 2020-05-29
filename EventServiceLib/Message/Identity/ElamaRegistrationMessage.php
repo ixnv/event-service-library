@@ -10,6 +10,8 @@ use EventServiceLib\Message\Traits\LocalizationTrait;
 
 class ElamaRegistrationMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'elamaRegistration';
+
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
@@ -37,7 +39,7 @@ class ElamaRegistrationMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'elamaRegistration';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -222,20 +224,26 @@ class ElamaRegistrationMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-                $this->email,
-                $this->elamaLogin,
-                $this->country,
-                $this->timestamp,
-                $this->userId,
-            ])
-            && (!$this->accountType || in_array($this->accountType, [
-                    self::AMO_ACCOUNT_TYPE_ADVERTISER,
-                    self::AMO_ACCOUNT_TYPE_AGENCY,
-                    self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
-                    self::AMO_ACCOUNT_TYPE_PROXY,
-                    self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
-                    self::AMO_ACCOUNT_TYPE_IO,
-                ], true));
+        return !$this->hasEmpty(
+                [
+                    $this->email,
+                    $this->elamaLogin,
+                    $this->country,
+                    $this->timestamp,
+                    $this->userId,
+                ]
+            )
+            && (!$this->accountType || in_array(
+                    $this->accountType,
+                    [
+                        self::AMO_ACCOUNT_TYPE_ADVERTISER,
+                        self::AMO_ACCOUNT_TYPE_AGENCY,
+                        self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+                        self::AMO_ACCOUNT_TYPE_PROXY,
+                        self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+                        self::AMO_ACCOUNT_TYPE_IO,
+                    ],
+                    true
+                ));
     }
 }

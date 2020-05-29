@@ -6,6 +6,7 @@ use EventServiceLib\Message\AbstractMessage;
 
 class WorksectionCreateH2SFinishedMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'worksectionCreateH2SFinished';
 
     protected $elamaId;
     protected $tag;
@@ -59,8 +60,7 @@ class WorksectionCreateH2SFinishedMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
-     *
-     * @return $this
+     * @return WorksectionCreateH2SFinishedMessage
      */
     public function setElamaId($elamaId)
     {
@@ -82,7 +82,6 @@ class WorksectionCreateH2SFinishedMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'worksectionCreateH2SFinished';
+        return self::EVENT_IDENTITY;
     }
-
 }

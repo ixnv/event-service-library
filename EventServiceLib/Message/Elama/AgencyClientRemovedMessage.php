@@ -1,12 +1,12 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Elama;
 
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyClientRemovedMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class AgencyClientRemovedMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'agencyClientRemoved';
 
     protected $clientElamaId;
     protected $elamaId;
@@ -23,7 +23,6 @@ class AgencyClientRemovedMessage extends AbstractMessage implements ProjectSpeci
 
     /**
      * @param integer $clientElamaId
-     *
      * @return AgencyClientRemovedMessage
      */
     public function setClientElamaId($clientElamaId)
@@ -48,6 +47,7 @@ class AgencyClientRemovedMessage extends AbstractMessage implements ProjectSpeci
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -66,6 +66,7 @@ class AgencyClientRemovedMessage extends AbstractMessage implements ProjectSpeci
     public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
+
         return $this;
     }
 
@@ -79,7 +80,6 @@ class AgencyClientRemovedMessage extends AbstractMessage implements ProjectSpeci
 
     /**
      * @param string $removingDate - date string in "Y-m-d" format
-     *
      * @return AgencyClientRemovedMessage
      */
     public function setRemovingDate($removingDate)
@@ -94,12 +94,14 @@ class AgencyClientRemovedMessage extends AbstractMessage implements ProjectSpeci
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
+        return !$this->hasEmpty(
+            [
                 $this->clientElamaId,
                 $this->elamaId,
                 $this->agencyId,
                 $this->removingDate,
-            ]);
+            ]
+        );
     }
 
     /**
@@ -107,23 +109,6 @@ class AgencyClientRemovedMessage extends AbstractMessage implements ProjectSpeci
      */
     function getEventIdentity()
     {
-        return 'agencyClientRemoved';
+        return self::EVENT_IDENTITY;
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Elama';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Elama';
-    }
-
 }

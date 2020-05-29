@@ -7,21 +7,25 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class CourseWatchedMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'courseWatched';
+
     use ArrayEmailTrait;
 
     protected $courseTag;
 
     public function getEventIdentity()
     {
-        return 'courseWatched';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->courseTag
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->courseTag
+            ]
+        );
     }
 
     /**
@@ -42,5 +46,4 @@ class CourseWatchedMessage extends AbstractMessage
 
         return $this;
     }
-
 }

@@ -6,10 +6,9 @@ use EventServiceLib\Message\AbstractMessage;
 
 class UtmBriefIoMessage extends AbstractMessage
 {
-    /** @var int */
-    protected $briefIoId;
+    const EVENT_IDENTITY = 'utmBriefIo';
 
-    /** @var string */
+    protected $briefIoId;
     protected $briefIoSource;
 
     /**
@@ -22,7 +21,6 @@ class UtmBriefIoMessage extends AbstractMessage
 
     /**
      * @param int $briefIoId
-     *
      * @return UtmBriefIoMessage
      */
     public function setBriefIoId($briefIoId)
@@ -42,7 +40,6 @@ class UtmBriefIoMessage extends AbstractMessage
 
     /**
      * @param string $briefIoSource
-     *
      * @return UtmBriefIoMessage
      */
     public function setBriefIoSource($briefIoSource)
@@ -61,5 +58,4 @@ class UtmBriefIoMessage extends AbstractMessage
     {
         return 'utmBriefIo';
     }
-
 }

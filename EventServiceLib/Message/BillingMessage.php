@@ -9,6 +9,8 @@ use EventServiceLib\Message\Traits\LocalizationTrait;
 
 class BillingMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'billing';
+
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
@@ -31,7 +33,6 @@ class BillingMessage extends AbstractMessage
 
     /**
      * @param string $purchase_date
-     *
      * @return BillingMessage
      */
     public function setPurchaseDate($purchase_date)
@@ -141,7 +142,8 @@ class BillingMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
+        return !$this->hasEmpty(
+            [
                 $this->email,
                 $this->name,
                 $this->elamaLogin,
@@ -149,7 +151,8 @@ class BillingMessage extends AbstractMessage
                 $this->contractType,
                 $this->amount,
                 $this->currency
-            ]);
+            ]
+        );
     }
 
     /**
@@ -157,7 +160,6 @@ class BillingMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'billing';
+        return self::EVENT_IDENTITY;
     }
-
 }

@@ -6,22 +6,26 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class PpcFinishViewFirstLectureMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcFinishViewFirstLecture';
+
     use ArrayEmailTrait;
 
-    /** @var string  $courseIdentity*/
+    /** @var string $courseIdentity */
     protected $courseIdentity;
 
     public function getEventIdentity()
     {
-        return 'ppcFinishViewFirstLecture';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->courseIdentity,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->courseIdentity,
+            ]
+        );
     }
 
     /**
@@ -42,5 +46,4 @@ class PpcFinishViewFirstLectureMessage extends AbstractPpcMessage
 
         return $this;
     }
-
 }

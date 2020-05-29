@@ -6,6 +6,7 @@ use EventServiceLib\Message\AbstractMessage;
 
 class GetReportTrialMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'getReportTrial';
 
     protected $elamaId;
 
@@ -33,7 +34,7 @@ class GetReportTrialMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'getReportTrial';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -41,9 +42,10 @@ class GetReportTrialMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+            ]
+        );
     }
-
 }

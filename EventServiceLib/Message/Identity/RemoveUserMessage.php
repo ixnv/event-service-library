@@ -7,6 +7,8 @@ use EventServiceLib\Message\Traits\LocalizationTrait;
 
 class RemoveUserMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'removeUser';
+
     use LocalizationTrait;
 
     protected $timestamp;
@@ -115,7 +117,7 @@ class RemoveUserMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'removeUser';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -123,10 +125,12 @@ class RemoveUserMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->country,
-            $this->userId,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->country,
+                $this->userId,
+            ]
+        );
     }
 }

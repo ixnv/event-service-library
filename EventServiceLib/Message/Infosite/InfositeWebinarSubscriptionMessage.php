@@ -1,16 +1,15 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Infosite;
 
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class InfositeWebinarSubscriptionMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class InfositeWebinarSubscriptionMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'infositeWebinarSubscription';
 
     use LocalizationTrait;
-
 
     protected $phone;
     protected $email;
@@ -34,7 +33,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $email
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setEmail($email)
@@ -54,7 +52,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $webinarType
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setWebinarType($webinarType)
@@ -74,7 +71,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $addingDate - date string in "Y-m-d" format
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setAddingDate($addingDate)
@@ -94,7 +90,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $startDateTime
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setStartDateTime($startDateTime)
@@ -114,7 +109,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $webinarName
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setWebinarName($webinarName)
@@ -134,7 +128,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $phone
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setPhone($phone)
@@ -154,7 +147,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param array $formData
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setFormData($formData)
@@ -174,7 +166,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $subscriberName
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setSubscriberName($subscriberName)
@@ -194,7 +185,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $webinarExternalId
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setWebinarExternalId($webinarExternalId)
@@ -233,7 +223,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $webinarPlatformName
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setWebinarPlatformName($webinarPlatformName)
@@ -248,12 +237,14 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->webinarType,
-            $this->addingDate,
-            $this->locale,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->webinarType,
+                $this->addingDate,
+                $this->locale,
+            ]
+        );
     }
 
     /**
@@ -261,23 +252,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
      */
     function getEventIdentity()
     {
-        return 'infositeWebinarSubscription';
+        return self::EVENT_IDENTITY;
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Infosite';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Infosite';
-    }
-
 }

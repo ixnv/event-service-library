@@ -6,6 +6,8 @@ use EventServiceLib\Message\AbstractMessage;
 
 class UserLeaveH2SForm extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'leaveH2SForm';
+
     public $elamaId;
 
     /**
@@ -18,7 +20,7 @@ class UserLeaveH2SForm extends AbstractMessage
 
     public function getEventIdentity()
     {
-        return 'leaveH2SForm';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -36,5 +38,4 @@ class UserLeaveH2SForm extends AbstractMessage
     {
         return $this->elamaId;
     }
-
 }

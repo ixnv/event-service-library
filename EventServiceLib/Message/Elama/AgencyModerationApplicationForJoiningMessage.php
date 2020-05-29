@@ -7,6 +7,8 @@ use EventServiceLib\Message\AbstractMessage;
 /** после проверки заботой заявки на присоединение к пп */
 class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'agencyModerationApplicationForJoining';
+
     const STATUS_APPROVED = 'approved';
     const STATUS_REJECTED = 'rejected';
 
@@ -35,6 +37,7 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -53,6 +56,7 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
+
         return $this;
     }
 
@@ -71,6 +75,7 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     public function setStatus($status)
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -89,6 +94,7 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     public function setLegalType($legalType)
     {
         $this->legalType = $legalType;
+
         return $this;
     }
 
@@ -107,6 +113,7 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     public function setBankAccountRequisites($bankAccountRequisites)
     {
         $this->bankAccountRequisites = $bankAccountRequisites;
+
         return $this;
     }
 
@@ -125,6 +132,7 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     public function setWithdrawalMethod($withdrawalMethod)
     {
         $this->withdrawalMethod = $withdrawalMethod;
+
         return $this;
     }
 
@@ -155,6 +163,6 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'agencyModerationApplicationForJoining';
+        return self::EVENT_IDENTITY;
     }
 }

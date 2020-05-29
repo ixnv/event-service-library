@@ -1,13 +1,13 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Infosite;
 
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class InfositeBlogSubscriptionMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class InfositeBlogSubscriptionMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'infositeBlogSubscription';
 
     use LocalizationTrait;
 
@@ -24,7 +24,6 @@ class InfositeBlogSubscriptionMessage extends AbstractMessage implements Project
 
     /**
      * @param string $email
-     *
      * @return InfositeBlogSubscriptionMessage
      */
     public function setEmail($email)
@@ -44,7 +43,6 @@ class InfositeBlogSubscriptionMessage extends AbstractMessage implements Project
 
     /**
      * @param string $addingDate - date string in "Y-m-d" format
-     *
      * @return InfositeBlogSubscriptionMessage
      */
     public function setAddingDate($addingDate)
@@ -59,11 +57,13 @@ class InfositeBlogSubscriptionMessage extends AbstractMessage implements Project
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
+        return !$this->hasEmpty(
+            [
                 $this->email,
                 $this->addingDate,
                 $this->locale,
-            ]);
+            ]
+        );
     }
 
     /**
@@ -71,23 +71,6 @@ class InfositeBlogSubscriptionMessage extends AbstractMessage implements Project
      */
     function getEventIdentity()
     {
-        return 'infositeBlogSubscription';
+        return self::EVENT_IDENTITY;
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Infosite';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Infosite';
-    }
-
 }

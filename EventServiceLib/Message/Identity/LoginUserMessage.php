@@ -8,6 +8,8 @@ use EventServiceLib\Message\Traits\LocalizationTrait;
 // Login or CrossAuth
 class LoginUserMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'loginUser';
+
     use LocalizationTrait;
 
     protected $timestamp;
@@ -116,7 +118,7 @@ class LoginUserMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'loginUser';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -124,10 +126,12 @@ class LoginUserMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->country,
-            $this->userId,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->country,
+                $this->userId,
+            ]
+        );
     }
 }

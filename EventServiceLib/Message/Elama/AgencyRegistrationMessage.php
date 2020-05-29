@@ -1,14 +1,14 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Elama;
 
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+class AgencyRegistrationMessage extends AbstractMessage
 {
-    
+    const EVENT_IDENTITY = 'agencyRegistration';
+
     protected $elamaId;
     protected $agencyId;
     protected $legalType;
@@ -24,11 +24,12 @@ class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecif
 
     /**
      * @param integer $elamaId
-     * @return $this
+     * @return AgencyRegistrationMessage
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -42,11 +43,12 @@ class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecif
 
     /**
      * @param integer $agencyId
-     * @return $this
+     * @return AgencyRegistrationMessage
      */
     public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
+
         return $this;
     }
 
@@ -60,11 +62,12 @@ class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecif
 
     /**
      * @param string $legalType
-     * @return $this
+     * @return AgencyRegistrationMessage
      */
     public function setLegalType($legalType)
     {
         $this->legalType = $legalType;
+
         return $this;
     }
 
@@ -78,11 +81,12 @@ class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecif
 
     /**
      * @param string $agencyRegistrationDate
-     * @return $this
+     * @return AgencyRegistrationMessage
      */
     public function setAgencyRegistrationDate($agencyRegistrationDate)
     {
         $this->agencyRegistrationDate = $agencyRegistrationDate;
+
         return $this;
     }
 
@@ -91,12 +95,17 @@ class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecif
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-            $this->agencyId,
-            $this->legalType,
-            $this->agencyRegistrationDate,
-        ]) && in_array($this->legalType, [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]);
+        return !$this->hasEmpty(
+                [
+                    $this->elamaId,
+                    $this->agencyId,
+                    $this->legalType,
+                    $this->agencyRegistrationDate,
+                ]
+            ) && in_array(
+                $this->legalType,
+                [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]
+            );
     }
 
     /**
@@ -104,23 +113,6 @@ class AgencyRegistrationMessage extends AbstractMessage implements ProjectSpecif
      */
     function getEventIdentity()
     {
-        return 'agencyRegistration';
+        return self::EVENT_IDENTITY;
     }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Elama';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Elama';
-    }
-
 }

@@ -6,6 +6,8 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class PpcCourseSubscriptionMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcCourseSubscription';
+
     use ArrayEmailTrait;
 
     protected $name;
@@ -15,16 +17,18 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
 
     public function getEventIdentity()
     {
-        return 'ppcCourseSubscription';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->name,
-            $this->courseId
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->name,
+                $this->courseId
+            ]
+        );
     }
 
     /**
@@ -37,7 +41,6 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param string $name
-     *
      * @return PpcCourseSubscriptionMessage
      */
     public function setName($name)
@@ -57,7 +60,6 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param string $courseName
-     *
      * @return PpcCourseSubscriptionMessage
      */
     public function setCourseName($courseName)
@@ -77,7 +79,6 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param int $courseId
-     *
      * @return PpcCourseSubscriptionMessage
      */
     public function setCourseId($courseId)
@@ -97,14 +98,14 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param string $courseStartDate
-     *
      * @return PpcCourseSubscriptionMessage
      */
     public function setCourseStartDate($courseStartDate)
     {
-        $this->courseStartDate = $courseStartDate instanceof \DateTime ? $courseStartDate->format('Y-m-d H:i:s') : $courseStartDate;
+        $this->courseStartDate = $courseStartDate instanceof \DateTime ? $courseStartDate->format(
+            'Y-m-d H:i:s'
+        ) : $courseStartDate;
 
         return $this;
     }
-
 }

@@ -6,6 +6,8 @@ use EventServiceLib\Message\AbstractMessage;
 
 class ChangePlanMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'changePlan';
+
     protected $elamaId;
     protected $reason;
     protected $plan;
@@ -72,11 +74,13 @@ class ChangePlanMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-            $this->reason,
-            $this->plan,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+                $this->reason,
+                $this->plan,
+            ]
+        );
     }
 
     /**
@@ -84,7 +88,6 @@ class ChangePlanMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'changePlan';
+        return self::EVENT_IDENTITY;
     }
-
 }

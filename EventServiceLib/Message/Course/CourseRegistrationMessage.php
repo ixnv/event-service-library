@@ -7,6 +7,8 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 class CourseRegistrationMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'courseRegistration';
+
     use ArrayEmailTrait;
 
     protected $courseTag;
@@ -15,16 +17,18 @@ class CourseRegistrationMessage extends AbstractMessage
 
     public function getEventIdentity()
     {
-        return 'courseRegistration';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->courseTag,
-            $this->name
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->courseTag,
+                $this->name
+            ]
+        );
     }
 
     /**
@@ -83,5 +87,4 @@ class CourseRegistrationMessage extends AbstractMessage
 
         return $this;
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace EventServiceLib\Message\Ppc;
 
-use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
 /**
@@ -10,20 +9,24 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
  */
 class PpcTriggerEmailMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcTriggerEmail';
+
     use ArrayEmailTrait;
 
     protected $tags;
 
     public function getEventIdentity()
     {
-        return 'ppcTriggerEmail';
+        return self::EVENT_IDENTITY;
     }
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+            ]
+        );
     }
 
     /**
@@ -45,5 +48,4 @@ class PpcTriggerEmailMessage extends AbstractPpcMessage
 
         return $this;
     }
-
 }

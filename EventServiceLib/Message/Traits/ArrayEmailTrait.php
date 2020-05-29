@@ -1,8 +1,6 @@
 <?php
 
-
 namespace EventServiceLib\Message\Traits;
-
 
 trait ArrayEmailTrait
 {
@@ -17,8 +15,7 @@ trait ArrayEmailTrait
     }
 
     /**
-     * @param mixed $email
-     *
+     * @param array|string $email
      * @return $this
      */
     public function setEmail($email)
@@ -29,11 +26,10 @@ trait ArrayEmailTrait
     }
 
     /**
-     * @param $email
+     * @param string $email
      */
     public function addEmail($email)
     {
         $this->email[] = $email;
     }
-
 }

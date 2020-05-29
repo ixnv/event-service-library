@@ -7,6 +7,8 @@ use EventServiceLib\Message\AbstractMessage;
 /** при заполнение первичной информации об агентстве */
 class AgencyInfoFilledMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'agencyInfoFilled';
+
     protected $elamaId;
     protected $agencyId;
 
@@ -25,6 +27,7 @@ class AgencyInfoFilledMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -43,6 +46,7 @@ class AgencyInfoFilledMessage extends AbstractMessage
     public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
+
         return $this;
     }
 
@@ -63,6 +67,6 @@ class AgencyInfoFilledMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'agencyInfoFilled';
+        return self::EVENT_IDENTITY;
     }
 }

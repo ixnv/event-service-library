@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Elama;
 
@@ -8,6 +8,7 @@ use EventServiceLib\Message\AbstractMessage;
 /** при выплате вознаграждения агентству */
 class AgencyCommissionReceivedMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'agencyCommissionReceived';
 
     protected $elamaId;
     protected $agencyId;
@@ -29,6 +30,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
+
         return $this;
     }
 
@@ -47,6 +49,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage
     public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
+
         return $this;
     }
 
@@ -65,6 +68,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage
     public function setLegalType($legalType)
     {
         $this->legalType = $legalType;
+
         return $this;
     }
 
@@ -83,6 +87,7 @@ class AgencyCommissionReceivedMessage extends AbstractMessage
     public function setAmount($amount)
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -108,6 +113,6 @@ class AgencyCommissionReceivedMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'agencyCommissionReceived';
+        return self::EVENT_IDENTITY;
     }
 }

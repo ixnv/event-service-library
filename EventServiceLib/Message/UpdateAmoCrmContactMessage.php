@@ -13,6 +13,7 @@ use EventServiceLib\Message\Traits\LocalizationTrait;
  */
 class UpdateAmoCrmContactMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'updateContact';
 
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
@@ -31,11 +32,11 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'updateContact';
+        return self::EVENT_IDENTITY;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRegistrationDate()
     {
@@ -43,8 +44,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $registration_date
-     *
+     * @param string $registration_date
      * @return UpdateAmoCrmContactMessage
      */
     public function setRegistrationDate($registration_date)
@@ -55,7 +55,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getElamaId()
     {
@@ -63,8 +63,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param $elamaId
-     *
+     * @param int $elamaId
      * @return UpdateAmoCrmContactMessage
      */
     public function setElamaId($elamaId)
@@ -84,7 +83,6 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
 
     /**
      * @param $phone
-     *
      * @return UpdateAmoCrmContactMessage
      */
     public function setPhone($phone)
@@ -104,7 +102,6 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
 
     /**
      * @param $accountType
-     *
      * @return UpdateAmoCrmContactMessage
      */
     public function setAccountType($accountType)
@@ -115,7 +112,7 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTimezone()
     {
@@ -123,8 +120,8 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param $timezone
-     * @return $this
+     * @param string $timezone
+     * @return UpdateAmoCrmContactMessage
      */
     public function setTimezone($timezone)
     {
@@ -157,21 +154,25 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-                $this->email,
-                $this->elamaLogin,
-                $this->name,
-                $this->registration_date,
-                $this->elamaId,
-            ])
-            && (!$this->accountType || in_array($this->accountType, [
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_ADVERTISER,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_IO,
-                ]));
+        return !$this->hasEmpty(
+                [
+                    $this->email,
+                    $this->elamaLogin,
+                    $this->name,
+                    $this->registration_date,
+                    $this->elamaId,
+                ]
+            )
+            && (!$this->accountType || in_array(
+                    $this->accountType,
+                    [
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_ADVERTISER,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_IO,
+                    ]
+                ));
     }
-
 }

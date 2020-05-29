@@ -6,6 +6,8 @@ use EventServiceLib\Message\AbstractMessage;
 
 class ChangeUserRolesMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'changeUserRoles';
+
     protected $userId; // elamaId
     protected $deletedRoles;
     protected $addedRoles;
@@ -15,7 +17,7 @@ class ChangeUserRolesMessage extends AbstractMessage
      */
     public function getEventIdentity()
     {
-        return 'changeUserRoles';
+        return self::EVENT_IDENTITY;
     }
 
     /**

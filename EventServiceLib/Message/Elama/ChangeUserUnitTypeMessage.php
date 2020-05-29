@@ -6,6 +6,7 @@ use EventServiceLib\Message\AbstractMessage;
 
 class ChangeUserUnitTypeMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'changeUserUnitType';
 
     const UNIT_TYPE_SELF_SERVICE = 'self_service';
     const UNIT_TYPE_AGENCY = 'agency';
@@ -20,7 +21,7 @@ class ChangeUserUnitTypeMessage extends AbstractMessage
      */
     function getEventIdentity()
     {
-        return 'changeUserUnitType';
+        return self::EVENT_IDENTITY;
     }
 
     /**
@@ -33,7 +34,6 @@ class ChangeUserUnitTypeMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
-     *
      * @return ChangeUserUnitTypeMessage
      */
     public function setElamaId($elamaId)
@@ -58,6 +58,7 @@ class ChangeUserUnitTypeMessage extends AbstractMessage
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -76,6 +77,7 @@ class ChangeUserUnitTypeMessage extends AbstractMessage
     public function setUnitType($unitType)
     {
         $this->unitType = $unitType;
+
         return $this;
     }
 
@@ -98,5 +100,4 @@ class ChangeUserUnitTypeMessage extends AbstractMessage
                     ]
                 ));
     }
-
 }

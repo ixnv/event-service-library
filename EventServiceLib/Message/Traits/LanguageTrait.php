@@ -4,7 +4,6 @@ namespace EventServiceLib\Message\Traits;
 
 trait LanguageTrait
 {
-
     protected $language;
 
     /**
@@ -17,7 +16,6 @@ trait LanguageTrait
 
     /**
      * @param string $language
-     *
      * @return $this
      */
     public function setLanguage($language)
@@ -26,5 +24,4 @@ trait LanguageTrait
 
         return $this;
     }
-
 }
