@@ -7,19 +7,17 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 /**
  * Common event for ppc trigger emails.
  */
-class PpcTriggerEmailMessage extends AbstractPpcMessage
+final class PpcTriggerEmailMessage extends AbstractPpcMessage
 {
     const EVENT_IDENTITY = 'ppcTriggerEmail';
 
     use ArrayEmailTrait;
 
-    protected $tags;
+    private $tags;
 
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
-    }
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty(
@@ -39,13 +37,11 @@ class PpcTriggerEmailMessage extends AbstractPpcMessage
 
     /**
      * @param string[] $tags
-     *
      * @return PpcTriggerEmailMessage
      */
     public function setTags(array $tags)
     {
         $this->tags = $tags;
-
         return $this;
     }
 }

@@ -4,14 +4,29 @@ namespace EventServiceLib\Message\Elama;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class AgencyClientRemovedMessage extends AbstractMessage
+final class AgencyClientRemovedMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'agencyClientRemoved';
 
-    protected $clientElamaId;
-    protected $elamaId;
-    protected $agencyId;
-    protected $removingDate;
+    private $clientElamaId;
+    private $elamaId;
+    private $agencyId;
+    private $removingDate;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->clientElamaId,
+                $this->elamaId,
+                $this->agencyId,
+                $this->removingDate,
+            ]
+        );
+    }
 
     /**
      * @return integer
@@ -28,7 +43,6 @@ class AgencyClientRemovedMessage extends AbstractMessage
     public function setClientElamaId($clientElamaId)
     {
         $this->clientElamaId = $clientElamaId;
-
         return $this;
     }
 
@@ -47,7 +61,6 @@ class AgencyClientRemovedMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
 
@@ -66,7 +79,6 @@ class AgencyClientRemovedMessage extends AbstractMessage
     public function setAgencyId($agencyId)
     {
         $this->agencyId = $agencyId;
-
         return $this;
     }
 
@@ -85,30 +97,6 @@ class AgencyClientRemovedMessage extends AbstractMessage
     public function setRemovingDate($removingDate)
     {
         $this->removingDate = $removingDate;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-            [
-                $this->clientElamaId,
-                $this->elamaId,
-                $this->agencyId,
-                $this->removingDate,
-            ]
-        );
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
     }
 }

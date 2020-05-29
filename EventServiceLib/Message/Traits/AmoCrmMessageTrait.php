@@ -21,7 +21,6 @@ trait AmoCrmMessageTrait
     public function setElamaLogin($elamaLogin)
     {
         $this->elamaLogin = $elamaLogin;
-
         return $this;
     }
 }

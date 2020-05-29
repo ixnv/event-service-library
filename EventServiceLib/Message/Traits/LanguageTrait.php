@@ -21,7 +21,6 @@ trait LanguageTrait
     public function setLanguage($language)
     {
         $this->language = $language;
-
         return $this;
     }
 }

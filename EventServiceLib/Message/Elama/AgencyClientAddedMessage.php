@@ -5,110 +5,15 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 
-class AgencyClientAddedMessage extends AbstractMessage
+final class AgencyClientAddedMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'agencyClientAdded';
 
-    protected $clientElamaId;
-    protected $elamaId;
-    protected $agencyId;
-    protected $legalType;
-    protected $addingDate;
-
-    /**
-     * @return integer
-     */
-    public function getClientElamaId()
-    {
-        return $this->clientElamaId;
-    }
-
-    /**
-     * @param integer $clientElamaId
-     * @return AgencyClientAddedMessage
-     */
-    public function setClientElamaId($clientElamaId)
-    {
-        $this->clientElamaId = $clientElamaId;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getElamaId()
-    {
-        return $this->elamaId;
-    }
-
-    /**
-     * @param integer $elamaId
-     * @return AgencyClientAddedMessage
-     */
-    public function setElamaId($elamaId)
-    {
-        $this->elamaId = $elamaId;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getAgencyId()
-    {
-        return $this->agencyId;
-    }
-
-    /**
-     * @param integer $agencyId
-     * @return AgencyClientAddedMessage
-     */
-    public function setAgencyId($agencyId)
-    {
-        $this->agencyId = $agencyId;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLegalType()
-    {
-        return $this->legalType;
-    }
-
-    /**
-     * @param string $legalType
-     * @return AgencyClientAddedMessage
-     */
-    public function setLegalType($legalType)
-    {
-        $this->legalType = $legalType;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAddingDate()
-    {
-        return $this->addingDate;
-    }
-
-    /**
-     * @param string $addingDate - date string in "Y-m-d" format
-     * @return AgencyClientAddedMessage
-     */
-    public function setAddingDate($addingDate)
-    {
-        $this->addingDate = $addingDate;
-
-        return $this;
-    }
+    private $clientElamaId;
+    private $elamaId;
+    private $agencyId;
+    private $legalType;
+    private $addingDate;
 
     /**
      * @return bool
@@ -130,10 +35,92 @@ class AgencyClientAddedMessage extends AbstractMessage
     }
 
     /**
+     * @return integer
+     */
+    public function getClientElamaId()
+    {
+        return $this->clientElamaId;
+    }
+
+    /**
+     * @param integer $clientElamaId
+     * @return AgencyClientAddedMessage
+     */
+    public function setClientElamaId($clientElamaId)
+    {
+        $this->clientElamaId = $clientElamaId;
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getElamaId()
+    {
+        return $this->elamaId;
+    }
+
+    /**
+     * @param integer $elamaId
+     * @return AgencyClientAddedMessage
+     */
+    public function setElamaId($elamaId)
+    {
+        $this->elamaId = $elamaId;
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getAgencyId()
+    {
+        return $this->agencyId;
+    }
+
+    /**
+     * @param integer $agencyId
+     * @return AgencyClientAddedMessage
+     */
+    public function setAgencyId($agencyId)
+    {
+        $this->agencyId = $agencyId;
+        return $this;
+    }
+
+    /**
      * @return string
      */
-    function getEventIdentity()
+    public function getLegalType()
     {
-        return self::EVENT_IDENTITY;
+        return $this->legalType;
+    }
+
+    /**
+     * @param string $legalType
+     * @return AgencyClientAddedMessage
+     */
+    public function setLegalType($legalType)
+    {
+        $this->legalType = $legalType;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddingDate()
+    {
+        return $this->addingDate;
+    }
+
+    /**
+     * @param string $addingDate - date string in "Y-m-d" format
+     * @return AgencyClientAddedMessage
+     */
+    public function setAddingDate($addingDate)
+    {
+        $this->addingDate = $addingDate;
+        return $this;
     }
 }

@@ -21,7 +21,6 @@ trait ArrayEmailTrait
     public function setEmail($email)
     {
         $this->email = is_array($email) ? $email : [$email];
-
         return $this;
     }
 

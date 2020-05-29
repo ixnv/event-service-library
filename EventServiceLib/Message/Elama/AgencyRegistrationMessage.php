@@ -5,90 +5,14 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 
-class AgencyRegistrationMessage extends AbstractMessage
+final class AgencyRegistrationMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'agencyRegistration';
 
-    protected $elamaId;
-    protected $agencyId;
-    protected $legalType;
-    protected $agencyRegistrationDate;
-
-    /**
-     * @return integer
-     */
-    public function getElamaId()
-    {
-        return $this->elamaId;
-    }
-
-    /**
-     * @param integer $elamaId
-     * @return AgencyRegistrationMessage
-     */
-    public function setElamaId($elamaId)
-    {
-        $this->elamaId = $elamaId;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getAgencyId()
-    {
-        return $this->agencyId;
-    }
-
-    /**
-     * @param integer $agencyId
-     * @return AgencyRegistrationMessage
-     */
-    public function setAgencyId($agencyId)
-    {
-        $this->agencyId = $agencyId;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLegalType()
-    {
-        return $this->legalType;
-    }
-
-    /**
-     * @param string $legalType
-     * @return AgencyRegistrationMessage
-     */
-    public function setLegalType($legalType)
-    {
-        $this->legalType = $legalType;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAgencyRegistrationDate()
-    {
-        return $this->agencyRegistrationDate;
-    }
-
-    /**
-     * @param string $agencyRegistrationDate
-     * @return AgencyRegistrationMessage
-     */
-    public function setAgencyRegistrationDate($agencyRegistrationDate)
-    {
-        $this->agencyRegistrationDate = $agencyRegistrationDate;
-
-        return $this;
-    }
+    private $elamaId;
+    private $agencyId;
+    private $legalType;
+    private $agencyRegistrationDate;
 
     /**
      * @return bool
@@ -109,10 +33,74 @@ class AgencyRegistrationMessage extends AbstractMessage
     }
 
     /**
+     * @return integer
+     */
+    public function getElamaId()
+    {
+        return $this->elamaId;
+    }
+
+    /**
+     * @param integer $elamaId
+     * @return AgencyRegistrationMessage
+     */
+    public function setElamaId($elamaId)
+    {
+        $this->elamaId = $elamaId;
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getAgencyId()
+    {
+        return $this->agencyId;
+    }
+
+    /**
+     * @param integer $agencyId
+     * @return AgencyRegistrationMessage
+     */
+    public function setAgencyId($agencyId)
+    {
+        $this->agencyId = $agencyId;
+        return $this;
+    }
+
+    /**
      * @return string
      */
-    function getEventIdentity()
+    public function getLegalType()
     {
-        return self::EVENT_IDENTITY;
+        return $this->legalType;
+    }
+
+    /**
+     * @param string $legalType
+     * @return AgencyRegistrationMessage
+     */
+    public function setLegalType($legalType)
+    {
+        $this->legalType = $legalType;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAgencyRegistrationDate()
+    {
+        return $this->agencyRegistrationDate;
+    }
+
+    /**
+     * @param string $agencyRegistrationDate
+     * @return AgencyRegistrationMessage
+     */
+    public function setAgencyRegistrationDate($agencyRegistrationDate)
+    {
+        $this->agencyRegistrationDate = $agencyRegistrationDate;
+        return $this;
     }
 }

@@ -7,7 +7,7 @@ use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class ChangeUserInfoMessage extends AbstractMessage
+final class ChangeUserInfoMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'changeUserInfo';
 
@@ -15,154 +15,13 @@ class ChangeUserInfoMessage extends AbstractMessage
     use ArrayEmailTrait;
     use LocalizationTrait;
 
-    protected $timestamp;
-    protected $name;
-    protected $userId; // elamaId
-    protected $phone;
-    protected $accountType;
-    protected $timezone;
-    protected $splitTestSegment;
-
-    /**
-     * @return string
-     */
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
-    }
-
-    /**
-     * @param int $timestamp
-     * @return ChangeUserInfoMessage
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->timestamp = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     * @return ChangeUserInfoMessage
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    /**
-     * @param int $userId
-     * @return ChangeUserInfoMessage
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string $phone
-     * @return ChangeUserInfoMessage
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAccountType()
-    {
-        return $this->accountType;
-    }
-
-    /**
-     * @param string $accountType
-     * @return ChangeUserInfoMessage
-     */
-    public function setAccountType($accountType)
-    {
-        $this->accountType = $accountType;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTimezone()
-    {
-        return $this->timezone;
-    }
-
-    /**
-     * @param int $timezone
-     * @return ChangeUserInfoMessage
-     */
-    public function setTimezone($timezone)
-    {
-        $this->timezone = $timezone;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSplitTestSegment()
-    {
-        return $this->splitTestSegment;
-    }
-
-    /**
-     * @param string $splitTestSegment
-     * @return ChangeUserInfoMessage
-     */
-    public function setSplitTestSegment($splitTestSegment)
-    {
-        $this->splitTestSegment = $splitTestSegment;
-
-        return $this;
-    }
+    private $timestamp;
+    private $name;
+    private $userId; // elamaId
+    private $phone;
+    private $accountType;
+    private $timezone;
+    private $splitTestSegment;
 
     /**
      * @return bool
@@ -190,5 +49,131 @@ class ChangeUserInfoMessage extends AbstractMessage
                     ],
                     true
                 ));
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * @param int $timestamp
+     * @return ChangeUserInfoMessage
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return ChangeUserInfoMessage
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     * @return ChangeUserInfoMessage
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return ChangeUserInfoMessage
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccountType()
+    {
+        return $this->accountType;
+    }
+
+    /**
+     * @param string $accountType
+     * @return ChangeUserInfoMessage
+     */
+    public function setAccountType($accountType)
+    {
+        $this->accountType = $accountType;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimezone()
+    {
+        return $this->timezone;
+    }
+
+    /**
+     * @param int $timezone
+     * @return ChangeUserInfoMessage
+     */
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSplitTestSegment()
+    {
+        return $this->splitTestSegment;
+    }
+
+    /**
+     * @param string $splitTestSegment
+     * @return ChangeUserInfoMessage
+     */
+    public function setSplitTestSegment($splitTestSegment)
+    {
+        $this->splitTestSegment = $splitTestSegment;
+        return $this;
     }
 }

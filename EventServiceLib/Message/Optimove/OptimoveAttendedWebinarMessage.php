@@ -4,70 +4,13 @@ namespace EventServiceLib\Message\Optimove;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class OptimoveAttendedWebinarMessage extends AbstractMessage
+final class OptimoveAttendedWebinarMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'optimoveAttendedWebinar';
 
-    protected $email;
-    protected $webinarId;
-    protected $webinarPlatformName;
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     * @return OptimoveAttendedWebinarMessage
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWebinarId()
-    {
-        return $this->webinarId;
-    }
-
-    /**
-     * @param string $webinarId
-     * @return OptimoveAttendedWebinarMessage
-     */
-    public function setWebinarId($webinarId)
-    {
-        $this->webinarId = $webinarId;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWebinarPlatformName()
-    {
-        return $this->webinarPlatformName;
-    }
-
-    /**
-     * @param string $webinarPlatformName
-     * @return OptimoveAttendedWebinarMessage
-     */
-    public function setWebinarPlatformName($webinarPlatformName)
-    {
-        $this->webinarPlatformName = $webinarPlatformName;
-
-        return $this;
-    }
+    private $email;
+    private $webinarId;
+    private $webinarPlatformName;
 
     /**
      * @return bool
@@ -86,8 +29,54 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage
     /**
      * @return string
      */
-    function getEventIdentity()
+    public function getEmail()
     {
-        return self::EVENT_IDENTITY;
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return OptimoveAttendedWebinarMessage
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebinarId()
+    {
+        return $this->webinarId;
+    }
+
+    /**
+     * @param string $webinarId
+     * @return OptimoveAttendedWebinarMessage
+     */
+    public function setWebinarId($webinarId)
+    {
+        $this->webinarId = $webinarId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebinarPlatformName()
+    {
+        return $this->webinarPlatformName;
+    }
+
+    /**
+     * @param string $webinarPlatformName
+     * @return OptimoveAttendedWebinarMessage
+     */
+    public function setWebinarPlatformName($webinarPlatformName)
+    {
+        $this->webinarPlatformName = $webinarPlatformName;
+        return $this;
     }
 }

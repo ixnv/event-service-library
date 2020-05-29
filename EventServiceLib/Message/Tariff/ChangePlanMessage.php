@@ -4,13 +4,27 @@ namespace EventServiceLib\Message\Tariff;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class ChangePlanMessage extends AbstractMessage
+final class ChangePlanMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'changePlan';
 
-    protected $elamaId;
-    protected $reason;
-    protected $plan;
+    private $elamaId;
+    private $reason;
+    private $plan;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+                $this->reason,
+                $this->plan,
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -27,7 +41,6 @@ class ChangePlanMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
 
@@ -46,7 +59,6 @@ class ChangePlanMessage extends AbstractMessage
     public function setReason($reason)
     {
         $this->reason = $reason;
-
         return $this;
     }
 
@@ -65,29 +77,6 @@ class ChangePlanMessage extends AbstractMessage
     public function setPlan($plan)
     {
         $this->plan = $plan;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-            [
-                $this->elamaId,
-                $this->reason,
-                $this->plan,
-            ]
-        );
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
     }
 }

@@ -4,20 +4,25 @@ namespace EventServiceLib\Message\Identity;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class ChangeUserRolesMessage extends AbstractMessage
+final class ChangeUserRolesMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'changeUserRoles';
 
-    protected $userId; // elamaId
-    protected $deletedRoles;
-    protected $addedRoles;
+    private $userId; // elamaId
+    private $deletedRoles;
+    private $addedRoles;
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getEventIdentity()
+    public function isValid()
     {
-        return self::EVENT_IDENTITY;
+        return !$this->hasEmpty(
+                [
+                    $this->userId,
+                ]
+            ) &&
+            (!$this->hasEmpty([$this->deletedRoles]) || !$this->hasEmpty([$this->addedRoles]));
     }
 
     /**
@@ -35,7 +40,6 @@ class ChangeUserRolesMessage extends AbstractMessage
     public function setUserId($userId)
     {
         $this->userId = $userId;
-
         return $this;
     }
 
@@ -54,7 +58,6 @@ class ChangeUserRolesMessage extends AbstractMessage
     public function setDeletedRoles($deletedRoles)
     {
         $this->deletedRoles = $deletedRoles;
-
         return $this;
     }
 
@@ -73,20 +76,6 @@ class ChangeUserRolesMessage extends AbstractMessage
     public function setAddedRoles($addedRoles)
     {
         $this->addedRoles = $addedRoles;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-                [
-                    $this->userId,
-                ]
-            ) &&
-            (!$this->hasEmpty([$this->deletedRoles]) || !$this->hasEmpty([$this->addedRoles]));
     }
 }

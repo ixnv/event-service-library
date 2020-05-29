@@ -4,22 +4,20 @@ namespace EventServiceLib\Message\Ppc;
 
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
-class PpcCourseSubscriptionMessage extends AbstractPpcMessage
+final class PpcCourseSubscriptionMessage extends AbstractPpcMessage
 {
     const EVENT_IDENTITY = 'ppcCourseSubscription';
 
     use ArrayEmailTrait;
 
-    protected $name;
-    protected $courseName;
-    protected $courseId;
-    protected $courseStartDate;
+    private $name;
+    private $courseName;
+    private $courseId;
+    private $courseStartDate;
 
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
-    }
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty(
@@ -46,7 +44,6 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -65,7 +62,6 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     public function setCourseName($courseName)
     {
         $this->courseName = $courseName;
-
         return $this;
     }
 
@@ -84,7 +80,6 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
     public function setCourseId($courseId)
     {
         $this->courseId = $courseId;
-
         return $this;
     }
 
@@ -105,7 +100,6 @@ class PpcCourseSubscriptionMessage extends AbstractPpcMessage
         $this->courseStartDate = $courseStartDate instanceof \DateTime ? $courseStartDate->format(
             'Y-m-d H:i:s'
         ) : $courseStartDate;
-
         return $this;
     }
 }

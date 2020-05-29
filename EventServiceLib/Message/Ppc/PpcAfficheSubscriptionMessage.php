@@ -4,19 +4,17 @@ namespace EventServiceLib\Message\Ppc;
 
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
-class PpcAfficheSubscriptionMessage extends AbstractPpcMessage
+final class PpcAfficheSubscriptionMessage extends AbstractPpcMessage
 {
     const EVENT_IDENTITY = 'ppcAfficheSubscription';
 
     use ArrayEmailTrait;
 
-    protected $name;
+    private $name;
 
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
-    }
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty(
@@ -42,7 +40,6 @@ class PpcAfficheSubscriptionMessage extends AbstractPpcMessage
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 }

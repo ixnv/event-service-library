@@ -4,21 +4,19 @@ namespace EventServiceLib\Message\Ppc;
 
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
-class PpcCertificationFlowMessage extends AbstractPpcMessage
+final class PpcCertificationFlowMessage extends AbstractPpcMessage
 {
     const EVENT_IDENTITY = 'ppcCertificationFlow';
 
     use ArrayEmailTrait;
 
-    protected $numAttempt;
-    protected $typeCertification;
-    protected $complete = false;
+    private $numAttempt;
+    private $typeCertification;
+    private $complete = false;
 
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
-    }
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return !$this->hasEmpty(
@@ -45,7 +43,6 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
     public function setComplete($complete)
     {
         $this->complete = $complete;
-
         return $this;
     }
 
@@ -64,7 +61,6 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
     public function setNumAttempt($numAttempt)
     {
         $this->numAttempt = $numAttempt;
-
         return $this;
     }
 
@@ -83,7 +79,6 @@ class PpcCertificationFlowMessage extends AbstractPpcMessage
     public function setTypeCertification($typeCertification)
     {
         $this->typeCertification = $typeCertification;
-
         return $this;
     }
 }

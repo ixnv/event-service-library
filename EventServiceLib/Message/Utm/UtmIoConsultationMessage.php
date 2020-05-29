@@ -4,12 +4,20 @@ namespace EventServiceLib\Message\Utm;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class UtmIoConsultationMessage extends AbstractMessage
+final class UtmIoConsultationMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'utmIoConsultation';
 
-    protected $source;
-    protected $filledFormId;
+    private $source;
+    private $filledFormId;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty([$this->filledFormId, $this->source]);
+    }
 
     /**
      * @return string
@@ -26,7 +34,6 @@ class UtmIoConsultationMessage extends AbstractMessage
     public function setSource($source)
     {
         $this->source = $source;
-
         return $this;
     }
 
@@ -45,20 +52,6 @@ class UtmIoConsultationMessage extends AbstractMessage
     public function setFilledFormId($filledFormId)
     {
         $this->filledFormId = $filledFormId;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([$this->filledFormId, $this->source]);
-    }
-
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
     }
 }

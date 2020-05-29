@@ -4,19 +4,31 @@ namespace EventServiceLib\Message\Surveys;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class SurveyAfterRegistrationMessage extends AbstractMessage
+final class SurveyAfterRegistrationMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'surveysAfterRegistration';
 
-    protected $elamaId;
-    protected $email;
-    protected $registrationReason; // причина регистрации
-    protected $budget; // бюджет
-    protected $whatItAdvertises; // что рекламирует
-    protected $participationInPartnerProgram; // участие в партнерской программе
-    protected $agencySiteUrl; // сайт агентства
-    protected $numberOfClients; // количество клиентов
-    protected $learningGoal; // цель обучения
+    private $elamaId;
+    private $email;
+    private $registrationReason; // причина регистрации
+    private $budget; // бюджет
+    private $whatItAdvertises; // что рекламирует
+    private $participationInPartnerProgram; // участие в партнерской программе
+    private $agencySiteUrl; // сайт агентства
+    private $numberOfClients; // количество клиентов
+    private $learningGoal; // цель обучения
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->elamaId
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -178,26 +190,5 @@ class SurveyAfterRegistrationMessage extends AbstractMessage
     {
         $this->learningGoal = $learningGoal;
         return $this;
-    }
-
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-            [
-                $this->elamaId
-            ]
-        );
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
     }
 }

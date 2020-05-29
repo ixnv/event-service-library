@@ -2,7 +2,7 @@
 
 namespace EventServiceLib\Message;
 
-class FilledOutFormMessage extends AbstractMessage
+final class FilledOutFormMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'filledOutForm';
 
@@ -14,20 +14,28 @@ class FilledOutFormMessage extends AbstractMessage
     const FORM_BRIEF_CREATE_CAMPAIGN = 6;
     const FORM_SERVICES_GET_CONSULTATION = 7;
 
-    protected $email;
-    protected $phone;
-    protected $name;
-    protected $formName;
-    protected $formData;
-    protected $formId;
-    protected $filledFormId;
+    private $email;
+    private $phone;
+    private $name;
+    private $formName;
+    private $formData;
+    private $formId;
+    private $filledFormId;
 
     /**
-     * @return string
+     * @return bool
      */
-    function getEventIdentity()
+    public function isValid()
     {
-        return self::EVENT_IDENTITY;
+        if (!$this->email && !$this->phone) {
+            return false;
+        }
+
+        return !$this->hasEmpty(
+            [
+                $this->formName
+            ]
+        );
     }
 
     /**
@@ -45,7 +53,6 @@ class FilledOutFormMessage extends AbstractMessage
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -64,7 +71,6 @@ class FilledOutFormMessage extends AbstractMessage
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
 
@@ -83,7 +89,6 @@ class FilledOutFormMessage extends AbstractMessage
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -102,7 +107,6 @@ class FilledOutFormMessage extends AbstractMessage
     public function setFormName($formName)
     {
         $this->formName = $formName;
-
         return $this;
     }
 
@@ -121,7 +125,6 @@ class FilledOutFormMessage extends AbstractMessage
     public function setFormData($formData)
     {
         $this->formData = $formData;
-
         return $this;
     }
 
@@ -140,7 +143,6 @@ class FilledOutFormMessage extends AbstractMessage
     public function setFormId($formId)
     {
         $this->formId = $formId;
-
         return $this;
     }
 
@@ -159,23 +161,6 @@ class FilledOutFormMessage extends AbstractMessage
     public function setFilledFormId($filledFormId)
     {
         $this->filledFormId = $filledFormId;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        if (!$this->email && !$this->phone) {
-            return false;
-        }
-
-        return !$this->hasEmpty(
-            [
-                $this->formName
-            ]
-        );
     }
 }

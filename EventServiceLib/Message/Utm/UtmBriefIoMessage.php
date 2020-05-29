@@ -4,12 +4,20 @@ namespace EventServiceLib\Message\Utm;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class UtmBriefIoMessage extends AbstractMessage
+final class UtmBriefIoMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'utmBriefIo';
 
-    protected $briefIoId;
-    protected $briefIoSource;
+    private $briefIoId;
+    private $briefIoSource;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty([$this->briefIoId, $this->briefIoSource]);
+    }
 
     /**
      * @return int
@@ -26,7 +34,6 @@ class UtmBriefIoMessage extends AbstractMessage
     public function setBriefIoId($briefIoId)
     {
         $this->briefIoId = $briefIoId;
-
         return $this;
     }
 
@@ -45,17 +52,6 @@ class UtmBriefIoMessage extends AbstractMessage
     public function setBriefIoSource($briefIoSource)
     {
         $this->briefIoSource = $briefIoSource;
-
         return $this;
-    }
-
-    public function isValid()
-    {
-        return !$this->hasEmpty([$this->briefIoId, $this->briefIoSource]);
-    }
-
-    public function getEventIdentity()
-    {
-        return 'utmBriefIo';
     }
 }

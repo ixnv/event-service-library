@@ -5,90 +5,14 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 
-class AgencyClientMoneyTransferMessage extends AbstractMessage
+final class AgencyClientMoneyTransferMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'agencyClientMoneyTransfer';
 
-    protected $elamaId;
-    protected $agencyId;
-    protected $legalType;
-    protected $transferDate;
-
-    /**
-     * @return integer
-     */
-    public function getElamaId()
-    {
-        return $this->elamaId;
-    }
-
-    /**
-     * @param integer $elamaId
-     * @return AgencyClientMoneyTransferMessage
-     */
-    public function setElamaId($elamaId)
-    {
-        $this->elamaId = $elamaId;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getAgencyId()
-    {
-        return $this->agencyId;
-    }
-
-    /**
-     * @param integer $agencyId
-     * @return AgencyClientMoneyTransferMessage
-     */
-    public function setAgencyId($agencyId)
-    {
-        $this->agencyId = $agencyId;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLegalType()
-    {
-        return $this->legalType;
-    }
-
-    /**
-     * @param string $legalType
-     * @return AgencyClientMoneyTransferMessage
-     */
-    public function setLegalType($legalType)
-    {
-        $this->legalType = $legalType;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTransferDate()
-    {
-        return $this->transferDate;
-    }
-
-    /**
-     * @param string $transferDate - date string in "Y-m-d" format
-     * @return AgencyClientMoneyTransferMessage
-     */
-    public function setTransferDate($transferDate)
-    {
-        $this->transferDate = $transferDate;
-
-        return $this;
-    }
+    private $elamaId;
+    private $agencyId;
+    private $legalType;
+    private $transferDate;
 
     /**
      * @return bool
@@ -109,10 +33,74 @@ class AgencyClientMoneyTransferMessage extends AbstractMessage
     }
 
     /**
+     * @return integer
+     */
+    public function getElamaId()
+    {
+        return $this->elamaId;
+    }
+
+    /**
+     * @param integer $elamaId
+     * @return AgencyClientMoneyTransferMessage
+     */
+    public function setElamaId($elamaId)
+    {
+        $this->elamaId = $elamaId;
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getAgencyId()
+    {
+        return $this->agencyId;
+    }
+
+    /**
+     * @param integer $agencyId
+     * @return AgencyClientMoneyTransferMessage
+     */
+    public function setAgencyId($agencyId)
+    {
+        $this->agencyId = $agencyId;
+        return $this;
+    }
+
+    /**
      * @return string
      */
-    function getEventIdentity()
+    public function getLegalType()
     {
-        return self::EVENT_IDENTITY;
+        return $this->legalType;
+    }
+
+    /**
+     * @param string $legalType
+     * @return AgencyClientMoneyTransferMessage
+     */
+    public function setLegalType($legalType)
+    {
+        $this->legalType = $legalType;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTransferDate()
+    {
+        return $this->transferDate;
+    }
+
+    /**
+     * @param string $transferDate - date string in "Y-m-d" format
+     * @return AgencyClientMoneyTransferMessage
+     */
+    public function setTransferDate($transferDate)
+    {
+        $this->transferDate = $transferDate;
+        return $this;
     }
 }

@@ -12,7 +12,7 @@ use EventServiceLib\Message\Traits\LocalizationTrait;
  * @deprecated
  * @see ElamaRegistrationMessage
  */
-class RegistrationMessage extends AbstractMessage
+final class RegistrationMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'registration';
 
@@ -33,194 +33,15 @@ class RegistrationMessage extends AbstractMessage
     /** @deprecated */
     const COUNTRY_KZ = 'kaz';
 
-    protected $registration_date; #TODO: use camelCase
-    protected $elamaId;
-    protected $phone;
-    protected $accountType;
-    protected $timezone;
-    protected $splitTestSegment;
-    protected $referralLink;
-    protected $contactSource;
-    protected $googleClientId;
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRegistrationDate()
-    {
-        return $this->registration_date;
-    }
-
-    /**
-     * @param string $registration_date
-     * @return RegistrationMessage
-     */
-    public function setRegistrationDate($registration_date)
-    {
-        $this->registration_date = $registration_date;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getElamaId()
-    {
-        return $this->elamaId;
-    }
-
-    /**
-     * @param int $elamaId
-     * @return RegistrationMessage
-     */
-    public function setElamaId($elamaId)
-    {
-        $this->elamaId = $elamaId;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string $phone
-     * @return RegistrationMessage
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getAccountType()
-    {
-        return $this->accountType;
-    }
-
-    /**
-     * @param string $accountType
-     * @return RegistrationMessage
-     */
-    public function setAccountType($accountType)
-    {
-        $this->accountType = $accountType;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getTimezone()
-    {
-        return $this->timezone;
-    }
-
-    /**
-     * @param string $timezone
-     * @return RegistrationMessage
-     */
-    public function setTimezone($timezone)
-    {
-        $this->timezone = $timezone;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSplitTestSegment()
-    {
-        return $this->splitTestSegment;
-    }
-
-    /**
-     * @param string $splitTestSegment
-     * @return RegistrationMessage
-     */
-    public function setSplitTestSegment($splitTestSegment)
-    {
-        $this->splitTestSegment = $splitTestSegment;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getReferralLink()
-    {
-        return $this->referralLink;
-    }
-
-    /**
-     * @param string $referralLink
-     * @return RegistrationMessage
-     */
-    public function setReferralLink($referralLink)
-    {
-        $this->referralLink = $referralLink;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getContactSource()
-    {
-        return $this->contactSource;
-    }
-
-    /**
-     * @param string $contactSource
-     * @return RegistrationMessage
-     */
-    public function setContactSource($contactSource)
-    {
-        $this->contactSource = $contactSource;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getGoogleClientId()
-    {
-        return $this->googleClientId;
-    }
-
-    /**
-     * @param string $googleClientId
-     * @return RegistrationMessage
-     */
-    public function setGoogleClientId($googleClientId)
-    {
-        $this->googleClientId = $googleClientId;
-
-        return $this;
-    }
+    private $registration_date; #TODO: use camelCase
+    private $elamaId;
+    private $phone;
+    private $accountType;
+    private $timezone;
+    private $splitTestSegment;
+    private $referralLink;
+    private $contactSource;
+    private $googleClientId;
 
     /**
      * @return bool
@@ -247,5 +68,167 @@ class RegistrationMessage extends AbstractMessage
                         self::AMO_ACCOUNT_TYPE_IO,
                     ]
                 ));
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegistrationDate()
+    {
+        return $this->registration_date;
+    }
+
+    /**
+     * @param string $registration_date
+     * @return RegistrationMessage
+     */
+    public function setRegistrationDate($registration_date)
+    {
+        $this->registration_date = $registration_date;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getElamaId()
+    {
+        return $this->elamaId;
+    }
+
+    /**
+     * @param int $elamaId
+     * @return RegistrationMessage
+     */
+    public function setElamaId($elamaId)
+    {
+        $this->elamaId = $elamaId;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return RegistrationMessage
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAccountType()
+    {
+        return $this->accountType;
+    }
+
+    /**
+     * @param string $accountType
+     * @return RegistrationMessage
+     */
+    public function setAccountType($accountType)
+    {
+        $this->accountType = $accountType;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTimezone()
+    {
+        return $this->timezone;
+    }
+
+    /**
+     * @param string $timezone
+     * @return RegistrationMessage
+     */
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSplitTestSegment()
+    {
+        return $this->splitTestSegment;
+    }
+
+    /**
+     * @param string $splitTestSegment
+     * @return RegistrationMessage
+     */
+    public function setSplitTestSegment($splitTestSegment)
+    {
+        $this->splitTestSegment = $splitTestSegment;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReferralLink()
+    {
+        return $this->referralLink;
+    }
+
+    /**
+     * @param string $referralLink
+     * @return RegistrationMessage
+     */
+    public function setReferralLink($referralLink)
+    {
+        $this->referralLink = $referralLink;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContactSource()
+    {
+        return $this->contactSource;
+    }
+
+    /**
+     * @param string $contactSource
+     * @return RegistrationMessage
+     */
+    public function setContactSource($contactSource)
+    {
+        $this->contactSource = $contactSource;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGoogleClientId()
+    {
+        return $this->googleClientId;
+    }
+
+    /**
+     * @param string $googleClientId
+     * @return RegistrationMessage
+     */
+    public function setGoogleClientId($googleClientId)
+    {
+        $this->googleClientId = $googleClientId;
+        return $this;
     }
 }

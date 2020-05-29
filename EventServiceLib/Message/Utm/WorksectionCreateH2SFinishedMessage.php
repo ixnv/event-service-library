@@ -4,13 +4,21 @@ namespace EventServiceLib\Message\Utm;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class WorksectionCreateH2SFinishedMessage extends AbstractMessage
+final class WorksectionCreateH2SFinishedMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'worksectionCreateH2SFinished';
 
-    protected $elamaId;
-    protected $tag;
-    protected $campaignType;
+    private $elamaId;
+    private $tag;
+    private $campaignType;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty([$this->elamaId, $this->tag, $this->campaignType]);
+    }
 
     /**
      * @return string
@@ -27,7 +35,6 @@ class WorksectionCreateH2SFinishedMessage extends AbstractMessage
     public function setTag($tag)
     {
         $this->tag = $tag;
-
         return $this;
     }
 
@@ -46,7 +53,6 @@ class WorksectionCreateH2SFinishedMessage extends AbstractMessage
     public function setCampaignType($campaignType)
     {
         $this->campaignType = $campaignType;
-
         return $this;
     }
 
@@ -65,23 +71,6 @@ class WorksectionCreateH2SFinishedMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([$this->elamaId, $this->tag, $this->campaignType]);
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
     }
 }

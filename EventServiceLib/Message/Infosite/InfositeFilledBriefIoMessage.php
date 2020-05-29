@@ -4,11 +4,23 @@ namespace EventServiceLib\Message\Infosite;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class InfositeFilledBriefIoMessage extends AbstractMessage
+final class InfositeFilledBriefIoMessage extends AbstractMessage
 {
     const EVENT_IDENTITY = 'infositeFilledBriefIo';
 
-    protected $formData;
+    private $formData;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->formData
+            ]
+        );
+    }
 
     /**
      * @return array
@@ -25,27 +37,6 @@ class InfositeFilledBriefIoMessage extends AbstractMessage
     public function setFormData($formData)
     {
         $this->formData = $formData;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-            [
-                $this->formData
-            ]
-        );
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
     }
 }
