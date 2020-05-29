@@ -7,7 +7,6 @@ use EventServiceLib\EventServiceValues;
 use EventServiceLib\Exceptions\EventServiceApiException;
 use EventServiceLib\Exceptions\EventServiceException;
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\MessageInterface;
 
 class EventDispatcher implements EventDispatcherInterface
 {

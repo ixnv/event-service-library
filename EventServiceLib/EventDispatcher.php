@@ -4,7 +4,6 @@ namespace EventServiceLib;
 
 use EventServiceLib\Exceptions\EventServiceException;
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\MessageInterface;
 
 class EventDispatcher implements EventDispatcherInterface
 {
