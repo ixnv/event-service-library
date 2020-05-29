@@ -2,14 +2,9 @@
 
 namespace EventServiceLib\Message;
 
-abstract class AbstractMessage
+abstract class AbstractMessage implements MessageInterface
 {
-
-    /**
-     * @var array
-     */
     protected $orphanFields = [];
-
     protected $messageUniqId = '';
 
     /**
@@ -53,11 +48,14 @@ abstract class AbstractMessage
     abstract public function isValid();
 
     /**
-     * Return event text identity. E.g. 'billing'
+     * Return event text identity set in EVENT_IDENTITY constant
      *
      * @return string
      */
-    abstract function getEventIdentity();
+    public function getEventIdentity()
+    {
+        return self::EVENT_IDENTITY;
+    }
 
     /**
      * @return array

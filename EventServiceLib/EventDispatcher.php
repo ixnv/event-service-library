@@ -4,6 +4,7 @@ namespace EventServiceLib;
 
 use EventServiceLib\Exceptions\EventServiceException;
 use EventServiceLib\Message\AbstractMessage;
+use EventServiceLib\Message\MessageInterface;
 
 class EventDispatcher implements EventDispatcherInterface
 {
@@ -27,7 +28,7 @@ class EventDispatcher implements EventDispatcherInterface
             throw new EventServiceException('AMQP connection is not available');
         }
 
-        if (!$message->isValid()) {
+        if (!$message->isValid() || $message->getEventIdentity() === MessageInterface::EVENT_IDENTITY) {
             return false; # TODO: Exception?
         }
 

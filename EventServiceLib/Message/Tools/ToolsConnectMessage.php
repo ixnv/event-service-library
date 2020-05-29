@@ -121,12 +121,4 @@ class ToolsConnectMessage extends AbstractMessage
                 !$this->hasEmpty([$this->elamaId])
             );
     }
-
-    /**
-     * @return string
-     */
-    public function getEventIdentity()
-    {
-        return self::EVENT_IDENTITY;
-    }
 }

@@ -7,6 +7,7 @@ use EventServiceLib\EventServiceValues;
 use EventServiceLib\Exceptions\EventServiceApiException;
 use EventServiceLib\Exceptions\EventServiceException;
 use EventServiceLib\Message\AbstractMessage;
+use EventServiceLib\Message\MessageInterface;
 
 class EventDispatcher implements EventDispatcherInterface
 {
@@ -26,7 +27,7 @@ class EventDispatcher implements EventDispatcherInterface
      */
     public function dispatchMessage(AbstractMessage $message)
     {
-        if (!$message->isValid()) {
+        if (!$message->isValid() || $message->getEventIdentity() === MessageInterface::EVENT_IDENTITY) {
             return false;
         }
 
