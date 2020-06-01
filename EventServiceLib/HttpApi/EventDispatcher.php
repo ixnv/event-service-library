@@ -12,9 +12,9 @@ class EventDispatcher implements EventDispatcherInterface
 {
     private $ESApi;
 
-    public function __construct($ESApiUrl, $initiatorServiceName)
+    public function __construct(Api $ESApi)
     {
-        $this->ESApi = new Api($ESApiUrl, $initiatorServiceName);
+        $this->ESApi = $ESApi;
     }
 
     /**

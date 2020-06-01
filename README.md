@@ -14,7 +14,8 @@ $message
    ->setEmail('test@gmail.com')  
    ->setElamaLogin('elamaLogin@asd.asd');  
 
-$dispatcher = new \EventServiceLib\HttpApi\EventDispatcher(...);
+$ESApi = new Api(...);
+$dispatcher = new \EventServiceLib\HttpApi\EventDispatcher($ESApi);
 $dispatcher->dispatchMessage($message);
 ```
 
