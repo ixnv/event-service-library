@@ -10,6 +10,7 @@ class AccountAttachMessage extends AbstractMessage
     protected $advSystem;
     protected $accountType;
     protected $email;
+    protected $place;
 
     /**
      * @return int
@@ -84,6 +85,24 @@ class AccountAttachMessage extends AbstractMessage
     {
         $this->email = $email;
 
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * @param string $place
+     * @return AccountAttachMessage
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
         return $this;
     }
 
