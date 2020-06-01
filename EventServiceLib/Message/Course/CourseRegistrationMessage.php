@@ -5,26 +5,25 @@ namespace EventServiceLib\Message\Course;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
-class CourseRegistrationMessage extends AbstractMessage
+final class CourseRegistrationMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'courseRegistration';
+
     use ArrayEmailTrait;
 
-    protected $courseTag;
-    protected $name;
-    protected $phone;
-
-    public function getEventIdentity()
-    {
-        return 'courseRegistration';
-    }
+    private $courseTag;
+    private $name;
+    private $phone;
 
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->courseTag,
-            $this->name
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->courseTag,
+                $this->name
+            ]
+        );
     }
 
     /**
@@ -42,7 +41,6 @@ class CourseRegistrationMessage extends AbstractMessage
     public function setCourseTag($courseTag)
     {
         $this->courseTag = $courseTag;
-
         return $this;
     }
 
@@ -61,7 +59,6 @@ class CourseRegistrationMessage extends AbstractMessage
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -80,8 +77,6 @@ class CourseRegistrationMessage extends AbstractMessage
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
-
 }

@@ -2,10 +2,8 @@
 
 namespace EventServiceLib\Message\Traits;
 
-
 trait GetresponseMessageTrait
 {
-
     protected $name;
 
     /**
@@ -18,13 +16,11 @@ trait GetresponseMessageTrait
 
     /**
      * @param mixed $name
-     *
      * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -35,5 +31,4 @@ trait GetresponseMessageTrait
     {
         return !empty($this->name) && !empty($this->email);
     }
-
 }

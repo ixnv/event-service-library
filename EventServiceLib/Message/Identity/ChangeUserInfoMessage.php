@@ -7,26 +7,48 @@ use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class ChangeUserInfoMessage extends AbstractMessage
+final class ChangeUserInfoMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'changeUserInfo';
+
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
     use LocalizationTrait;
 
-    protected $timestamp;
-    protected $name;
-    protected $userId; // elamaId
-    protected $phone;
-    protected $accountType;
-    protected $timezone;
-    protected $splitTestSegment;
+    private $timestamp;
+    private $name;
+    private $userId; // elamaId
+    private $phone;
+    private $accountType;
+    private $timezone;
+    private $splitTestSegment;
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getEventIdentity()
+    public function isValid()
     {
-        return 'changeUserInfo';
+        return !$this->hasEmpty(
+                [
+                    $this->email,
+                    $this->elamaLogin,
+                    $this->name,
+                    $this->timestamp,
+                    $this->userId,
+                ]
+            )
+            && (!$this->accountType || in_array(
+                    $this->accountType,
+                    [
+                        ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_ADVERTISER,
+                        ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY,
+                        ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+                        ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_PROXY,
+                        ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+                        ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_IO,
+                    ],
+                    true
+                ));
     }
 
     /**
@@ -44,7 +66,6 @@ class ChangeUserInfoMessage extends AbstractMessage
     public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
-
         return $this;
     }
 
@@ -63,7 +84,6 @@ class ChangeUserInfoMessage extends AbstractMessage
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -77,13 +97,11 @@ class ChangeUserInfoMessage extends AbstractMessage
 
     /**
      * @param int $userId
-     *
      * @return ChangeUserInfoMessage
      */
     public function setUserId($userId)
     {
         $this->userId = $userId;
-
         return $this;
     }
 
@@ -97,13 +115,11 @@ class ChangeUserInfoMessage extends AbstractMessage
 
     /**
      * @param string $phone
-     *
      * @return ChangeUserInfoMessage
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
 
@@ -117,13 +133,11 @@ class ChangeUserInfoMessage extends AbstractMessage
 
     /**
      * @param string $accountType
-     *
      * @return ChangeUserInfoMessage
      */
     public function setAccountType($accountType)
     {
         $this->accountType = $accountType;
-
         return $this;
     }
 
@@ -142,7 +156,6 @@ class ChangeUserInfoMessage extends AbstractMessage
     public function setTimezone($timezone)
     {
         $this->timezone = $timezone;
-
         return $this;
     }
 
@@ -161,29 +174,6 @@ class ChangeUserInfoMessage extends AbstractMessage
     public function setSplitTestSegment($splitTestSegment)
     {
         $this->splitTestSegment = $splitTestSegment;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-                $this->email,
-                $this->elamaLogin,
-                $this->name,
-                $this->timestamp,
-                $this->userId,
-            ])
-            && (!$this->accountType || in_array($this->accountType, [
-                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_ADVERTISER,
-                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY,
-                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
-                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_PROXY,
-                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
-                    ElamaRegistrationMessage::AMO_ACCOUNT_TYPE_IO,
-                ], true));
     }
 }

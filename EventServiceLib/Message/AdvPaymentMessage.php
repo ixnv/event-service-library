@@ -5,28 +5,43 @@ namespace EventServiceLib\Message;
 use EventServiceLib\Message\Traits\AmoCrmMessageTrait;
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
-class AdvPaymentMessage extends AbstractMessage
+final class AdvPaymentMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'advPayment';
+
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
 
-    protected $elamaId;
-    protected $transferAmount;
-    protected $transferCurrency;
-    protected $transferDate;
-    protected $advPlatform;
-    protected $phone;
-    protected $advSystemAccountId;
-    protected $chargedAmount;
-    protected $chargedAmountCurrency;
-    protected $chargedAmountToRubRate;
+    private $elamaId;
+    private $transferAmount;
+    private $transferCurrency;
+    private $transferDate;
+    private $advPlatform;
+    private $phone;
+    private $advSystemAccountId;
+    private $chargedAmount;
+    private $chargedAmountCurrency;
+    private $chargedAmountToRubRate;
 
     /**
-     * @return string
+     * @return bool
      */
-    function getEventIdentity()
+    public function isValid()
     {
-        return 'advPayment';
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->elamaLogin,
+                $this->transferAmount,
+                $this->transferCurrency,
+                $this->transferDate,
+                $this->advPlatform,
+                $this->advSystemAccountId,
+                $this->chargedAmount,
+                $this->chargedAmountCurrency,
+                $this->chargedAmountToRubRate
+            ]
+        );
     }
 
     /**
@@ -39,13 +54,11 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
-     *
      * @return AdvPaymentMessage
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
 
@@ -59,13 +72,11 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param float $transferAmount
-     *
      * @return AdvPaymentMessage
      */
     public function setTransferAmount($transferAmount)
     {
         $this->transferAmount = $transferAmount;
-
         return $this;
     }
 
@@ -79,13 +90,11 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param string $transferDate
-     *
      * @return AdvPaymentMessage
      */
     public function setTransferDate($transferDate)
     {
         $this->transferDate = $transferDate;
-
         return $this;
     }
 
@@ -99,13 +108,11 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param string $advPlatform
-     *
      * @return AdvPaymentMessage
      */
     public function setAdvPlatform($advPlatform)
     {
         $this->advPlatform = $advPlatform;
-
         return $this;
     }
 
@@ -119,13 +126,11 @@ class AdvPaymentMessage extends AbstractMessage
 
     /**
      * @param string|null $phone
-     *
      * @return AdvPaymentMessage
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
 
@@ -144,7 +149,6 @@ class AdvPaymentMessage extends AbstractMessage
     public function setTransferCurrency($transferCurrency)
     {
         $this->transferCurrency = $transferCurrency;
-
         return $this;
     }
 
@@ -163,7 +167,6 @@ class AdvPaymentMessage extends AbstractMessage
     public function setAdvSystemAccountId($advSystemAccountId)
     {
         $this->advSystemAccountId = $advSystemAccountId;
-
         return $this;
     }
 
@@ -182,7 +185,6 @@ class AdvPaymentMessage extends AbstractMessage
     public function setChargedAmount($chargedAmount)
     {
         $this->chargedAmount = $chargedAmount;
-
         return $this;
     }
 
@@ -201,7 +203,6 @@ class AdvPaymentMessage extends AbstractMessage
     public function setChargedAmountCurrency($chargedAmountCurrency)
     {
         $this->chargedAmountCurrency = $chargedAmountCurrency;
-
         return $this;
     }
 
@@ -220,27 +221,6 @@ class AdvPaymentMessage extends AbstractMessage
     public function setChargedAmountToRubRate($chargedAmountToRubRate)
     {
         $this->chargedAmountToRubRate = $chargedAmountToRubRate;
-
         return $this;
     }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->elamaLogin,
-            $this->transferAmount,
-            $this->transferCurrency,
-            $this->transferDate,
-            $this->advPlatform,
-            $this->advSystemAccountId,
-            $this->chargedAmount,
-            $this->chargedAmountCurrency,
-            $this->chargedAmountToRubRate
-        ]);
-    }
-
 }

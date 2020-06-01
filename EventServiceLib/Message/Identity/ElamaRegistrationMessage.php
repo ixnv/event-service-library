@@ -8,8 +8,10 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class ElamaRegistrationMessage extends AbstractMessage
+final class ElamaRegistrationMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'elamaRegistration';
+
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
@@ -22,22 +24,42 @@ class ElamaRegistrationMessage extends AbstractMessage
     const AMO_ACCOUNT_TYPE_PROXY_CLIENT = 'proxy_client'; // Клиент посредника
     const AMO_ACCOUNT_TYPE_IO = 'io'; // ИО
 
-    protected $timestamp;
-    protected $userId; // elamaId
-    protected $phone;
-    protected $accountType;
-    protected $timezone;
-    protected $splitTestSegment;
-    protected $referralLink;
-    protected $contactSource;
-    protected $googleClientId;
+    private $timestamp;
+    private $userId; // elamaId
+    private $phone;
+    private $accountType;
+    private $timezone;
+    private $splitTestSegment;
+    private $referralLink;
+    private $contactSource;
+    private $googleClientId;
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getEventIdentity()
+    public function isValid()
     {
-        return 'elamaRegistration';
+        return !$this->hasEmpty(
+                [
+                    $this->email,
+                    $this->elamaLogin,
+                    $this->country,
+                    $this->timestamp,
+                    $this->userId,
+                ]
+            )
+            && (!$this->accountType || in_array(
+                    $this->accountType,
+                    [
+                        self::AMO_ACCOUNT_TYPE_ADVERTISER,
+                        self::AMO_ACCOUNT_TYPE_AGENCY,
+                        self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+                        self::AMO_ACCOUNT_TYPE_PROXY,
+                        self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+                        self::AMO_ACCOUNT_TYPE_IO,
+                    ],
+                    true
+                ));
     }
 
     /**
@@ -55,7 +77,6 @@ class ElamaRegistrationMessage extends AbstractMessage
     public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
-
         return $this;
     }
 
@@ -69,13 +90,11 @@ class ElamaRegistrationMessage extends AbstractMessage
 
     /**
      * @param int $userId
-     *
      * @return ElamaRegistrationMessage
      */
     public function setUserId($userId)
     {
         $this->userId = $userId;
-
         return $this;
     }
 
@@ -89,13 +108,11 @@ class ElamaRegistrationMessage extends AbstractMessage
 
     /**
      * @param string $phone
-     *
      * @return ElamaRegistrationMessage
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
 
@@ -109,13 +126,11 @@ class ElamaRegistrationMessage extends AbstractMessage
 
     /**
      * @param string $accountType
-     *
      * @return ElamaRegistrationMessage
      */
     public function setAccountType($accountType)
     {
         $this->accountType = $accountType;
-
         return $this;
     }
 
@@ -129,12 +144,11 @@ class ElamaRegistrationMessage extends AbstractMessage
 
     /**
      * @param string $timezone
-     * @return $this
+     * @return ElamaRegistrationMessage
      */
     public function setTimezone($timezone)
     {
         $this->timezone = $timezone;
-
         return $this;
     }
 
@@ -153,7 +167,6 @@ class ElamaRegistrationMessage extends AbstractMessage
     public function setSplitTestSegment($splitTestSegment)
     {
         $this->splitTestSegment = $splitTestSegment;
-
         return $this;
     }
 
@@ -167,13 +180,11 @@ class ElamaRegistrationMessage extends AbstractMessage
 
     /**
      * @param string $referralLink
-     *
      * @return ElamaRegistrationMessage
      */
     public function setReferralLink($referralLink)
     {
         $this->referralLink = $referralLink;
-
         return $this;
     }
 
@@ -187,13 +198,11 @@ class ElamaRegistrationMessage extends AbstractMessage
 
     /**
      * @param string $contactSource
-     *
      * @return ElamaRegistrationMessage
      */
     public function setContactSource($contactSource)
     {
         $this->contactSource = $contactSource;
-
         return $this;
     }
 
@@ -207,35 +216,11 @@ class ElamaRegistrationMessage extends AbstractMessage
 
     /**
      * @param string $googleClientId
-     *
      * @return ElamaRegistrationMessage
      */
     public function setGoogleClientId($googleClientId)
     {
         $this->googleClientId = $googleClientId;
-
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-                $this->email,
-                $this->elamaLogin,
-                $this->country,
-                $this->timestamp,
-                $this->userId,
-            ])
-            && (!$this->accountType || in_array($this->accountType, [
-                    self::AMO_ACCOUNT_TYPE_ADVERTISER,
-                    self::AMO_ACCOUNT_TYPE_AGENCY,
-                    self::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
-                    self::AMO_ACCOUNT_TYPE_PROXY,
-                    self::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
-                    self::AMO_ACCOUNT_TYPE_IO,
-                ], true));
     }
 }

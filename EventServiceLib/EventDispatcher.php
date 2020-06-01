@@ -1,12 +1,9 @@
 <?php
 
-
 namespace EventServiceLib;
-
 
 use EventServiceLib\Exceptions\EventServiceException;
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
 class EventDispatcher implements EventDispatcherInterface
 {
@@ -17,7 +14,6 @@ class EventDispatcher implements EventDispatcherInterface
     {
         $this->queueManager = $queueManager;
     }
-
 
     /**
      * @param AbstractMessage $message
@@ -37,15 +33,11 @@ class EventDispatcher implements EventDispatcherInterface
 
         $this->queueManager->openConnection();
         $dispatcherMessage = [
-            'version'      => EventServiceValues::VERSION,
+            'version' => EventServiceValues::VERSION,
             'messageClass' => get_class($message),
-            'type'         => $message->getEventIdentity(),
-            'fields'       => $message->toArray(),
+            'type' => $message->getEventIdentity(),
+            'fields' => $message->toArray(),
         ];
-
-        if ($message instanceof ProjectSpecificMessageInterface) {
-            $dispatcherMessage['project'] = $message->getProjectIdentity();
-        }
 
         $dispatcherMessage = json_encode($dispatcherMessage);
         $this->queueManager->putMessage($dispatcherMessage);
@@ -65,9 +57,9 @@ class EventDispatcher implements EventDispatcherInterface
     }
 
     /**
-     * @param array $dispatcherMessage
+     * @param string $dispatcherMessage
      *
-     * @return string
+     * @return array
      */
     public static function decodeDispatcherMessage($dispatcherMessage)
     {
@@ -81,5 +73,4 @@ class EventDispatcher implements EventDispatcherInterface
     {
         return $this->queueManager->connectionIsAvailable();
     }
-
 }

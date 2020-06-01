@@ -83,5 +83,4 @@ class ConnectionFactory
 
         throw new EventServiceException("AMQPException caught!", 500, $e);
     }
-
 }

@@ -4,13 +4,29 @@ namespace EventServiceLib\Message\Account;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class AccountAttachMessage extends AbstractMessage
+final class AccountAttachMessage extends AbstractMessage
 {
-    protected $elamaId;
-    protected $advSystem;
-    protected $accountType;
-    protected $email;
-    protected $place;
+    const EVENT_IDENTITY = 'accountAttach';
+
+    private $elamaId;
+    private $advSystem;
+    private $accountType;
+    private $email;
+    private $place;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+                $this->accountType,
+                $this->advSystem
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -27,7 +43,6 @@ class AccountAttachMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
 
@@ -46,7 +61,6 @@ class AccountAttachMessage extends AbstractMessage
     public function setAdvSystem($advSystem)
     {
         $this->advSystem = $advSystem;
-
         return $this;
     }
 
@@ -65,7 +79,6 @@ class AccountAttachMessage extends AbstractMessage
     public function setAccountType($accountType)
     {
         $this->accountType = $accountType;
-
         return $this;
     }
 
@@ -84,7 +97,6 @@ class AccountAttachMessage extends AbstractMessage
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -104,25 +116,5 @@ class AccountAttachMessage extends AbstractMessage
     {
         $this->place = $place;
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'accountAttach';
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-            $this->elamaId,
-            $this->accountType,
-            $this->advSystem
-        ]);
     }
 }

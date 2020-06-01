@@ -7,19 +7,39 @@ use EventServiceLib\Message\Traits\ArrayEmailTrait;
 use EventServiceLib\Message\Traits\GetresponseMessageTrait;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class BillingMessage extends AbstractMessage
+final class BillingMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'billing';
+
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
     use LocalizationTrait;
 
-    protected $purchase_date;
-    protected $elamaId;
-    protected $contractType;
-    protected $amount;
-    protected $currency;
-    protected $isInitial;
+    private $purchase_date;
+    private $elamaId;
+    private $contractType;
+    private $amount;
+    private $currency;
+    private $isInitial;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->name,
+                $this->elamaLogin,
+                $this->purchase_date,
+                $this->contractType,
+                $this->amount,
+                $this->currency
+            ]
+        );
+    }
 
     /**
      * @return string
@@ -31,13 +51,11 @@ class BillingMessage extends AbstractMessage
 
     /**
      * @param string $purchase_date
-     *
      * @return BillingMessage
      */
     public function setPurchaseDate($purchase_date)
     {
         $this->purchase_date = $purchase_date;
-
         return $this;
     }
 
@@ -56,7 +74,6 @@ class BillingMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
 
@@ -75,7 +92,6 @@ class BillingMessage extends AbstractMessage
     public function setContractType($contractType)
     {
         $this->contractType = $contractType;
-
         return $this;
     }
 
@@ -94,7 +110,6 @@ class BillingMessage extends AbstractMessage
     public function setAmount($amount)
     {
         $this->amount = $amount;
-
         return $this;
     }
 
@@ -113,7 +128,6 @@ class BillingMessage extends AbstractMessage
     public function setCurrency($currency)
     {
         $this->currency = $currency;
-
         return $this;
     }
 
@@ -132,32 +146,6 @@ class BillingMessage extends AbstractMessage
     public function setIsInitial($isInitial)
     {
         $this->isInitial = $isInitial;
-
         return $this;
     }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-                $this->email,
-                $this->name,
-                $this->elamaLogin,
-                $this->purchase_date,
-                $this->contractType,
-                $this->amount,
-                $this->currency
-            ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventIdentity()
-    {
-        return 'billing';
-    }
-
 }

@@ -4,11 +4,27 @@ namespace EventServiceLib\Message\Account;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class AccountAttachRequestMessage extends AbstractMessage
+final class AccountAttachRequestMessage extends AbstractMessage
 {
-    protected $elamaId;
-    protected $advSystem;
-    protected $requestStatus;
+    const EVENT_IDENTITY = 'accountAttachRequest';
+
+    private $elamaId;
+    private $advSystem;
+    private $requestStatus;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+                $this->requestStatus,
+                $this->advSystem
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -62,27 +78,5 @@ class AccountAttachRequestMessage extends AbstractMessage
     {
         $this->requestStatus = $requestStatus;
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'accountAttachRequest';
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-            [
-                $this->elamaId,
-                $this->requestStatus,
-                $this->advSystem
-            ]
-        );
     }
 }

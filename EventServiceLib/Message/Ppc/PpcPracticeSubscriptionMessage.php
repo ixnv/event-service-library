@@ -4,26 +4,28 @@ namespace EventServiceLib\Message\Ppc;
 
 use EventServiceLib\Message\Traits\ArrayEmailTrait;
 
-class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
+final class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 {
+    const EVENT_IDENTITY = 'ppcPracticeSubscription';
+
     use ArrayEmailTrait;
 
-    protected $practiceId;
-    protected $practiceName;
-    protected $practiceSubscriptionEnabled;
+    private $practiceId;
+    private $practiceName;
+    private $practiceSubscriptionEnabled;
 
-    public function getEventIdentity()
-    {
-        return 'ppcPracticeSubscription';
-    }
-
+    /**
+     * @return bool
+     */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->practiceId,
-            $this->practiceName
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->practiceId,
+                $this->practiceName
+            ]
+        );
     }
 
     /**
@@ -36,13 +38,11 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param int $practiceId
-     *
-     * @return $this
+     * @return PpcPracticeSubscriptionMessage
      */
     public function setPracticeId($practiceId)
     {
         $this->practiceId = $practiceId;
-
         return $this;
     }
 
@@ -56,13 +56,11 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param string $practiceName
-     *
-     * @return $this
+     * @return PpcPracticeSubscriptionMessage
      */
     public function setPracticeName($practiceName)
     {
         $this->practiceName = $practiceName;
-
         return $this;
     }
 
@@ -76,14 +74,11 @@ class PpcPracticeSubscriptionMessage extends AbstractPpcMessage
 
     /**
      * @param $practiceSubscriptionEnabled
-     *
-     * @return $this
+     * @return PpcPracticeSubscriptionMessage
      */
     public function setPracticeSubscriptionEnabled($practiceSubscriptionEnabled)
     {
         $this->practiceSubscriptionEnabled = $practiceSubscriptionEnabled;
-
         return $this;
     }
-
 }

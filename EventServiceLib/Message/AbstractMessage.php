@@ -2,15 +2,18 @@
 
 namespace EventServiceLib\Message;
 
-abstract class AbstractMessage
+abstract class AbstractMessage implements MessageInterface
 {
-
-    /**
-     * @var array
-     */
     protected $orphanFields = [];
-
     protected $messageUniqId = '';
+
+    public function __construct()
+    {
+        if (!defined('static::EVENT_IDENTITY'))
+        {
+            throw new \Exception('Constant EVENT_IDENTITY is not defined on subclass ' . get_class($this));
+        }
+    }
 
     /**
      * Test method to restore message state.
@@ -53,11 +56,14 @@ abstract class AbstractMessage
     abstract public function isValid();
 
     /**
-     * Return event text identity. E.g. 'billing'
+     * Return event text identity set in EVENT_IDENTITY constant
      *
      * @return string
      */
-    abstract function getEventIdentity();
+    public function getEventIdentity()
+    {
+        return static::EVENT_IDENTITY;
+    }
 
     /**
      * @return array
@@ -69,7 +75,6 @@ abstract class AbstractMessage
 
     /**
      * @param array $values
-     *
      * @return bool
      */
     public function hasEmpty(array $values)
@@ -90,5 +95,4 @@ abstract class AbstractMessage
     {
         return $this->messageUniqId;
     }
-
 }

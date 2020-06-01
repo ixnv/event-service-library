@@ -1,16 +1,30 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Optimove;
 
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
-class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+final class OptimoveAttendedWebinarMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'optimoveAttendedWebinar';
 
-    protected $email;
-    protected $webinarId;
-    protected $webinarPlatformName;
+    private $email;
+    private $webinarId;
+    private $webinarPlatformName;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->webinarId,
+                $this->webinarPlatformName
+            ]
+        );
+    }
 
     /**
      * @return string
@@ -22,13 +36,11 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
 
     /**
      * @param string $email
-     *
      * @return OptimoveAttendedWebinarMessage
      */
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -42,13 +54,11 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
 
     /**
      * @param string $webinarId
-     *
      * @return OptimoveAttendedWebinarMessage
      */
     public function setWebinarId($webinarId)
     {
         $this->webinarId = $webinarId;
-
         return $this;
     }
 
@@ -62,50 +72,11 @@ class OptimoveAttendedWebinarMessage extends AbstractMessage implements ProjectS
 
     /**
      * @param string $webinarPlatformName
-     *
      * @return OptimoveAttendedWebinarMessage
      */
     public function setWebinarPlatformName($webinarPlatformName)
     {
         $this->webinarPlatformName = $webinarPlatformName;
-
         return $this;
     }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->webinarId,
-            $this->webinarPlatformName
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'optimoveAttendedWebinar';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Optimove';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Optimove';
-    }
-
 }

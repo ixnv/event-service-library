@@ -1,28 +1,42 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Infosite;
 
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class InfositeWebinarSubscriptionMessage extends AbstractMessage implements ProjectSpecificMessageInterface
+final class InfositeWebinarSubscriptionMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'infositeWebinarSubscription';
 
     use LocalizationTrait;
 
+    private $phone;
+    private $email;
+    private $webinarType;
+    private $webinarName;
+    private $webinarExternalId;
+    private $webinarLevel;
+    private $webinarPlatformName;
+    private $subscriberName;
+    private $addingDate;
+    private $startDateTime;
+    private $formData;
 
-    protected $phone;
-    protected $email;
-    protected $webinarType;
-    protected $webinarName;
-    protected $webinarExternalId;
-    protected $webinarLevel;
-    protected $webinarPlatformName;
-    protected $subscriberName;
-    protected $addingDate;
-    protected $startDateTime;
-    protected $formData;
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->webinarType,
+                $this->addingDate,
+                $this->locale,
+            ]
+        );
+    }
 
     /**
      * @return string
@@ -34,13 +48,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $email
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -54,13 +66,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $webinarType
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setWebinarType($webinarType)
     {
         $this->webinarType = $webinarType;
-
         return $this;
     }
 
@@ -74,13 +84,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $addingDate - date string in "Y-m-d" format
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setAddingDate($addingDate)
     {
         $this->addingDate = $addingDate;
-
         return $this;
     }
 
@@ -94,13 +102,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $startDateTime
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setStartDateTime($startDateTime)
     {
         $this->startDateTime = $startDateTime;
-
         return $this;
     }
 
@@ -114,13 +120,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $webinarName
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setWebinarName($webinarName)
     {
         $this->webinarName = $webinarName;
-
         return $this;
     }
 
@@ -134,13 +138,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $phone
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
 
@@ -154,13 +156,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param array $formData
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setFormData($formData)
     {
         $this->formData = $formData;
-
         return $this;
     }
 
@@ -174,13 +174,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $subscriberName
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setSubscriberName($subscriberName)
     {
         $this->subscriberName = $subscriberName;
-
         return $this;
     }
 
@@ -194,13 +192,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $webinarExternalId
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setWebinarExternalId($webinarExternalId)
     {
         $this->webinarExternalId = $webinarExternalId;
-
         return $this;
     }
 
@@ -219,7 +215,6 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
     public function setWebinarLevel($webinarLevel)
     {
         $this->webinarLevel = $webinarLevel;
-
         return $this;
     }
 
@@ -233,51 +228,11 @@ class InfositeWebinarSubscriptionMessage extends AbstractMessage implements Proj
 
     /**
      * @param string $webinarPlatformName
-     *
      * @return InfositeWebinarSubscriptionMessage
      */
     public function setWebinarPlatformName($webinarPlatformName)
     {
         $this->webinarPlatformName = $webinarPlatformName;
-
         return $this;
     }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->webinarType,
-            $this->addingDate,
-            $this->locale,
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'infositeWebinarSubscription';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectIdentity()
-    {
-        return 'Infosite';
-    }
-
-    /**
-     * @return string
-     */
-    public function getProjectPossession()
-    {
-        return 'Infosite';
-    }
-
 }

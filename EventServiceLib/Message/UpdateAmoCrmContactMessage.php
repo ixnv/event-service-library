@@ -11,31 +11,51 @@ use EventServiceLib\Message\Traits\LocalizationTrait;
  * @deprecated
  * @see ChangeUserInfoMessage
  */
-class UpdateAmoCrmContactMessage extends AbstractMessage
+final class UpdateAmoCrmContactMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'updateContact';
 
     use GetresponseMessageTrait;
     use AmoCrmMessageTrait;
     use ArrayEmailTrait;
     use LocalizationTrait;
 
-    protected $registration_date;
-    protected $elamaId;
-    protected $phone;
-    protected $accountType;
-    protected $timezone;
-    protected $splitTestSegment = null;
+    private $registration_date;
+    private $elamaId;
+    private $phone;
+    private $accountType;
+    private $timezone;
+    private $splitTestSegment = null;
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getEventIdentity()
+    public function isValid()
     {
-        return 'updateContact';
+        return !$this->hasEmpty(
+                [
+                    $this->email,
+                    $this->elamaLogin,
+                    $this->name,
+                    $this->registration_date,
+                    $this->elamaId,
+                ]
+            )
+            && (!$this->accountType || in_array(
+                    $this->accountType,
+                    [
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_ADVERTISER,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
+                        RegistrationMessage::AMO_ACCOUNT_TYPE_IO,
+                    ]
+                ));
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRegistrationDate()
     {
@@ -43,19 +63,17 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param mixed $registration_date
-     *
+     * @param string $registration_date
      * @return UpdateAmoCrmContactMessage
      */
     public function setRegistrationDate($registration_date)
     {
         $this->registration_date = $registration_date;
-
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getElamaId()
     {
@@ -63,14 +81,12 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param $elamaId
-     *
+     * @param int $elamaId
      * @return UpdateAmoCrmContactMessage
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
 
@@ -84,13 +100,11 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
 
     /**
      * @param $phone
-     *
      * @return UpdateAmoCrmContactMessage
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
 
@@ -104,18 +118,16 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
 
     /**
      * @param $accountType
-     *
      * @return UpdateAmoCrmContactMessage
      */
     public function setAccountType($accountType)
     {
         $this->accountType = $accountType;
-
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTimezone()
     {
@@ -123,13 +135,12 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     }
 
     /**
-     * @param $timezone
-     * @return $this
+     * @param string $timezone
+     * @return UpdateAmoCrmContactMessage
      */
     public function setTimezone($timezone)
     {
         $this->timezone = $timezone;
-
         return $this;
     }
 
@@ -148,30 +159,6 @@ class UpdateAmoCrmContactMessage extends AbstractMessage
     public function setSplitTestSegment($splitTestSegment)
     {
         $this->splitTestSegment = $splitTestSegment;
-
         return $this;
     }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-                $this->email,
-                $this->elamaLogin,
-                $this->name,
-                $this->registration_date,
-                $this->elamaId,
-            ])
-            && (!$this->accountType || in_array($this->accountType, [
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_ADVERTISER,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_AGENCY_CLIENT,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_PROXY_CLIENT,
-                    RegistrationMessage::AMO_ACCOUNT_TYPE_IO,
-                ]));
-    }
-
 }

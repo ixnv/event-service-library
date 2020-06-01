@@ -5,15 +5,31 @@ namespace EventServiceLib\Message\Identity;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class RemoveUserMessage extends AbstractMessage
+final class RemoveUserMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'removeUser';
+
     use LocalizationTrait;
 
-    protected $timestamp;
-    protected $userId;
-    protected $initiatorUserId;
-    protected $email;
-    protected $additionalOptions = [];
+    private $timestamp;
+    private $userId;
+    private $initiatorUserId;
+    private $email;
+    private $additionalOptions = [];
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->country,
+                $this->userId,
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -30,7 +46,6 @@ class RemoveUserMessage extends AbstractMessage
     public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
-
         return $this;
     }
 
@@ -49,7 +64,6 @@ class RemoveUserMessage extends AbstractMessage
     public function setUserId($userId)
     {
         $this->userId = $userId;
-
         return $this;
     }
 
@@ -68,7 +82,6 @@ class RemoveUserMessage extends AbstractMessage
     public function setInitiatorUserId($initiatorUserId)
     {
         $this->initiatorUserId = $initiatorUserId;
-
         return $this;
     }
 
@@ -87,7 +100,6 @@ class RemoveUserMessage extends AbstractMessage
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -106,27 +118,6 @@ class RemoveUserMessage extends AbstractMessage
     public function setAdditionalOptions($additionalOptions)
     {
         $this->additionalOptions = $additionalOptions;
-
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventIdentity()
-    {
-        return 'removeUser';
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->country,
-            $this->userId,
-        ]);
     }
 }

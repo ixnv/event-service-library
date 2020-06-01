@@ -5,20 +5,44 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\Message\AbstractMessage;
 
 /** после проверки заботой заявки на присоединение к пп */
-class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
+final class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'agencyModerationApplicationForJoining';
+
     const STATUS_APPROVED = 'approved';
     const STATUS_REJECTED = 'rejected';
 
     const LEGAL_TYPE_PERSON = 'private_person';
     const LEGAL_TYPE_ENTITY = 'legal_entity';
 
-    protected $elamaId;
-    protected $agencyId;
-    protected $status;
-    protected $legalType;
-    protected $bankAccountRequisites;
-    protected $withdrawalMethod; # Withdrawal method text identity
+    private $elamaId;
+    private $agencyId;
+    private $status;
+    private $legalType;
+    private $bankAccountRequisites;
+    private $withdrawalMethod; # Withdrawal method text identity
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+                [
+                    $this->elamaId,
+                    $this->agencyId,
+                    $this->status,
+                    $this->legalType,
+                    $this->withdrawalMethod
+                ]
+            ) && in_array(
+                $this->status,
+                [self::STATUS_APPROVED, self::STATUS_REJECTED]
+            ) && in_array(
+                $this->legalType,
+                [self::LEGAL_TYPE_ENTITY, self::LEGAL_TYPE_PERSON]
+            );
+    }
 
     /**
      * @return integer
@@ -126,35 +150,5 @@ class AgencyModerationApplicationForJoiningMessage extends AbstractMessage
     {
         $this->withdrawalMethod = $withdrawalMethod;
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-                [
-                    $this->elamaId,
-                    $this->agencyId,
-                    $this->status,
-                    $this->legalType,
-                    $this->withdrawalMethod
-                ]
-            ) && in_array(
-                $this->status,
-                [self::STATUS_APPROVED, self::STATUS_REJECTED]
-            ) && in_array(
-                $this->legalType,
-                [self::LEGAL_TYPE_ENTITY, self::LEGAL_TYPE_PERSON]
-            );
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'agencyModerationApplicationForJoining';
     }
 }

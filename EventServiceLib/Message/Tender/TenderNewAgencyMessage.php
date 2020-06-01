@@ -5,12 +5,26 @@ namespace EventServiceLib\Message\Tender;
 use EventServiceLib\Message\AbstractMessage;
 use EventServiceLib\Message\Traits\LocalizationTrait;
 
-class TenderNewAgencyMessage extends AbstractMessage
+final class TenderNewAgencyMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'tenderNewAgency';
 
     use LocalizationTrait;
 
-    protected $email;
+    private $email;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->email,
+                $this->locale
+            ]
+        );
+    }
 
     /**
      * @return string
@@ -22,33 +36,11 @@ class TenderNewAgencyMessage extends AbstractMessage
 
     /**
      * @param string $email
-     *
      * @return TenderNewAgencyMessage
      */
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'tenderNewAgency';
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-            $this->email,
-            $this->locale
-        ]);
-    }
-
 }

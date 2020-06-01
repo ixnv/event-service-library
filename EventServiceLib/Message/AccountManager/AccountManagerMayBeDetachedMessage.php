@@ -4,11 +4,24 @@ namespace EventServiceLib\Message\AccountManager;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class AccountManagerMayBeDetachedMessage extends AbstractMessage
+final class AccountManagerMayBeDetachedMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'accountManagerMayBeDetached';
 
-    protected $elamaId;
-    protected $email;
+    private $elamaId;
+    private $email;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -20,12 +33,11 @@ class AccountManagerMayBeDetachedMessage extends AbstractMessage
 
     /**
      * @param int $elamaId
-     * @return $this
+     * @return AccountManagerMayBeDetachedMessage
      */
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
 
@@ -46,25 +58,4 @@ class AccountManagerMayBeDetachedMessage extends AbstractMessage
         $this->email = $email;
         return $this;
     }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'accountManagerMayBeDetached';
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-            [
-                $this->elamaId,
-            ]
-        );
-    }
-
 }

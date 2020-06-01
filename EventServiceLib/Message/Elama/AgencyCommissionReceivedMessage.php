@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace EventServiceLib\Message\Elama;
 
@@ -6,13 +6,31 @@ use EventServiceLib\EventServiceValues;
 use EventServiceLib\Message\AbstractMessage;
 
 /** при выплате вознаграждения агентству */
-class AgencyCommissionReceivedMessage extends AbstractMessage
+final class AgencyCommissionReceivedMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'agencyCommissionReceived';
 
-    protected $elamaId;
-    protected $agencyId;
-    protected $legalType;
-    protected $amount = 0;
+    private $elamaId;
+    private $agencyId;
+    private $legalType;
+    private $amount = 0;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+                [
+                    $this->elamaId,
+                    $this->agencyId,
+                    $this->legalType,
+                ]
+            ) && in_array(
+                $this->legalType,
+                [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]
+            );
+    }
 
     /**
      * @return integer
@@ -84,30 +102,5 @@ class AgencyCommissionReceivedMessage extends AbstractMessage
     {
         $this->amount = $amount;
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-                [
-                    $this->elamaId,
-                    $this->agencyId,
-                    $this->legalType,
-                ]
-            ) && in_array(
-                $this->legalType,
-                [EventServiceValues::LEGAL_TYPE_ENTITY, EventServiceValues::LEGAL_TYPE_PERSON]
-            );
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'agencyCommissionReceived';
     }
 }

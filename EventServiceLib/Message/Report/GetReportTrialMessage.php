@@ -4,10 +4,23 @@ namespace EventServiceLib\Message\Report;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class GetReportTrialMessage extends AbstractMessage
+final  class GetReportTrialMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'getReportTrial';
 
-    protected $elamaId;
+    private $elamaId;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -24,26 +37,6 @@ class GetReportTrialMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'getReportTrial';
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty([
-            $this->elamaId,
-        ]);
-    }
-
 }

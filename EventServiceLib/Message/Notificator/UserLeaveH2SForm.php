@@ -4,9 +4,11 @@ namespace EventServiceLib\Message\Notificator;
 
 use EventServiceLib\Message\AbstractMessage;
 
-class UserLeaveH2SForm extends AbstractMessage
+final class UserLeaveH2SForm extends AbstractMessage
 {
-    public $elamaId;
+    const EVENT_IDENTITY = 'leaveH2SForm';
+
+    private $elamaId;
 
     /**
      * @return bool
@@ -14,11 +16,6 @@ class UserLeaveH2SForm extends AbstractMessage
     public function isValid()
     {
         return !$this->hasEmpty([$this->elamaId]);
-    }
-
-    public function getEventIdentity()
-    {
-        return 'leaveH2SForm';
     }
 
     /**
@@ -36,5 +33,4 @@ class UserLeaveH2SForm extends AbstractMessage
     {
         return $this->elamaId;
     }
-
 }

@@ -5,9 +5,23 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\Message\AbstractMessage;
 
 /** при клике на кнопку "Заполнить заявку" для участия в партнерской программе */
-class ClickAgencyProgramSubmissionFillMessage extends AbstractMessage
+final class ClickAgencyProgramSubmissionFillMessage extends AbstractMessage
 {
-    protected $elamaId;
+    const EVENT_IDENTITY = 'clickAgencyProgramSubmissionFill';
+
+    private $elamaId;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->elamaId
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -25,26 +39,5 @@ class ClickAgencyProgramSubmissionFillMessage extends AbstractMessage
     {
         $this->elamaId = $elamaId;
         return $this;
-    }
-
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-            [
-                $this->elamaId
-            ]
-        );
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'clickAgencyProgramSubmissionFill';
     }
 }

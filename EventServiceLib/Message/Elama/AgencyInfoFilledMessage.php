@@ -5,10 +5,24 @@ namespace EventServiceLib\Message\Elama;
 use EventServiceLib\Message\AbstractMessage;
 
 /** при заполнение первичной информации об агентстве */
-class AgencyInfoFilledMessage extends AbstractMessage
+final class AgencyInfoFilledMessage extends AbstractMessage
 {
-    protected $elamaId;
-    protected $agencyId;
+    const EVENT_IDENTITY = 'agencyInfoFilled';
+
+    private $elamaId;
+    private $agencyId;
+
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !$this->hasEmpty(
+            [
+                $this->elamaId
+            ]
+        );
+    }
 
     /**
      * @return int
@@ -44,25 +58,5 @@ class AgencyInfoFilledMessage extends AbstractMessage
     {
         $this->agencyId = $agencyId;
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid()
-    {
-        return !$this->hasEmpty(
-            [
-                $this->elamaId
-            ]
-        );
-    }
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'agencyInfoFilled';
     }
 }

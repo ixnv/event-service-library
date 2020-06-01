@@ -7,7 +7,6 @@ use EventServiceLib\EventServiceValues;
 use EventServiceLib\Exceptions\EventServiceApiException;
 use EventServiceLib\Exceptions\EventServiceException;
 use EventServiceLib\Message\AbstractMessage;
-use EventServiceLib\Message\ProjectSpecificMessageInterface;
 
 class EventDispatcher implements EventDispatcherInterface
 {
@@ -41,10 +40,6 @@ class EventDispatcher implements EventDispatcherInterface
             'type' => $message->getEventIdentity(),
             'fields' => $message->toArray(),
         ];
-
-        if ($message instanceof ProjectSpecificMessageInterface) {
-            $dispatcherMessage['project'] = $message->getProjectIdentity();
-        }
 
         $dispatcherMessage = self::encodeDispatcherMessage($dispatcherMessage);
 

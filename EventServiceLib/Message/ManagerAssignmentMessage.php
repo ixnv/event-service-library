@@ -5,15 +5,16 @@ namespace EventServiceLib\Message;
 /**
  * Событие изменения персонального менеджера пользователя.
  */
-class ManagerAssignmentMessage extends AbstractMessage
+final class ManagerAssignmentMessage extends AbstractMessage
 {
+    const EVENT_IDENTITY = 'managerAssignment';
 
     /**
      * Идентификатор пользователя в eLama, менеджер которого был изменен
      *
      * @var int
      */
-    protected $elamaId;
+    private $elamaId;
 
     /**
      * Идентификатор назначенного менеджера в eLama,
@@ -21,24 +22,18 @@ class ManagerAssignmentMessage extends AbstractMessage
      *
      * @var int|null
      */
-    protected $managerId;
-
-    /**
-     * @return string
-     */
-    function getEventIdentity()
-    {
-        return 'managerAssignment';
-    }
+    private $managerId;
 
     /**
      * @return bool
      */
     public function isValid()
     {
-        return !$this->hasEmpty([
-            $this->elamaId,
-        ]);
+        return !$this->hasEmpty(
+            [
+                $this->elamaId,
+            ]
+        );
     }
 
     /**
@@ -56,7 +51,6 @@ class ManagerAssignmentMessage extends AbstractMessage
     public function setElamaId($elamaId)
     {
         $this->elamaId = $elamaId;
-
         return $this;
     }
 
@@ -75,8 +69,6 @@ class ManagerAssignmentMessage extends AbstractMessage
     public function setManagerId($managerId)
     {
         $this->managerId = $managerId;
-
         return $this;
     }
-
 }
