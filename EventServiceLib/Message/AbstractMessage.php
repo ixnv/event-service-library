@@ -23,9 +23,12 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function fromArray(array $messageFields)
     {
+        $reflection = new \ReflectionClass($this);
         foreach ($messageFields as $fieldName => $value) {
             if (property_exists($this, $fieldName)) {
-                $this->$fieldName = $value;
+                $property = $reflection->getProperty($fieldName);
+                $property->setAccessible(true);
+                $property->setValue($this, $value);
             } else {
                 $this->orphanFields[] = [
                     $fieldName => $value,
