@@ -42,11 +42,14 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function toArray()
     {
-        $vars = get_object_vars($this);
-
-        foreach ($vars as $name => $value) {
-            if ($value === null) {
-                unset($vars[$name]);
+        $reflection = new \ReflectionClass($this);
+        /** @var \ReflectionProperty[] $fields */
+        $fields = $reflection->getProperties();
+        $vars = [];
+        foreach ($fields as $field) {
+            $field->setAccessible(true);
+            if ($field->getValue($this) !== null) {
+                $vars[$field->getName()] = $field->getValue($this);
             }
         }
 
