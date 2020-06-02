@@ -1,9 +1,9 @@
 # event-service-library
 Библиотека для пуша событий в очередь event service
 
-##Отправка событий
+## Отправка событий
 
-###Http Api
+### Http Api
 Пример интеграции
 ```
 $message = new AdvPaymentMessage();
@@ -19,7 +19,7 @@ $dispatcher = new \EventServiceLib\HttpApi\EventDispatcher($ESApi);
 $dispatcher->dispatchMessage($message);
 ```
 
-###RabbitMQ (устарел, использовать не рекомендуется)
+### RabbitMQ (устарел, использовать не рекомендуется)
 
 Отправлять сообщения нужно в exchange без указания конкретной очереди
 Пример интеграции
