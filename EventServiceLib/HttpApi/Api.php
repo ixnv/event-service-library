@@ -60,7 +60,7 @@ class Api
     public function ping()
     {
         try {
-            $this->callApi(rtrim($this->ESApiUrl, '/') . '/ping');
+            $this->callApi(rtrim($this->ESApiUrl, '/') . '/api/ping');
         } catch (\Exception $exception) {
             return false;
         }
@@ -70,6 +70,6 @@ class Api
 
     public function sendMessage($encodedMessage)
     {
-        return $this->callApi(rtrim($this->ESApiUrl, '/') . '/message', $encodedMessage);
+        return $this->callApi(rtrim($this->ESApiUrl, '/') . '/api/message', $encodedMessage);
     }
 }
