@@ -2,14 +2,11 @@
 
 namespace EventServiceLib\Message\Ppc;
 
-use EventServiceLib\Message\Traits\ArrayEmailTrait;
-
 final class PpcCoursesSubscriptionMessage extends AbstractPpcMessage
 {
     const EVENT_IDENTITY = 'ppcCoursesSubscription';
 
-    use ArrayEmailTrait;
-
+    private $email;
     private $name;
 
     /**
@@ -43,4 +40,22 @@ final class PpcCoursesSubscriptionMessage extends AbstractPpcMessage
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return PpcCoursesSubscriptionMessage
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
 }
+
