@@ -58,4 +58,3 @@ final class PpcCoursesSubscriptionMessage extends AbstractPpcMessage
         return $this;
     }
 }
-
