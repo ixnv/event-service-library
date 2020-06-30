@@ -12,6 +12,7 @@ final class TaskCreatedMessage extends AbstractMessage
     private $assignee;
     private $deadline;
     private $actionPlace;
+    private $tasksCreatedCount;
     private $userId;
 
     /**
@@ -99,6 +100,24 @@ final class TaskCreatedMessage extends AbstractMessage
     public function setActionPlace($actionPlace)
     {
         $this->actionPlace = $actionPlace;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTasksCreatedCount()
+    {
+        return $this->tasksCreatedCount;
+    }
+
+    /**
+     * @param int $tasksCreatedCount
+     * @return TaskCreatedMessage
+     */
+    public function setTasksCreatedCount($tasksCreatedCount)
+    {
+        $this->tasksCreatedCount = $tasksCreatedCount;
         return $this;
     }
 
