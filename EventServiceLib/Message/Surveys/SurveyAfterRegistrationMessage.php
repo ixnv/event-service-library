@@ -17,6 +17,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     private $agencySiteUrl; // сайт агентства
     private $numberOfClients; // количество клиентов
     private $learningGoal; // цель обучения
+    private $industryId; // Индустрия
 
     /**
      * @return bool
@@ -189,6 +190,24 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     public function setLearningGoal($learningGoal)
     {
         $this->learningGoal = $learningGoal;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIndustryId()
+    {
+        return $this->industryId;
+    }
+
+    /**
+     * @param int $industryId
+     * @return SurveyAfterRegistrationMessage
+     */
+    public function setIndustryId($industryId)
+    {
+        $this->industryId = $industryId;
         return $this;
     }
 }
