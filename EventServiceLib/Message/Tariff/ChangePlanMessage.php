@@ -15,6 +15,8 @@ final class ChangePlanMessage extends AbstractMessage
     private $subscribeStatus;
     private $planCost;
     private $currency;
+    private $prevPlan;
+    private $prevPlanReason;
 
     /**
      * @return bool
@@ -153,6 +155,42 @@ final class ChangePlanMessage extends AbstractMessage
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrevPlan()
+    {
+        return $this->prevPlan;
+    }
+
+    /**
+     * @param string $prevPlan
+     * @return ChangePlanMessage
+     */
+    public function setPrevPlan($prevPlan)
+    {
+        $this->prevPlan = $prevPlan;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrevPlanReason()
+    {
+        return $this->prevPlanReason;
+    }
+
+    /**
+     * @param string $prevPlanReason
+     * @return ChangePlanMessage
+     */
+    public function setPrevPlanReason($prevPlanReason)
+    {
+        $this->prevPlanReason = $prevPlanReason;
         return $this;
     }
 }
