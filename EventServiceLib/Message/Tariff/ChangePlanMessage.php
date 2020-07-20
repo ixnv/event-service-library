@@ -11,6 +11,12 @@ final class ChangePlanMessage extends AbstractMessage
     private $elamaId;
     private $reason;
     private $plan;
+    private $planFinishDate;
+    private $subscribeStatus;
+    private $planCost;
+    private $currency;
+    private $prevPlan;
+    private $prevPlanReason;
 
     /**
      * @return bool
@@ -77,6 +83,114 @@ final class ChangePlanMessage extends AbstractMessage
     public function setPlan($plan)
     {
         $this->plan = $plan;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlanFinishDate()
+    {
+        return $this->planFinishDate;
+    }
+
+    /**
+     * @param string $planFinishDate
+     * @return ChangePlanMessage
+     */
+    public function setPlanFinishDate($planFinishDate)
+    {
+        $this->planFinishDate = $planFinishDate;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubscribeStatus()
+    {
+        return $this->subscribeStatus;
+    }
+
+    /**
+     * @param string $subscribeStatus
+     * @return ChangePlanMessage
+     */
+    public function setSubscribeStatus($subscribeStatus)
+    {
+        $this->subscribeStatus = $subscribeStatus;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPlanCost()
+    {
+        return $this->planCost;
+    }
+
+    /**
+     * @param float $planCost
+     * @return ChangePlanMessage
+     */
+    public function setPlanCost($planCost)
+    {
+        $this->planCost = $planCost;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string $currency
+     * @return ChangePlanMessage
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrevPlan()
+    {
+        return $this->prevPlan;
+    }
+
+    /**
+     * @param string $prevPlan
+     * @return ChangePlanMessage
+     */
+    public function setPrevPlan($prevPlan)
+    {
+        $this->prevPlan = $prevPlan;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrevPlanReason()
+    {
+        return $this->prevPlanReason;
+    }
+
+    /**
+     * @param string $prevPlanReason
+     * @return ChangePlanMessage
+     */
+    public function setPrevPlanReason($prevPlanReason)
+    {
+        $this->prevPlanReason = $prevPlanReason;
         return $this;
     }
 }
