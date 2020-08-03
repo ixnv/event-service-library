@@ -18,6 +18,7 @@ final class InfositeWebinarSubscriptionMessage extends AbstractMessage
     private $webinarExternalId;
     private $webinarLevel;
     private $webinarPlatformName;
+    private $budget; // Я не запускаю рекламу, До 20 000 руб., От 20 000 до 50 000 руб., От 50 000 до 100 000 руб., Более 100 000 руб.
     private $subscriberName;
     private $addingDate;
     private $startDateTime;
@@ -233,6 +234,24 @@ final class InfositeWebinarSubscriptionMessage extends AbstractMessage
     public function setWebinarPlatformName($webinarPlatformName)
     {
         $this->webinarPlatformName = $webinarPlatformName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBudget()
+    {
+        return $this->budget;
+    }
+
+    /**
+     * @param string $budget
+     * @return InfositeWebinarSubscriptionMessage
+     */
+    public function setBudget($budget)
+    {
+        $this->budget = $budget;
         return $this;
     }
 }
