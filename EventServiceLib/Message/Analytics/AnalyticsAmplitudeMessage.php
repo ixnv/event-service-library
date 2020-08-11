@@ -22,7 +22,7 @@ final class AnalyticsAmplitudeMessage extends AbstractMessage
                 $this->toolName,
                 $this->eventName
             ]
-        ) || !(empty($this->userProperties) && empty($this->eventProperties));
+        ) && (!empty($this->userProperties) || !empty($this->eventProperties));
     }
 
     /**
