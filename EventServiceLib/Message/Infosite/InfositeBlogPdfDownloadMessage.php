@@ -13,6 +13,7 @@ final class InfositeBlogPdfDownloadMessage extends AbstractMessage
     private $phone;
     private $budget;
     private $locale;
+    private $url;
 
     /**
      * @return bool
@@ -25,6 +26,7 @@ final class InfositeBlogPdfDownloadMessage extends AbstractMessage
                 $this->email,
                 $this->phone,
                 $this->budget,
+                $this->url
             ]
         );
     }
@@ -116,6 +118,24 @@ final class InfositeBlogPdfDownloadMessage extends AbstractMessage
     public function setLocale($locale)
     {
         $this->locale = $locale;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     * @return InfositeBlogPdfDownloadMessage
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
         return $this;
     }
 }
