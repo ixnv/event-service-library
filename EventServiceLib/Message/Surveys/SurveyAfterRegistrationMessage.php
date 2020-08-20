@@ -19,6 +19,17 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     private $learningGoal; // цель обучения
     private $industryId; // Индустрия
 
+    // int, bra
+    private $describeYou; // Which of the below options best describes you
+    private $companyHas; // The company that I work for has
+    private $directYourTrafficTo; // If not, where you direct your traffic to?
+    private $geographicalLocation; // What geographical locations do you target?
+    private $mainCompetitors; // Who do you consider your main competitors (max 3)?
+    private $averageMonthlyBudgetPerClient; // What is the average monthly paid advertising budget per client?
+    private $platformsToAdvertise; // What are your preferred platforms to advertise on?
+    private $setOfResources; // We also provide an excellent set of resources to help you learn more about the practice of Internet Advertising, including...
+    private $improveWorkWithPaidAdvertising; // Tell us how we can best help you to improve your experience and work with paid ads?
+
     /**
      * @return bool
      */
