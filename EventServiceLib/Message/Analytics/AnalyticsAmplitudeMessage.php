@@ -11,6 +11,7 @@ final class AnalyticsAmplitudeMessage extends AbstractMessage
     private $userId; // elama user id
     private $toolName;
     private $eventName;
+    private $eventTime; // timestamp
     private $userProperties;
     private $eventProperties;
 
@@ -112,6 +113,24 @@ final class AnalyticsAmplitudeMessage extends AbstractMessage
     public function setEventProperties($eventProperties)
     {
         $this->eventProperties = $eventProperties;
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getEventTime()
+    {
+        return $this->eventTime;
+    }
+
+    /**
+     * @param integer $eventTime
+     * @return AnalyticsAmplitudeMessage
+     */
+    public function setEventTime($eventTime)
+    {
+        $this->eventTime = $eventTime;
         return $this;
     }
 }
