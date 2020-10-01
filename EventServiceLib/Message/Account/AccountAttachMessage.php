@@ -13,6 +13,7 @@ final class AccountAttachMessage extends AbstractMessage
     private $accountType;
     private $email;
     private $place;
+    private $accountExternalId; // id в рекламной системе. В директе это e-16650259, в гугле 4198728223
 
     /**
      * @return bool
@@ -115,6 +116,24 @@ final class AccountAttachMessage extends AbstractMessage
     public function setPlace($place)
     {
         $this->place = $place;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccountExternalId()
+    {
+        return $this->accountExternalId;
+    }
+
+    /**
+     * @param string $accountExternalId
+     * @return AccountAttachMessage
+     */
+    public function setAccountExternalId($accountExternalId)
+    {
+        $this->accountExternalId = $accountExternalId;
         return $this;
     }
 }
