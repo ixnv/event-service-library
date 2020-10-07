@@ -5,10 +5,12 @@
   "authors": [],
   "require": {
     "php": ">=5.5",
-    "php-amqplib/php-amqplib": "~2.5",
     "psr/log": "~1.0",
     "ext-json": "*",
     "ext-curl": "*"
+  },
+  "suggest": {
+    "php-amqplib/php-amqplib": "Required for sending events through AMQP"
   },
   "autoload": {
     "psr-4": {
