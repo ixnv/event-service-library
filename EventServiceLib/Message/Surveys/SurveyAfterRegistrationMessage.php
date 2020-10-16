@@ -18,17 +18,31 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     private $numberOfClients; // количество клиентов
     private $learningGoal; // цель обучения
     private $industryId; // Индустрия
+    private $contactImmediately; // Связаться сразу
 
     // int, bra
+    /** @deprecated  */
     private $describeYou; // Which of the below options best describes you
+    /** @deprecated  */
     private $companyHas; // The company that I work for has
+    /** @deprecated  */
     private $directYourTrafficTo; // If not, where you direct your traffic to?
+    /** @deprecated  */
     private $geographicalLocation; // What geographical locations do you target?
+    /** @deprecated  */
     private $mainCompetitors; // Who do you consider your main competitors (max 3)?
+    /** @deprecated  */
     private $averageMonthlyBudgetPerClient; // What is the average monthly paid advertising budget per client?
+    /** @deprecated  */
     private $platformsToAdvertise; // What are your preferred platforms to advertise on?
+    /** @deprecated  */
     private $setOfResources; // We also provide an excellent set of resources to help you learn more about the practice of Internet Advertising, including...
+    /** @deprecated  */
     private $improveWorkWithPaidAdvertising; // Tell us how we can best help you to improve your experience and work with paid ads?
+
+    private $howManyPeopleWork; // How many people work with you?
+    private $budgetGoogleAds; // What is your budget for Google Ads?
+    private $budgetFacebookAds; // What is your budget for Facebook Ads?
 
     /**
      * @return bool
@@ -224,6 +238,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getDescribeYou()
     {
@@ -233,6 +248,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $describeYou
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setDescribeYou($describeYou)
     {
@@ -242,6 +258,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getCompanyHas()
     {
@@ -251,6 +268,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $companyHas
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setCompanyHas($companyHas)
     {
@@ -260,6 +278,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getDirectYourTrafficTo()
     {
@@ -269,6 +288,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $directYourTrafficTo
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setDirectYourTrafficTo($directYourTrafficTo)
     {
@@ -278,6 +298,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getGeographicalLocation()
     {
@@ -287,6 +308,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $geographicalLocation
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setGeographicalLocation($geographicalLocation)
     {
@@ -296,6 +318,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getMainCompetitors()
     {
@@ -305,6 +328,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $mainCompetitors
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setMainCompetitors($mainCompetitors)
     {
@@ -314,6 +338,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getAverageMonthlyBudgetPerClient()
     {
@@ -323,6 +348,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $averageMonthlyBudgetPerClient
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setAverageMonthlyBudgetPerClient($averageMonthlyBudgetPerClient)
     {
@@ -332,6 +358,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getPlatformsToAdvertise()
     {
@@ -341,6 +368,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $platformsToAdvertise
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setPlatformsToAdvertise($platformsToAdvertise)
     {
@@ -350,6 +378,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getSetOfResources()
     {
@@ -359,6 +388,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $setOfResources
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setSetOfResources($setOfResources)
     {
@@ -368,6 +398,7 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
 
     /**
      * @return string
+     * @deprecated
      */
     public function getImproveWorkWithPaidAdvertising()
     {
@@ -377,10 +408,83 @@ final class SurveyAfterRegistrationMessage extends AbstractMessage
     /**
      * @param string $improveWorkWithPaidAdvertising
      * @return SurveyAfterRegistrationMessage
+     * @deprecated
      */
     public function setImproveWorkWithPaidAdvertising($improveWorkWithPaidAdvertising)
     {
         $this->improveWorkWithPaidAdvertising = $improveWorkWithPaidAdvertising;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getContactImmediately()
+    {
+        return $this->contactImmediately;
+    }
+
+    /**
+     * @param bool $contactImmediately
+     * @return SurveyAfterRegistrationMessage
+     */
+    public function setContactImmediately($contactImmediately)
+    {
+        $this->contactImmediately = $contactImmediately;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHowManyPeopleWork()
+    {
+        return $this->howManyPeopleWork;
+    }
+
+    /**
+     * @param string $howManyPeopleWork
+     * @return SurveyAfterRegistrationMessage
+     */
+    public function setHowManyPeopleWork($howManyPeopleWork)
+    {
+        $this->howManyPeopleWork = $howManyPeopleWork;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBudgetGoogleAds()
+    {
+        return $this->budgetGoogleAds;
+    }
+
+    /**
+     * @param string $budgetGoogleAds
+     * @return SurveyAfterRegistrationMessage
+     */
+    public function setBudgetGoogleAds($budgetGoogleAds)
+    {
+        $this->budgetGoogleAds = $budgetGoogleAds;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBudgetFacebookAds()
+    {
+        return $this->budgetFacebookAds;
+    }
+
+    /**
+     * @param string $budgetFacebookAds
+     * @return SurveyAfterRegistrationMessage
+     */
+    public function setBudgetFacebookAds($budgetFacebookAds)
+    {
+        $this->budgetFacebookAds = $budgetFacebookAds;
         return $this;
     }
 }
