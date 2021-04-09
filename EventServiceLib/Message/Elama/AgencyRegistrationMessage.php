@@ -13,6 +13,7 @@ final class AgencyRegistrationMessage extends AbstractMessage
     private $agencyId;
     private $legalType;
     private $agencyRegistrationDate;
+    private $additionalParams = [];
 
     /**
      * @return bool
@@ -101,6 +102,45 @@ final class AgencyRegistrationMessage extends AbstractMessage
     public function setAgencyRegistrationDate($agencyRegistrationDate)
     {
         $this->agencyRegistrationDate = $agencyRegistrationDate;
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getAdditionalParams()
+    {
+        return $this->additionalParams;
+    }
+
+    /**
+     * @param array $additionalParams
+     * @return AgencyRegistrationMessage
+     */
+    public function setAdditionalParams($additionalParams)
+    {
+        $this->additionalParams = $additionalParams;
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param $value
+     * @return AgencyRegistrationMessage
+     */
+    public function addAdditionalParams($key, $value)
+    {
+        $this->additionalParams[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * @param $key
+     * @return AgencyRegistrationMessage
+     */
+    public function removeAdditionalParams($key)
+    {
+        unset($this->additionalParams[$key]);
         return $this;
     }
 }
