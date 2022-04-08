@@ -1,5 +1,5 @@
 {
-  "name": "elama/event-service-library",
+  "name": "elama-dev/event-service-library",
   "description": "Библиотека для пуша событий в очередь event service",
   "type": "library",
   "authors": [],
